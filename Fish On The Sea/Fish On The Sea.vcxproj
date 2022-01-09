@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game Manager\manager.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Screens\Menu\menu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game Manager\manager.h" />
+    <ClInclude Include="src\Screens\Menu\menu.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

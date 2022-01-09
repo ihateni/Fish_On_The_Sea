@@ -5,8 +5,31 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Game manager">
+      <UniqueIdentifier>{71d4baa8-6a6b-4d33-897f-bbd7aedfe8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{af54e95f-220f-41b0-ad81-ad12822312c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Menu">
+      <UniqueIdentifier>{a6ec2096-5d44-4b99-8631-bbf340a3d476}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game Manager\manager.cpp">
+      <Filter>Game manager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Screens\Menu\menu.cpp">
+      <Filter>Screens\Menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game Manager\manager.h">
+      <Filter>Game manager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screens\Menu\menu.h">
+      <Filter>Screens\Menu</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
