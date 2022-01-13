@@ -4,7 +4,7 @@
 
 #include "Game Manager/manager.h"
 
-namespace breakout {
+namespace fish {
 	namespace menu {
 		static void menuDraw();
 		static Vector2 mousePoint;

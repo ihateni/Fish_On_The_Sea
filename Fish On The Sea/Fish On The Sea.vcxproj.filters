@@ -14,6 +14,12 @@
     <Filter Include="Screens\Menu">
       <UniqueIdentifier>{a6ec2096-5d44-4b99-8631-bbf340a3d476}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Gameplay">
+      <UniqueIdentifier>{54a03851-0b86-4088-be69-79eee5e54776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{d1ccc790-2c05-48f2-89df-367f8ec8bcbe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -23,6 +29,12 @@
     <ClCompile Include="src\Screens\Menu\menu.cpp">
       <Filter>Screens\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="src\Screens\Gameplay\gameplay.cpp">
+      <Filter>Screens\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Player\player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -30,6 +42,12 @@
     </ClInclude>
     <ClInclude Include="src\Screens\Menu\menu.h">
       <Filter>Screens\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screens\Gameplay\gameplay.h">
+      <Filter>Screens\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Player\player.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

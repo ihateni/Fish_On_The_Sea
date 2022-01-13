@@ -1,7 +1,7 @@
 #ifndef GameManager_H
 #define GameManager_H
 
-namespace breakout {
+namespace fish {
 	namespace gameManager {
 		enum class GameScreen {
 			Menu = 0,

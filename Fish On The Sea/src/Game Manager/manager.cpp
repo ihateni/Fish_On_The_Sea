@@ -3,11 +3,11 @@
 #include "raylib.h"
 
 #include "Screens/Menu/menu.h"
-//#include "Screens/Gameplay/gameplay.h"
+#include "Screens/Gameplay/gameplay.h"
 //#include "Screens/Credits/credits.h"
 //#include "Screens/Controls/controls.h"
 
-namespace breakout {
+namespace fish {
 	namespace gameManager {
 
 		GameScreen Screens = GameScreen::Menu;
@@ -39,7 +39,7 @@ namespace breakout {
 				menu::menuUpdate();
 				break;
 			case GameScreen::Game:
-				//gameplay::gameplayUpdate();
+				gameplay::gameplayUpdate();
 				break;
 			case GameScreen::Credits:
 			//	credits::creditsUpdate();
@@ -55,8 +55,8 @@ namespace breakout {
 
 		void Init() {
 			menu::menuInit();
-			/*gameplay::gameplayInit();
-			credits::creditsInit();
+			gameplay::gameplayInit();
+			/*credits::creditsInit();
 			controls::controlsInit();*/
 			InitAudioDevice();
 		}

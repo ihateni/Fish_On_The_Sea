@@ -1,7 +1,7 @@
 #ifndef Menu_H
 #define Menu_H
 
-namespace breakout {
+namespace fish {
 	namespace menu {
 		void menuInit();
 		void menuUpdate();

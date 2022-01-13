@@ -1,6 +1,6 @@
 #include "Game Manager/manager.h"
 
-using namespace breakout;
+using namespace fish;
 using namespace gameManager;
 
 int main() {
