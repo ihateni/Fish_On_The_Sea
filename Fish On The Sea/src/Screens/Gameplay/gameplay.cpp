@@ -23,6 +23,7 @@ namespace fish {
 		static int random;
 	
 		player::Player player;
+		Camera2D camera = { 0 };
 
 		Sound poing;
 		Music music;
@@ -34,7 +35,11 @@ namespace fish {
 
 			player.size = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenHeight()) / 15 };
 			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) - player.size.y - 10 };
-			std::cout<< player.size.x <<std::endl;
+
+			camera.target = { player.position.x + 20, player.position.y + 20 };
+			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
+			camera.rotation = 0.0f;
+			camera.zoom = 1.0f;
 		}
 
 		void gameplayUpdate() {
@@ -45,7 +50,9 @@ namespace fish {
 			if (!win) {
 				if (!pause) {
 					player::fall(player.position.y);
-					std::cout << player.position.y << std::endl;
+					std::cout << player.position.y << " : altura en y" << std::endl;
+					camera.target = { player.position.x + 20, player.position.y + 20 };
+					
 				}
 			}
 		}
@@ -64,8 +71,10 @@ namespace fish {
 
 			if (!win) {
 				if (!pause) {
+					BeginMode2D(camera);
 					DrawRectangle(90,90 ,100 ,800 , RED);
 					DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
+					EndMode2D();
 
 				}
 				else {

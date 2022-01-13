@@ -3,7 +3,7 @@
 namespace fish {
 	namespace player {
 		void fall(float& fall) {
-			fall -= 10 * GetFrameTime();
+			fall += 1000 * GetFrameTime();
 		}
 	}
 }
