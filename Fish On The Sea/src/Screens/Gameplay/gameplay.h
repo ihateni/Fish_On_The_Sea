@@ -1,13 +1,20 @@
 #ifndef Gameplay_H
 #define Gameplay_H
 
-//#include "raylib.h"
 
 namespace fish {
 	namespace gameplay {
+
+		enum class GameStage {
+			Main = 0,
+			Pause,
+			Victory
+		};
+
+		extern GameStage Stage;
+		
 		void gameplayInit();
 		void gameplayUpdate();
-		//Camera2D camera = { 0 };
 
 	}
 }
