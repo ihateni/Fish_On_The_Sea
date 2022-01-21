@@ -16,14 +16,10 @@ namespace fish {
 		static void gameplayInput();
 		static void gameplayDraw();
 
-		const int files = 10;
-		const int rows = 3;
-
 		static bool pause = false;
 		static bool win = false;
-		static int points;
-		static int random;
-	
+
+		int direction;
 		player::Player player;
 		Camera2D camera = { 0 };
 
@@ -31,11 +27,10 @@ namespace fish {
 		Music music;
 
 		void gameplayInit() {
-			points = 0;
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
 
-			player.size = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenHeight()) / 15 };
+			player.size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
 			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2/*- 10*/ };
 			std::cout << static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2 << " :mitad X" << std::endl;
 			std::cout << static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 << " :mitad Y" << std::endl;
@@ -55,22 +50,15 @@ namespace fish {
 			switch (Stage) {
 			case GameStage::Main:
 				player::fall(player.position.y);
+				direction = GetMouseX() - player.position.x;
+				player.position.x = player.position.x + direction * GetFrameTime();
 				camera.target = { player.position.x + player.size.x / 2 , player.position.y + player.size.y / 2 };
 				break;
 			case GameStage::Pause:
 				break;
 			case  GameStage::Victory:
 				break;
-			
 			}
-			//if (!win) {
-			//	if (!pause) {
-			//		//player::fall(player.position.y);
-			//	//	std::cout << player.position.y << " : altura en y" << std::endl;
-			//		camera.target = { player.position.x + player.size.x / 2 , player.position.y + player.size.y / 2 };
-			//		
-			//	}
-			//}
 		}
 
 		void gameplayInput() {
@@ -83,14 +71,7 @@ namespace fish {
 				break;
 			case  GameStage::Victory:
 				break;
-
 			}
-
-			/*if (IsKeyPressed(KEY_P)) pause = !pause;
-
-			if (!pause) {
-			
-			}*/
 		}
 
 		void gameplayDraw() {
@@ -111,7 +92,6 @@ namespace fish {
 				break;
 			case  GameStage::Victory:
 				break;
-
 			}
 
 			/*if (!win) {
