@@ -2,8 +2,15 @@
 
 namespace fish {
 	namespace player {
-		void fall(float& fall) {
-			fall += 10 * GetFrameTime();
+		int direction;
+
+		void fall(float& playerPosY) {
+			playerPosY += 10 * GetFrameTime();
+		}
+
+		void movement(float& playerPosX) {
+			direction = GetMouseX() - playerPosX;
+			playerPosX = playerPosX + direction * GetFrameTime();
 		}
 	}
 }

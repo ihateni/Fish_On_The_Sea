@@ -12,8 +12,8 @@ namespace fish {
 
 		GameScreen Screens = GameScreen::Menu;
 
-		const int screenWidth = 1000;
-		const int screenHeight = 550;
+		const int screenWidth = 500;//1000;
+		const int screenHeight = 800;
 		static bool playing = true;
 
 		static void change();

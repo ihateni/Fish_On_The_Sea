@@ -10,7 +10,8 @@ namespace fish {
 			Vector2 size;
 		};
 
-		void fall(float& fall);
+		void fall(float& playerPosY);
+		void movement(float& playerPosX);
 	}
 }
 #endif

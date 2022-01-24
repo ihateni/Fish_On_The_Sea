@@ -11,8 +11,16 @@ namespace fish {
 			Victory
 		};
 
+
+		enum class GameplayModes {
+			Shop = 0,
+			Descend,
+			Ascend
+		};
+
 		extern GameStage Stage;
-		
+		extern GameplayModes Modes;
+
 		void gameplayInit();
 		void gameplayUpdate();
 

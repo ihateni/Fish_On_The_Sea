@@ -12,6 +12,7 @@ namespace fish {
 	namespace gameplay {
 
 		GameStage Stage = GameStage::Main;
+		GameplayModes Modes = GameplayModes::Shop;
 
 		static void gameplayInput();
 		static void gameplayDraw();
@@ -19,7 +20,6 @@ namespace fish {
 		static bool pause = false;
 		static bool win = false;
 
-		int direction;
 		player::Player player;
 		Camera2D camera = { 0 };
 
@@ -32,10 +32,10 @@ namespace fish {
 
 			player.size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
 			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2/*- 10*/ };
-			std::cout << static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2 << " :mitad X" << std::endl;
-			std::cout << static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 << " :mitad Y" << std::endl;
+			/*std::cout << static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2 << " :mitad X" << std::endl;
+			std::cout << static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 << " :mitad Y" << std::endl;*/
 
-			camera.target = { player.position.x + 20, player.position.y + 20 };
+			camera.target = { player.position.x + player.size.x / 2, player.position.y /*+ 20 */};
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
 			camera.zoom = 1.0f;
@@ -50,9 +50,9 @@ namespace fish {
 			switch (Stage) {
 			case GameStage::Main:
 				player::fall(player.position.y);
-				direction = GetMouseX() - player.position.x;
-				player.position.x = player.position.x + direction * GetFrameTime();
-				camera.target = { player.position.x + player.size.x / 2 , player.position.y + player.size.y / 2 };
+				player::movement(player.position.x);
+				//camera.target = { player.position.x + player.size.x / 2 , player.position.y + player.size.y / 2 };
+				camera.target.y = player.position.y + player.size.y / 2;
 				break;
 			case GameStage::Pause:
 				break;
@@ -82,7 +82,7 @@ namespace fish {
 			case GameStage::Main:
 				BeginMode2D(camera);
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
-				DrawRectangle(90, 90, 100, 800, RED);
+				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
 				DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
 				EndMode2D();
 				break;
@@ -93,35 +93,6 @@ namespace fish {
 			case  GameStage::Victory:
 				break;
 			}
-
-			/*if (!win) {
-				if (!pause) {
-					BeginMode2D(camera);
-					DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
-					DrawRectangle(90,90 ,100 ,800 , RED);
-					DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
-					EndMode2D();
-
-				}
-				else {
-					DrawText("Press P to play again", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 9, 40, RED);
-					DrawText("Press enter to go to menu", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 6, 40, RED);
-
-
-				}
-			}
-			else {
-				if (points < 30) {
-					DrawText("Game over", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 16, 40, RED);
-					DrawText("Press P to play again", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 8, 40, SKYBLUE);
-					DrawText("Press enter to go to menu", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 5, 40, SKYBLUE);
-				}
-				else {
-					DrawText("You win!", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 16, 40, RED);
-					DrawText("Press P to play again", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 8, 40, SKYBLUE);
-					DrawText("Press enter to go to menu", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 5, 40, SKYBLUE);
-				}
-			}*/
 			EndDrawing();
 		}
 	}
