@@ -36,7 +36,9 @@ namespace fish {
 		static void change() {
 			switch (Screens) {
 			case GameScreen::Menu:
-				menu::menuUpdate();
+				//menu::menuUpdate();
+				gameplay::gameplayUpdate();
+
 				break;
 			case GameScreen::Game:
 				gameplay::gameplayUpdate();

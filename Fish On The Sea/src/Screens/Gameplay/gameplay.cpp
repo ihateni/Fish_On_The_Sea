@@ -26,19 +26,25 @@ namespace fish {
 		Sound poing;
 		Music music;
 
+		static Rectangle rec1M;
+
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
 
 			player.size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
-			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2/*- 10*/ };
-			/*std::cout << static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2 << " :mitad X" << std::endl;
-			std::cout << static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 << " :mitad Y" << std::endl;*/
+			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 };
+			
 
-			camera.target = { player.position.x + player.size.x / 2, player.position.y /*+ 20 */};
+			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
 			camera.zoom = 1.0f;
+
+			rec1M.height = static_cast<float>(GetScreenHeight()) / 10;
+			rec1M.width = static_cast<float>(GetScreenWidth()) / 10;
+			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width;
+			rec1M.y = static_cast<float>(GetScreenHeight())  - rec1M.height * 2;
 		}
 
 		void gameplayUpdate() {
@@ -49,10 +55,21 @@ namespace fish {
 
 			switch (Stage) {
 			case GameStage::Main:
-				player::fall(player.position.y);
-				player::movement(player.position.x);
-				//camera.target = { player.position.x + player.size.x / 2 , player.position.y + player.size.y / 2 };
 				camera.target.y = player.position.y + player.size.y / 2;
+					switch (Modes) {
+					case GameplayModes::Shop:
+						/*player::fall(player.position.y);
+						player::movement(player.position.x);*/
+						break;
+					case GameplayModes::Descend:
+						player::fall(player.position.y);
+						player::movement(player.position.x);
+						break;
+					case GameplayModes::Ascend:
+						break;
+					default:
+						break;
+					}
 				break;
 			case GameStage::Pause:
 				break;
@@ -65,6 +82,22 @@ namespace fish {
 			switch (Stage) {
 			case GameStage::Main:
 				if (IsKeyReleased(KEY_P)) Stage = GameStage::Pause;
+				switch (Modes) {
+				case GameplayModes::Shop:
+					if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
+						if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+							Modes = GameplayModes::Descend;
+						}
+					}
+					break;
+				case GameplayModes::Descend:
+					
+					break;
+				case GameplayModes::Ascend:
+					break;
+				default:
+					break;
+				}
 				break;
 			case GameStage::Pause:
 				if (IsKeyReleased(KEY_P)) Stage = GameStage::Main;
@@ -84,6 +117,19 @@ namespace fish {
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
 				DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
+					switch (Modes) {
+					case GameplayModes::Shop:
+						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
+						break;
+					case GameplayModes::Descend:
+
+						break;
+					case GameplayModes::Ascend:
+						break;
+					default:
+						break;
+					}
+					break;
 				EndMode2D();
 				break;
 			case GameStage::Pause:
