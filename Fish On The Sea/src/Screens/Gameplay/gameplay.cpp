@@ -27,6 +27,7 @@ namespace fish {
 		Music music;
 
 		static Rectangle rec1M;
+		static Rectangle stop1;
 
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
@@ -42,9 +43,14 @@ namespace fish {
 			camera.zoom = 1.0f;
 
 			rec1M.height = static_cast<float>(GetScreenHeight()) / 10;
-			rec1M.width = static_cast<float>(GetScreenWidth()) / 10;
+			rec1M.width = static_cast<float>(GetScreenWidth()) / 5;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width;
 			rec1M.y = static_cast<float>(GetScreenHeight())  - rec1M.height * 2;
+		
+			stop1.height = static_cast<float>(GetScreenHeight()) / 10;
+			stop1.width = static_cast<float>(GetScreenWidth()) ;
+			stop1.x = 0;
+			stop1.y = static_cast<float>(GetScreenHeight()) * 2;
 		}
 
 		void gameplayUpdate() {
@@ -64,8 +70,14 @@ namespace fish {
 					case GameplayModes::Descend:
 						player::fall(player.position.y);
 						player::movement(player.position.x);
+						if (CheckCollisionPointRec(player, stop1)) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								Modes = GameplayModes::Descend;
+							}
+						}
 						break;
 					case GameplayModes::Ascend:
+						player::ascension(player.position.y);
 						break;
 					default:
 						break;
@@ -122,6 +134,7 @@ namespace fish {
 						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
 						break;
 					case GameplayModes::Descend:
+						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
 
 						break;
 					case GameplayModes::Ascend:

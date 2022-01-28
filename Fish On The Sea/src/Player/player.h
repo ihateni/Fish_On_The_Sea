@@ -12,6 +12,7 @@ namespace fish {
 
 		void fall(float& playerPosY);
 		void movement(float& playerPosX);
+		void ascension(float& playerPosY);
 	}
 }
 #endif

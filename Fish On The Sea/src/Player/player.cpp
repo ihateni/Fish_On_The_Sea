@@ -5,12 +5,17 @@ namespace fish {
 		int direction;
 
 		void fall(float& playerPosY) {
-			playerPosY += 10 * GetFrameTime();
+			playerPosY += 100 * GetFrameTime();
 		}
 
 		void movement(float& playerPosX) {
 			direction = GetMouseX() - playerPosX;
 			playerPosX = playerPosX + direction * GetFrameTime();
+		}
+
+		void ascension(float& playerPosY) {
+			playerPosY -= 10 * GetFrameTime();
+
 		}
 	}
 }
