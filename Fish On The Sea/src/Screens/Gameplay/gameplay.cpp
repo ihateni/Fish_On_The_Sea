@@ -33,9 +33,11 @@ namespace fish {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
 
-			player.size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
-			player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 };		
-
+			//player.size = //{ static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
+			//player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 };		
+		
+			player::initPlayer(player.size, player.position);
+			
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
