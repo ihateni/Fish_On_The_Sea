@@ -32,10 +32,7 @@ namespace fish {
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
-
-			//player.size = //{ static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
-			//player.position = { static_cast<float>(GetScreenWidth()) / 2 - player.size.x / 2,static_cast<float>(GetScreenHeight()) / 2 - player.size.y / 2 };		
-		
+ 
 			player::initPlayer(player.size, player.position);
 			
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -127,7 +124,8 @@ namespace fish {
 				BeginMode2D(camera);
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
-				DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
+				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y);
+				//DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
 					switch (Modes) {
 					case GameplayModes::Shop:
 						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);

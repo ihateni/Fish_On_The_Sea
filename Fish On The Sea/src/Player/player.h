@@ -11,9 +11,10 @@ namespace fish {
 		};
 
 		void initPlayer(Vector2& size, Vector2& position);
-		void fall(float& playerPosY);
 		void movement(float& playerPosX);
+		void fall(float& playerPosY);
 		void ascension(float& playerPosY);
+		void drawPlayer(float& playerPosX, float& playerPosY, float& playerSizeX, float& playerSizey);
 
 	}
 }

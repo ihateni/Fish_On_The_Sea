@@ -2,15 +2,11 @@
 
 namespace fish {
 	namespace player {
-		int direction;
+		float  direction;
 
 		void initPlayer(Vector2& size, Vector2& position) {
 			size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
 			position = { static_cast<float>(GetScreenWidth()) / 2 - size.x / 2, static_cast<float>(GetScreenHeight()) / 2 - size.y / 2 };
-		}
-
-		void fall(float& playerPosY) {
-			playerPosY += 100 * GetFrameTime();
 		}
 
 		void movement(float& playerPosX) {
@@ -18,8 +14,17 @@ namespace fish {
 			playerPosX = playerPosX + direction * GetFrameTime();
 		}
 
+		void fall(float& playerPosY) {
+			playerPosY += 500 * GetFrameTime();
+		}
+
 		void ascension(float& playerPosY) {
-			playerPosY -= 10 * GetFrameTime();
+			playerPosY -= 200 * GetFrameTime();
+
+		}
+
+		void drawPlayer(float& playerPosX, float& playerPosY, float& playerSizeX, float& playerSizey) {
+			DrawRectangle(static_cast<int>(playerPosX), static_cast<int>(playerPosY), static_cast<int>(playerSizeX), static_cast<int>(playerSizey), BLACK);
 
 		}
 	}
