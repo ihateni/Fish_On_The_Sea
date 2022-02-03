@@ -73,6 +73,7 @@ namespace fish {
 						}					
 						break;
 					case GameplayModes::Ascend:
+						player::movement(player.position.x);
 						player::ascension(player.position.y);
 						break;
 					default:
