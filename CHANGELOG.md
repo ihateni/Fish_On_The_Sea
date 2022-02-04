@@ -1,7 +1,14 @@
 changelog
 ---------
 
-Release actual:    Fish_On_The_Sea 0.1 (07 Enero 2022)
+Release actual:    Fish_On_The_Sea 0.1 (04 Febrero 2022)
+-------------------------------------------------------------------------
+Changes:
+-Player structure
+-Camera 2d 
+-Changed IF for SWICH statements
+-------------------------------------------------------------------------
+Release :	Fish_On_The_Sea 0.1 (07 Enero 2022)
 -------------------------------------------------------------------------
 Changes:
 -Project created
