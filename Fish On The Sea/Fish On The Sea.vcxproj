@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Fish\fish.cpp" />
     <ClCompile Include="src\Game Manager\manager.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player\player.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="src\Screens\Menu\menu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Fish\fish.h" />
     <ClInclude Include="src\Game Manager\manager.h" />
     <ClInclude Include="src\Player\player.h" />
     <ClInclude Include="src\Screens\Gameplay\gameplay.h" />

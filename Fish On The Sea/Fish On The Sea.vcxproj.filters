@@ -20,6 +20,9 @@
     <Filter Include="Player">
       <UniqueIdentifier>{d1ccc790-2c05-48f2-89df-367f8ec8bcbe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fish">
+      <UniqueIdentifier>{afd1fa93-096b-4634-a628-53ef4b24e672}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -35,6 +38,9 @@
     <ClCompile Include="src\Player\player.cpp">
       <Filter>Player</Filter>
     </ClCompile>
+    <ClCompile Include="src\Fish\fish.cpp">
+      <Filter>Fish</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -48,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="src\Player\player.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Fish\fish.h">
+      <Filter>Fish</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
