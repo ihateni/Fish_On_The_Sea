@@ -7,6 +7,7 @@
 #include "Game Manager/manager.h"
 
 #include "Player/player.h"
+#include "Fish/fish.h"
 
 namespace fish {
 	namespace gameplay {
@@ -17,11 +18,10 @@ namespace fish {
 		static void gameplayInput();
 		static void gameplayDraw();
 
-		static bool pause = false;
-		static bool win = false;
-
 		player::Player player;
+		fishs::Fish fish;
 		Camera2D camera = { 0 };
+		int stop2;
 
 		Sound poing;
 		Music music;
@@ -34,7 +34,9 @@ namespace fish {
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
  
 			player::initPlayer(player.size, player.position);
-			
+			stop2 = player.position.y;
+			fishs::initFish(fish.size,fish.position,fish.active,fish.type,fish.dir);
+
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
@@ -62,12 +64,12 @@ namespace fish {
 				camera.target.y = player.position.y + player.size.y / 2;
 					switch (Modes) {
 					case GameplayModes::Shop:
-						/*player::fall(player.position.y);
-						player::movement(player.position.x);*/
+					
 						break;
 					case GameplayModes::Descend:
 						player::fall(player.position.y);
 						player::movement(player.position.x);
+						fishs::movement(fish.position.x,fish.type);
 						if (CheckCollisionRecs({player.position.x,player.position.y,player.size.x,player.size.y}, stop1)) {
 								Modes = GameplayModes::Ascend;
 						}					
@@ -75,6 +77,10 @@ namespace fish {
 					case GameplayModes::Ascend:
 						player::movement(player.position.x);
 						player::ascension(player.position.y);
+						fishs::movement(fish.position.x, fish.type);
+						if (player.position.y == stop2) {
+							Modes = GameplayModes::Shop;
+						}
 						break;
 					default:
 						break;
@@ -126,16 +132,17 @@ namespace fish {
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y);
-				//DrawRectangle(static_cast<int>(player.position.x), static_cast<int>(player.position.y), static_cast<int>(player.size.x), static_cast<int>(player.size.y), BLACK);
 					switch (Modes) {
 					case GameplayModes::Shop:
 						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
 						break;
 					case GameplayModes::Descend:
 						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
-
+						DrawRectangle(static_cast<int>(fish.position.x), static_cast<int>(fish.position.y), static_cast<int>(fish.size.x), static_cast<int>(fish.size.y), YELLOW);
 						break;
 					case GameplayModes::Ascend:
+						DrawRectangle(static_cast<int>(fish.position.x), static_cast<int>(fish.position.y), static_cast<int>(fish.size.x), static_cast<int>(fish.size.y), YELLOW);
+
 						break;
 					default:
 						break;
