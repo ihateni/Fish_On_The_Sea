@@ -26,5 +26,10 @@ namespace fish {
 
 			}
 		}
+
+		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY) {
+			DrawRectangle(static_cast<int>(fishPosX), static_cast<int>(fishPosY), static_cast<int>(fishSizeX), static_cast<int>(fishSizeY), YELLOW);
+
+		}
 	}
 }
