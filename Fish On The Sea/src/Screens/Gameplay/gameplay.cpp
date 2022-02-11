@@ -67,13 +67,7 @@ namespace fish {
 					switch (Modes) {
 					case GameplayModes::Shop:
 						if (player.position.x != posXSave) {
-							std::cout << "here" << std::endl;
-							if(player.position.x < GetScreenWidth()/2){
-								player.position.x = player.position.x + posXSave * GetFrameTime();
-							}
-							else{
-								player.position.x = player.position.x - posXSave * GetFrameTime();
-							}
+							player.position.x = posXSave ;
 						}
 						break;
 					case GameplayModes::Descend:
