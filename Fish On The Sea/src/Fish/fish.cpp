@@ -17,7 +17,7 @@ namespace fish {
 			type = true;
 		}
 
-		void movement(float& fishPosX, bool& dir) {
+		void movement(float& fishPosX,float& fishWidth, bool& dir) {
 			if (dir == true) {
 				fishPosX -= 50 * GetFrameTime();
 			}
@@ -25,11 +25,19 @@ namespace fish {
 				fishPosX += 50 * GetFrameTime();
 
 			}
+
+			if (fishPosX <= 0 || fishPosX >= static_cast<float>(GetScreenWidth()) - fishWidth) {
+				dir = !dir;
+			}
 		}
 
 		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY) {
 			DrawRectangle(static_cast<int>(fishPosX), static_cast<int>(fishPosY), static_cast<int>(fishSizeX), static_cast<int>(fishSizeY), YELLOW);
 
+		}
+
+		void deactivate(bool& active) {
+			active = !active;
 		}
 	}
 }

@@ -14,8 +14,9 @@ namespace fish {
 		};
 
 		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, bool& type, bool& dir);
-		void movement(float& fishPosX, bool& type);
+		void movement(float& fishPosX, float& fishWidth, bool& type);
 		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY);
+		void deactivate(bool& active);
 	}
 }
 #endif
