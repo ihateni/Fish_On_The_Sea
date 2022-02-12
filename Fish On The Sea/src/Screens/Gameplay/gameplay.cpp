@@ -18,8 +18,9 @@ namespace fish {
 		static void gameplayInput();
 		static void gameplayDraw();
 
+		const int fishAmount = 11;
 		player::Player player;
-		fishs::Fish fish;
+		fishs::Fish fish[fishAmount];
 		Camera2D camera = { 0 };
 		float stop2;
 		float posXSave;
@@ -37,7 +38,9 @@ namespace fish {
 			player::initPlayer(player.size, player.position);
 			stop2 = player.position.y;
 			posXSave = player.position.x;
-			fishs::initFish(fish.size,fish.position,fish.active,fish.type,fish.dir);
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir);
+			}
 
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
@@ -73,8 +76,10 @@ namespace fish {
 					case GameplayModes::Descend:
 						player::fall(player.position.y);
 						player::movement(player.position.x);
-						if (fish.active) {
-							fishs::movement(fish.position.x, fish.size.y, fish.dir);
+						for (int i = 0; i < fishAmount; i++) {
+							if (fish[i].active) {
+								fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
+							}
 						}
 						if (CheckCollisionRecs({player.position.x,player.position.y,player.size.x,player.size.y}, stop1)) {
 								Modes = GameplayModes::Ascend;
@@ -84,23 +89,26 @@ namespace fish {
 					case GameplayModes::Ascend:
 						player::movement(player.position.x);
 						player::ascension(player.position.y);
-						if(fish.active){
-							fishs::movement(fish.position.x, fish.size.y, fish.dir);
-						}
-						
+						for (int i = 0; i < fishAmount; i++) {
+							if (fish[i].active) {
+								fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
+							}
+						}						
 						if (player.position.y <= stop2) {
 							Modes = GameplayModes::Shop;
 							player.position.y = stop2;
 						}
 
-						if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, {fish.position.x,fish.position.y,
-							fish.size.x,fish.size.y})) {
-							if(fish.active == true){
-								std::cout << "funca" << std::endl;
-								fishs::deactivate(fish.active);
+						for (int i = 0; i < fishAmount; i++) {
+							if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish[i].position.x,
+								fish[i].position.y,fish[i].size.x,fish[i].size.y })) {
+								if (fish[i].active == true) {
+									fishs::deactivate(fish[i].active);
 
+								}
 							}
 						}
+						
 						break;
 					default:
 						break;
@@ -158,13 +166,16 @@ namespace fish {
 						break;
 					case GameplayModes::Descend:
 						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
-						fishs::drawFish(fish.position.x, fish.position.y, fish.size.x, fish.size.y);
+						for (int i = 0; i < fishAmount; i++) {
+							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y);
+						}
 						break;
 					case GameplayModes::Ascend:
-						if(fish.active){
-							fishs::drawFish(fish.position.x, fish.position.y, fish.size.x, fish.size.y);
-						}
-
+						for (int i = 0; i < fishAmount; i++) {
+							if (fish[i].active) {
+								fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y);
+							}
+						}						
 						break;
 					default:
 						break;
