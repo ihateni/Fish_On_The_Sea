@@ -9,13 +9,14 @@ namespace fish {
 			Vector2 position;
 			Vector2 size;
 			bool active;
-			bool type;
+			int area;
+			int type;
 			bool dir;
 		};
 
-		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, bool& type, bool& dir);
+		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, int& type, bool& dir);
 		void movement(float& fishPosX, float& fishWidth, bool& type);
-		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY);
+		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY,int& type);
 		void deactivate(bool& active);
 	}
 }

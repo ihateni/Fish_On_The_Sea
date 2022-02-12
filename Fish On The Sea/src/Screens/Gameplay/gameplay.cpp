@@ -166,13 +166,13 @@ namespace fish {
 					case GameplayModes::Descend:
 						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
 						for (int i = 0; i < fishAmount; i++) {
-							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y);
+							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y,fish[i].type);
 						}
 						break;
 					case GameplayModes::Ascend:
 						for (int i = 0; i < fishAmount; i++) {
 							if (fish[i].active) {
-								fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y);
+								fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
 							}
 						}						
 						break;
