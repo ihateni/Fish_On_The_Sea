@@ -21,7 +21,7 @@ namespace fish {
 		static 	void Init();
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.2");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.3");
 
 			Init();
 
@@ -36,8 +36,8 @@ namespace fish {
 		static void change() {
 			switch (Screens) {
 			case GameScreen::Menu:
-				//menu::menuUpdate();
-				gameplay::gameplayUpdate();
+				menu::menuUpdate();
+				//gameplay::gameplayUpdate();
 
 				break;
 			case GameScreen::Game:

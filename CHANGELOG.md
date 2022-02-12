@@ -1,7 +1,16 @@
 changelog
 ---------
 
-Release actual:    Fish_On_The_Sea 0.2 (04 Febrero 2022)
+Release actual:    Fish_On_The_Sea 0.3 (12 Febrero 2022)
+-------------------------------------------------------------------------
+Changes:
+-Fish struckture
+-Player and fish interaction
+-Multiple types of fish
+-Ramdom creation of fish
+
+-------------------------------------------------------------------------
+Release :	Fish_On_The_Sea 0.2 (04 Enero 2022)
 -------------------------------------------------------------------------
 Changes:
 -Player structure

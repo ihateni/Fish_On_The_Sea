@@ -49,13 +49,13 @@ namespace fish {
 
 			if (CheckCollisionPointRec(mousePoint, rec2M)) {
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-					gameManager::Screens = gameManager::GameScreen::Credits;
+					//gameManager::Screens = gameManager::GameScreen::Credits;
 				}
 			}
 
 			if (CheckCollisionPointRec(mousePoint, rec3M)) {
 				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-					gameManager::Screens = gameManager::GameScreen::Controls;
+					//gameManager::Screens = gameManager::GameScreen::Controls;
 				}
 			}
 
@@ -84,7 +84,7 @@ namespace fish {
 		/*	DrawText("MEGA", static_cast<int>(GetScreenWidth() - 400), 200, 50, LIME);
 			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 400), 300, 50, SKYBLUE);*/
 
-			DrawText("V0.2", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
+			DrawText("V0.3", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
 			DrawText("Use the mouse to move and interact!", 5, static_cast<int>(GetScreenHeight()) - 40, 30, RED);
 
 			EndDrawing();
