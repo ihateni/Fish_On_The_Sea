@@ -17,6 +17,7 @@ namespace fish {
 
 		static void gameplayInput();
 		static void gameplayDraw();
+		static void initFishGameplay();
 
 		const int fishAmount = 11;
 		player::Player player;
@@ -38,10 +39,7 @@ namespace fish {
 			player::initPlayer(player.size, player.position);
 			stop2 = player.position.y;
 			posXSave = player.position.x;
-			for (int i = 0; i < fishAmount; i++) {
-				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir);
-			}
-
+			
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
@@ -130,6 +128,7 @@ namespace fish {
 					if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
 						if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 							Modes = GameplayModes::Descend;
+							initFishGameplay();
 						}
 					}
 					break;
@@ -191,6 +190,13 @@ namespace fish {
 				break;
 			}
 			EndDrawing();
+		}
+
+		void initFishGameplay() {
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir);
+			}
+
 		}
 	}
 }
