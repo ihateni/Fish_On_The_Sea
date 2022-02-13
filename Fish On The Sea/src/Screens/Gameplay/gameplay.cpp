@@ -140,6 +140,12 @@ namespace fish {
 								initFishGameplay();
 							}
 						}
+
+						if (CheckCollisionPointRec(GetMousePosition(), {shop.openPos.x,shop.openPos.y,shop.openSize.x,shop.openSize.y})) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								activeShop = !activeShop;
+							}
+						}
 					}
 					break;
 				case GameplayModes::Descend:
