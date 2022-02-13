@@ -23,6 +23,9 @@
     <Filter Include="Fish">
       <UniqueIdentifier>{afd1fa93-096b-4634-a628-53ef4b24e672}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shop">
+      <UniqueIdentifier>{3ce0db62-c2d4-42ca-8a09-5082f8f469aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -41,6 +44,9 @@
     <ClCompile Include="src\Fish\fish.cpp">
       <Filter>Fish</Filter>
     </ClCompile>
+    <ClCompile Include="src\Shop\shop.cpp">
+      <Filter>Shop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -57,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="src\Fish\fish.h">
       <Filter>Fish</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shop\shop.h">
+      <Filter>Shop</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

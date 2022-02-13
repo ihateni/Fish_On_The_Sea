@@ -25,6 +25,7 @@
     <ClCompile Include="src\Player\player.cpp" />
     <ClCompile Include="src\Screens\Gameplay\gameplay.cpp" />
     <ClCompile Include="src\Screens\Menu\menu.cpp" />
+    <ClCompile Include="src\Shop\shop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Fish\fish.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="src\Player\player.h" />
     <ClInclude Include="src\Screens\Gameplay\gameplay.h" />
     <ClInclude Include="src\Screens\Menu\menu.h" />
+    <ClInclude Include="src\Shop\shop.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

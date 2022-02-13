@@ -7,6 +7,7 @@ namespace fish {
 
 		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, int& type, bool& dir) {
 			int temp = GetRandomValue(1, 2);
+			int temp2;
 			type = GetRandomValue(1, 3);
 			active = true;
 			if (temp == 1) {
@@ -31,8 +32,8 @@ namespace fish {
 			}
 		
 			temp = GetRandomValue(0,GetScreenWidth() - fishSize.x);
-
-			fishPosition = { static_cast<float>(temp), static_cast<float>(GetScreenHeight() + temp) };
+			temp2 = GetRandomValue(GetScreenHeight(), GetScreenHeight() * 2 - fishSize.y);
+			fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 
 		}
 
