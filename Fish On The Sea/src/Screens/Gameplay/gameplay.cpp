@@ -8,6 +8,7 @@
 
 #include "Player/player.h"
 #include "Fish/fish.h"
+#include "Shop/shop.h"
 
 namespace fish {
 	namespace gameplay {
@@ -22,9 +23,11 @@ namespace fish {
 		const int fishAmount = 11;
 		player::Player player;
 		fishs::Fish fish[fishAmount];
+		shop::Shop shop;
 		Camera2D camera = { 0 };
 		float stop2;
 		float posXSave;
+		bool activeShop;
 
 		Sound poing;
 		Music music;
@@ -40,6 +43,9 @@ namespace fish {
 			stop2 = player.position.y;
 			posXSave = player.position.x;
 			
+			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos);
+
+			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
 			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
 			camera.rotation = 0.0f;
@@ -67,9 +73,11 @@ namespace fish {
 				camera.target.y = player.position.y + player.size.y / 2;
 					switch (Modes) {
 					case GameplayModes::Shop:
-						if (player.position.x != posXSave) {
-							player.position.x = posXSave ;
-						}
+						if(!activeShop){
+							if (player.position.x != posXSave) {
+								player.position.x = posXSave;
+							}
+						}						
 						break;
 					case GameplayModes::Descend:
 						player::fall(player.position.y);
@@ -125,10 +133,12 @@ namespace fish {
 				if (IsKeyReleased(KEY_P)) Stage = GameStage::Pause;
 				switch (Modes) {
 				case GameplayModes::Shop:
-					if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
-						if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-							Modes = GameplayModes::Descend;
-							initFishGameplay();
+					if(!activeShop){
+						if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								Modes = GameplayModes::Descend;
+								initFishGameplay();
+							}
 						}
 					}
 					break;
@@ -161,7 +171,13 @@ namespace fish {
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y);
 					switch (Modes) {
 					case GameplayModes::Shop:
-						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
+						if(!activeShop){
+							DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
+							shop::drawOpen(shop.openSize,shop.openPos);
+						}
+						else{
+							shop::drawShop(shop.mainSize, shop.mainPos);
+						}
 						break;
 					case GameplayModes::Descend:
 						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);

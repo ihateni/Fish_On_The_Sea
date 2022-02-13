@@ -1,7 +1,5 @@
 #include "fish.h"
 
-#include <iostream>
-
 namespace fish {
 	namespace fishs {
 
