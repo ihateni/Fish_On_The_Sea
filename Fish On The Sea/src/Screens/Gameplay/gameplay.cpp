@@ -43,7 +43,7 @@ namespace fish {
 			stop2 = player.position.y;
 			posXSave = player.position.x;
 			
-			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos, shop.closeSize, shop.closePos);
+			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos, shop.closeSize, shop.closePos,shop.leftArrowSize,shop.leftArrowPos);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };

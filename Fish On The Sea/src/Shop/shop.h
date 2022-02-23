@@ -19,7 +19,8 @@ namespace fish {
 			Vector2 openPos;
 		};
 
-		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize,Vector2& openPos,Vector2& closeSize,Vector2& closePos);
+		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize,Vector2& openPos,Vector2& closeSize,Vector2& closePos, 
+			Vector2& leftArrowSize, Vector2& leftArrowPos);
 		void drawShop(Vector2& mainSize, Vector2& mainPos);
 		void drawOpen(Vector2& openSize, Vector2& openPos);
 		void drawClose(Vector2& closeSize, Vector2& closePos);
