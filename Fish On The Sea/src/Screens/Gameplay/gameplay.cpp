@@ -43,7 +43,7 @@ namespace fish {
 			stop2 = player.position.y;
 			posXSave = player.position.x;
 			
-			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos);
+			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos, shop.closeSize, shop.closePos);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -147,6 +147,13 @@ namespace fish {
 							}
 						}
 					}
+					else {
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.closePos.x,shop.closePos.y,shop.closeSize.x,shop.closeSize.y })) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								activeShop = !activeShop;
+							}
+						}
+					}
 					break;
 				case GameplayModes::Descend:
 					
@@ -183,6 +190,7 @@ namespace fish {
 						}
 						else{
 							shop::drawShop(shop.mainSize, shop.mainPos);
+							shop::drawClose(shop.closeSize,shop.closePos);
 						}
 						break;
 					case GameplayModes::Descend:
