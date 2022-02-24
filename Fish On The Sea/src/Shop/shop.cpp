@@ -1,11 +1,11 @@
 #include "shop.h"
 
-
+#include <iostream>
 namespace fish {
 	namespace shop {
 
 		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
-			Vector2& leftArrowSize, Vector2& leftArrowPos) {
+			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos) {
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
 
@@ -17,6 +17,11 @@ namespace fish {
 			closeSize = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenWidth()) / 10) };
 			closePos = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenHeight()) / 10) };
 
+			leftArrowSize = { mainSize .x / 3, mainSize.y / 10};
+			leftArrowPos = {mainPos.x,mainSize.y};
+
+			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
+			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) -83, leftArrowPos.y};
 
 		}
 
@@ -30,6 +35,16 @@ namespace fish {
 
 		void drawClose(Vector2& closeSize, Vector2& closePos) {
 			DrawRectangle(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
+		}
+
+		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos) {
+			DrawRectangle(static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y), static_cast<int>(leftArrowSize.x),
+				static_cast<int>(leftArrowSize.y), RED);
+		}
+
+		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos) {
+			DrawRectangle(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
+				static_cast<int>(rightArrowSize.y), RED);
 		}
 	}
 }

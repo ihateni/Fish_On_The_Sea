@@ -20,10 +20,12 @@ namespace fish {
 		};
 
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize,Vector2& openPos,Vector2& closeSize,Vector2& closePos, 
-			Vector2& leftArrowSize, Vector2& leftArrowPos);
+			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos);
 		void drawShop(Vector2& mainSize, Vector2& mainPos);
 		void drawOpen(Vector2& openSize, Vector2& openPos);
 		void drawClose(Vector2& closeSize, Vector2& closePos);
+		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos);
+		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos);
 	}
 }
 #endif
