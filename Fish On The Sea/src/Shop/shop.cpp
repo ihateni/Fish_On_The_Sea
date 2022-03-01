@@ -5,10 +5,9 @@ namespace fish {
 	namespace shop {
 
 		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
-			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos) {
+			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos, int& item) {
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
-
 			mainPos = { static_cast<float>(GetScreenWidth())/10,static_cast<float> (GetScreenHeight()) / 10};
 
 			openSize = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenWidth()) / 10)};
@@ -23,6 +22,8 @@ namespace fish {
 			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
 			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) -83, leftArrowPos.y};
 
+			itemSize = { mainSize.x ,mainSize.y - leftArrowSize.y*2};
+			itemPos = {mainPos.x, mainPos.y};
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos) {
@@ -45,6 +46,11 @@ namespace fish {
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos) {
 			DrawRectangle(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
 				static_cast<int>(rightArrowSize.y), RED);
+		}
+
+		void drawItem(Vector2& itemSize, Vector2& itemPos) {
+			DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+				static_cast<int>(itemSize.y), BLUE);
 		}
 	}
 }

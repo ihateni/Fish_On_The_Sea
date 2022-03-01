@@ -44,7 +44,7 @@ namespace fish {
 			posXSave = player.position.x;
 			
 			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos, shop.closeSize, shop.closePos,shop.leftArrowSize,shop.leftArrowPos,
-				shop.rightArrowSize, shop.rightArrowPos);
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -191,9 +191,10 @@ namespace fish {
 						}
 						else{
 							shop::drawShop(shop.mainSize, shop.mainPos);
-							shop::drawClose(shop.closeSize,shop.closePos);
 							shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
 							shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
+							shop::drawItem(shop.itemSize, shop.itemPos);
+							shop::drawClose(shop.closeSize, shop.closePos);
 						}
 						break;
 					case GameplayModes::Descend:
