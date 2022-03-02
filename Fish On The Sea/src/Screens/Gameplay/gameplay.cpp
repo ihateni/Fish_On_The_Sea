@@ -154,6 +154,18 @@ namespace fish {
 								activeShop = !activeShop;
 							}
 						}
+
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,shop.leftArrowSize.y })) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								shop::decreaseItem(shop.item);
+							}
+						}
+
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,shop.rightArrowSize.y })) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								shop::increaseItem(shop.item);
+							}
+						}
 					}
 					break;
 				case GameplayModes::Descend:
@@ -193,7 +205,7 @@ namespace fish {
 							shop::drawShop(shop.mainSize, shop.mainPos);
 							shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
 							shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
-							shop::drawItem(shop.itemSize, shop.itemPos);
+							shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
 							shop::drawClose(shop.closeSize, shop.closePos);
 						}
 						break;

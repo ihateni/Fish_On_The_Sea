@@ -5,7 +5,9 @@ namespace fish {
 	namespace shop {
 
 		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
-			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos, int& item) {
+			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
+			int& item) {
+
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
 			mainPos = { static_cast<float>(GetScreenWidth())/10,static_cast<float> (GetScreenHeight()) / 10};
@@ -24,6 +26,8 @@ namespace fish {
 
 			itemSize = { mainSize.x ,mainSize.y - leftArrowSize.y*2};
 			itemPos = {mainPos.x, mainPos.y};
+
+			item = 1;
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos) {
@@ -48,9 +52,39 @@ namespace fish {
 				static_cast<int>(rightArrowSize.y), RED);
 		}
 
-		void drawItem(Vector2& itemSize, Vector2& itemPos) {
-			DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
-				static_cast<int>(itemSize.y), BLUE);
+		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item) {
+			switch (item){
+			case 1:
+				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+					static_cast<int>(itemSize.y), BLUE);
+				break;
+			case 2:
+				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+					static_cast<int>(itemSize.y), MAGENTA);
+				break;
+			case 3:
+				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+					static_cast<int>(itemSize.y), COLORALPHA);
+				break;
+			default:
+				break;
+			}
 		}
+
+		void increaseItem(int& item) {
+			if (item < 3) {
+				item++;
+				std::cout << item << std::endl;
+			}
+		}
+
+		void decreaseItem(int& item) {
+			if (item > 1) {
+				item--;
+				std::cout << item << std::endl;
+			}
+		}
+
+
 	}
 }

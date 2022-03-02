@@ -30,9 +30,9 @@ namespace fish {
 		void drawClose(Vector2& closeSize, Vector2& closePos);
 		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos);
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos);
-		void drawItem(Vector2& itemSize, Vector2& itemPos);
-		void increaseItem();
-		void decreaseItem();
+		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item);
+		void increaseItem(int& item);
+		void decreaseItem(int& item);
 	}
 }
 #endif
