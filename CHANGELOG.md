@@ -1,10 +1,19 @@
 changelog
 ---------
 
-Release actual:    Fish_On_The_Sea 0.3 (12 Febrero 2022)
+Release actual:    Fish_On_The_Sea 0.4 (03 Marzo2022)
 -------------------------------------------------------------------------
 Changes:
--Fish struckture
+-Shop structure
+-Open and close funtions
+-Item display
+-Arrows to cahnge items
+
+-------------------------------------------------------------------------
+Release : Fish_On_The_Sea 0.3 (12 Febrero 2022)
+-------------------------------------------------------------------------
+Changes:
+-Fish structure
 -Player and fish interaction
 -Multiple types of fish
 -Ramdom creation of fish
