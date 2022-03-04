@@ -20,7 +20,8 @@ namespace fish {
 
 			leftArrowSize = { mainSize .x / 3, mainSize.y / 10};
 			leftArrowPos = {mainPos.x,mainSize.y};
-
+			std::cout<< leftArrowSize.x << "X" << std::endl;
+			std::cout << leftArrowSize.x << "y" << std::endl;
 			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
 			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) -83, leftArrowPos.y};
 

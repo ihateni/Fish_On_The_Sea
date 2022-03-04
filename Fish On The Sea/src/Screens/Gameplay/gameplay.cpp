@@ -16,9 +16,9 @@ namespace fish {
 		GameStage Stage = GameStage::Main;
 		GameplayModes Modes = GameplayModes::Shop;
 
+		static void initFishGameplay();
 		static void gameplayInput();
 		static void gameplayDraw();
-		static void initFishGameplay();
 
 		const int fishAmount = 11;
 		player::Player player;
@@ -28,6 +28,7 @@ namespace fish {
 		float stop2;
 		float posXSave;
 		bool activeShop;
+		int points;
 
 		Sound poing;
 		Music music;
@@ -110,7 +111,7 @@ namespace fish {
 							if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish[i].position.x,
 								fish[i].position.y,fish[i].size.x,fish[i].size.y })) {
 								if (fish[i].active == true) {
-									fishs::deactivate(fish[i].active);
+									fishs::deactivate(fish[i].active, points, fish[i].type);
 
 								}
 							}
@@ -198,6 +199,7 @@ namespace fish {
 					switch (Modes) {
 					case GameplayModes::Shop:
 						if(!activeShop){
+							DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
 							DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
 							shop::drawOpen(shop.openSize,shop.openPos);
 						}

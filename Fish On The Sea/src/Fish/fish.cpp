@@ -17,13 +17,13 @@ namespace fish {
 
 			switch (type) {
 			case 1:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 10,static_cast<float>(GetScreenHeight()) / 10 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 10,static_cast<float>(GetScreenWidth()) / 10 };
 				break;
 			case 2:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 20,static_cast<float>(GetScreenHeight()) / 20 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 20,static_cast<float>(GetScreenWidth()) / 20 };
 				break;
 			case 3:		
-				fishSize = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 30 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 30,static_cast<float>(GetScreenWidth()) / 30 };
 				break;
 			default:
 				break;
@@ -67,7 +67,21 @@ namespace fish {
 
 		}
 
-		void deactivate(bool& active) {
+		void deactivate(bool& active, int& points, int& type) {
+
+			switch (type) {
+			case 1:
+				points += 10;
+				break;
+			case 2:
+				points += 30;
+				break;
+			case 3:
+				points += 50;
+				break;
+			default:
+				break;
+			}
 			active = !active;
 		}
 	}
