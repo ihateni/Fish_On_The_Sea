@@ -20,15 +20,16 @@ namespace fish {
 		static void gameplayInput();
 		static void gameplayDraw();
 
-		const int fishAmount = 11;
+		const int fishAmount = 20;
 		player::Player player;
 		fishs::Fish fish[fishAmount];
 		shop::Shop shop;
 		Camera2D camera = { 0 };
-		float stop2;
+		float posYSave;
 		float posXSave;
 		bool activeShop;
 		int points;
+		int fishCounter;
 
 		Sound poing;
 		Music music;
@@ -39,12 +40,13 @@ namespace fish {
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
- 
-			player::initPlayer(player.size, player.position);
-			stop2 = player.position.y;
+
+			player::initPlayer(player.size, player.position, player.capasity, player.reach);
+			posYSave = player.position.y;
 			posXSave = player.position.x;
-			
-			shop::initShop(shop.mainSize,shop.mainPos,shop.openSize, shop.openPos, shop.closeSize, shop.closePos,shop.leftArrowSize,shop.leftArrowPos,
+			fishCounter = 0;
+
+			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item);
 
 			activeShop = false;
@@ -56,10 +58,10 @@ namespace fish {
 			rec1M.height = static_cast<float>(GetScreenHeight()) / 10;
 			rec1M.width = static_cast<float>(GetScreenWidth()) / 5;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width;
-			rec1M.y = static_cast<float>(GetScreenHeight())  - rec1M.height * 2;
-		
-			stop1.height = static_cast<float>(GetScreenHeight()) / 10;
-			stop1.width = static_cast<float>(GetScreenWidth()) ;
+			rec1M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
+
+			stop1.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop1.width = static_cast<float>(GetScreenWidth());
 			stop1.x = 0;
 			stop1.y = static_cast<float>(GetScreenHeight()) * 2;
 		}
@@ -73,54 +75,97 @@ namespace fish {
 			switch (Stage) {
 			case GameStage::Main:
 				camera.target.y = player.position.y + player.size.y / 2;
-					switch (Modes) {
-					case GameplayModes::Shop:
-						if(!activeShop){
-							if (player.position.x != posXSave) {
-								player.position.x = posXSave;
-							}
-						}						
+				switch (Modes) {
+				case GameplayModes::Shop:
+					if (!activeShop) {
+						if (player.position.x != posXSave) {
+							player.position.x = posXSave;
+							fishCounter = 0;
+						}
+					}
+					break;
+				case GameplayModes::Descend:
+					player::fall(player.position.y);
+					player::movement(player.position.x);
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish[i].active) {
+							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
+						}
+					}
+					switch (player.reach)
+					{
+					case 1:
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
+							Modes = GameplayModes::Ascend;
+						}
 						break;
-					case GameplayModes::Descend:
-						player::fall(player.position.y);
-						player::movement(player.position.x);
-						for (int i = 0; i < fishAmount; i++) {
-							if (fish[i].active) {
-								fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
-							}
+					case 2:
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
+							Modes = GameplayModes::Ascend;
 						}
-						if (CheckCollisionRecs({player.position.x,player.position.y,player.size.x,player.size.y}, stop1)) {
-								Modes = GameplayModes::Ascend;
-						}
-						
 						break;
-					case GameplayModes::Ascend:
-						player::movement(player.position.x);
-						player::ascension(player.position.y);
-						for (int i = 0; i < fishAmount; i++) {
-							if (fish[i].active) {
-								fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
-							}
-						}						
-						if (player.position.y <= stop2) {
-							Modes = GameplayModes::Shop;
-							player.position.y = stop2;
+					case 3:
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
+							Modes = GameplayModes::Ascend;
 						}
-
-						for (int i = 0; i < fishAmount; i++) {
-							if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish[i].position.x,
-								fish[i].position.y,fish[i].size.x,fish[i].size.y })) {
-								if (fish[i].active == true) {
-									fishs::deactivate(fish[i].active, points, fish[i].type);
-
-								}
-							}
-						}
-						
 						break;
 					default:
 						break;
 					}
+					
+
+					break;
+				case GameplayModes::Ascend:
+					player::movement(player.position.x);
+					player::ascension(player.position.y);
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish[i].active) {
+							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
+						}
+					}
+					if (player.position.y <= posYSave) {
+						Modes = GameplayModes::Shop;
+						player.position.y = stop2;
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish[i].position.x,
+							fish[i].position.y,fish[i].size.x,fish[i].size.y })) {
+							switch (player.capasity) {
+							case 1:
+								if (fishCounter < 3) {
+									if (fish[i].active == true) {
+										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 2:
+								if (fishCounter < 6) {
+									if (fish[i].active == true) {
+										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 3:
+								if (fishCounter < 10) {
+									if (fish[i].active == true) {
+										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							default:
+								break;
+							}
+
+						}
+					}
+					break;
+				default:
+					break;
+				}
 				break;
 			case GameStage::Pause:
 				break;
@@ -135,7 +180,7 @@ namespace fish {
 				if (IsKeyReleased(KEY_P)) Stage = GameStage::Pause;
 				switch (Modes) {
 				case GameplayModes::Shop:
-					if(!activeShop){
+					if (!activeShop) {
 						if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
 							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 								Modes = GameplayModes::Descend;
@@ -143,7 +188,7 @@ namespace fish {
 							}
 						}
 
-						if (CheckCollisionPointRec(GetMousePosition(), {shop.openPos.x,shop.openPos.y,shop.openSize.x,shop.openSize.y})) {
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.openPos.x,shop.openPos.y,shop.openSize.x,shop.openSize.y })) {
 							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 								activeShop = !activeShop;
 							}
@@ -170,7 +215,7 @@ namespace fish {
 					}
 					break;
 				case GameplayModes::Descend:
-					
+
 					break;
 				case GameplayModes::Ascend:
 					break;
@@ -196,38 +241,38 @@ namespace fish {
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y);
-					switch (Modes) {
-					case GameplayModes::Shop:
-						if(!activeShop){
-							DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
-							DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
-							shop::drawOpen(shop.openSize,shop.openPos);
-						}
-						else{
-							shop::drawShop(shop.mainSize, shop.mainPos);
-							shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
-							shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
-							shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
-							shop::drawClose(shop.closeSize, shop.closePos);
-						}
-						break;
-					case GameplayModes::Descend:
-						DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
-						for (int i = 0; i < fishAmount; i++) {
-							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y,fish[i].type);
-						}
-						break;
-					case GameplayModes::Ascend:
-						for (int i = 0; i < fishAmount; i++) {
-							if (fish[i].active) {
-								fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
-							}
-						}						
-						break;
-					default:
-						break;
+				switch (Modes) {
+				case GameplayModes::Shop:
+					if (!activeShop) {
+						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
+						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
+						shop::drawOpen(shop.openSize, shop.openPos);
+					}
+					else {
+						shop::drawShop(shop.mainSize, shop.mainPos);
+						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
+						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
+						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
+						shop::drawClose(shop.closeSize, shop.closePos);
 					}
 					break;
+				case GameplayModes::Descend:
+					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
+					for (int i = 0; i < fishAmount; i++) {
+						fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
+					}
+					break;
+				case GameplayModes::Ascend:
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish[i].active) {
+							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
+						}
+					}
+					break;
+				default:
+					break;
+				}
+				break;
 				EndMode2D();
 				break;
 			case GameStage::Pause:

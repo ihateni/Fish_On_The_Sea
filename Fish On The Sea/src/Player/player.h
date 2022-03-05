@@ -8,9 +8,11 @@ namespace fish {
 		struct Player {
 			Vector2 position;
 			Vector2 size;
+			int capasity;
+			int reach;
 		};
 
-		void initPlayer(Vector2& size, Vector2& position);
+		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach);
 		void movement(float& playerPosX);
 		void fall(float& playerPosY);
 		void ascension(float& playerPosY);

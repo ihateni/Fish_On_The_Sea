@@ -4,9 +4,11 @@ namespace fish {
 	namespace player {
 		float  direction;
 
-		void initPlayer(Vector2& size, Vector2& position) {
+		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach) {
 			size = { static_cast<float>(GetScreenWidth()) / 15,static_cast<float>(GetScreenHeight()) / 15 };
 			position = { static_cast<float>(GetScreenWidth()) / 2 - size.x / 2, static_cast<float>(GetScreenHeight()) / 2 - size.y / 2 };
+			capacity = 1;
+			reach = 2;
 		}
 
 		void movement(float& playerPosX) {
