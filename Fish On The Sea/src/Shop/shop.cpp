@@ -11,6 +11,8 @@ namespace fish {
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
 			mainPos = { static_cast<float>(GetScreenWidth())/10,static_cast<float> (GetScreenHeight()) / 10};
+			std::cout << mainSize.x << " X" << std::endl;
+			std::cout << mainSize.y << " Y" << std::endl;
 
 			openSize = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenWidth()) / 10)};
 			openPos = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenHeight()) / 10) };

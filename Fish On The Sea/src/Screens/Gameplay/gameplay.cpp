@@ -36,6 +36,8 @@ namespace fish {
 
 		static Rectangle rec1M;
 		static Rectangle stop1;
+		static Rectangle stop2;
+		static Rectangle stop3;
 
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
@@ -64,6 +66,16 @@ namespace fish {
 			stop1.width = static_cast<float>(GetScreenWidth());
 			stop1.x = 0;
 			stop1.y = static_cast<float>(GetScreenHeight()) * 2;
+
+			stop2.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop2.width = static_cast<float>(GetScreenWidth());
+			stop2.x = 0;
+			stop2.y = static_cast<float>(GetScreenHeight()) * 2;
+
+			stop3.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop3.width = static_cast<float>(GetScreenWidth());
+			stop3.x = 0;
+			stop3.y = static_cast<float>(GetScreenHeight()) * 2;
 		}
 
 		void gameplayUpdate() {
@@ -125,7 +137,7 @@ namespace fish {
 					}
 					if (player.position.y <= posYSave) {
 						Modes = GameplayModes::Shop;
-						player.position.y = stop2;
+						player.position.y = posYSave;
 					}
 
 					for (int i = 0; i < fishAmount; i++) {
