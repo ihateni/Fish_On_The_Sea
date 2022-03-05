@@ -10,7 +10,7 @@ namespace fish {
 
 			position = { static_cast<float>(GetScreenWidth()) / 2 - size.x / 2, static_cast<float>(GetScreenHeight()) / 2 - size.y / 2 };
 			capacity = 1;
-			reach = 2;
+			reach = 1;
 		}
 
 		void movement(float& playerPosX) {

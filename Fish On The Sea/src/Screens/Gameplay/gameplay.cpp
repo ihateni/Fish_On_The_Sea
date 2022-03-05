@@ -49,7 +49,7 @@ namespace fish {
 			fishCounter = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
-				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item);
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -70,12 +70,12 @@ namespace fish {
 			stop2.height = static_cast<float>(GetScreenHeight()) / 20;
 			stop2.width = static_cast<float>(GetScreenWidth());
 			stop2.x = 0;
-			stop2.y = static_cast<float>(GetScreenHeight()) * 2;
+			stop2.y = static_cast<float>(GetScreenHeight()) * 3;
 
 			stop3.height = static_cast<float>(GetScreenHeight()) / 20;
 			stop3.width = static_cast<float>(GetScreenWidth());
 			stop3.x = 0;
-			stop3.y = static_cast<float>(GetScreenHeight()) * 2;
+			stop3.y = static_cast<float>(GetScreenHeight()) * 4;
 		}
 
 		void gameplayUpdate() {
@@ -112,12 +112,12 @@ namespace fish {
 						}
 						break;
 					case 2:
-						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop2)) {
 							Modes = GameplayModes::Ascend;
 						}
 						break;
 					case 3:
-						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
 							Modes = GameplayModes::Ascend;
 						}
 						break;
@@ -213,13 +213,15 @@ namespace fish {
 							}
 						}
 
-						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,shop.leftArrowSize.y })) {
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
+							shop.leftArrowSize.y })) {
 							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 								shop::decreaseItem(shop.item);
 							}
 						}
 
-						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,shop.rightArrowSize.y })) {
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
+							shop.rightArrowSize.y })) {
 							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 								shop::increaseItem(shop.item);
 							}
@@ -257,7 +259,8 @@ namespace fish {
 				case GameplayModes::Shop:
 					if (!activeShop) {
 						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
-						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), RED);
+						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
+							static_cast<int>(rec1M.height), RED);
 						shop::drawOpen(shop.openSize, shop.openPos);
 					}
 					else {
@@ -269,7 +272,13 @@ namespace fish {
 					}
 					break;
 				case GameplayModes::Descend:
-					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), static_cast<int>(stop1.height), YELLOW);
+					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), 
+						static_cast<int>(stop1.height), YELLOW);
+					DrawRectangle(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width), 
+						static_cast<int>(stop2.height), YELLOW);
+					DrawRectangle(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width), 
+						static_cast<int>(stop3.height), YELLOW);
+
 					for (int i = 0; i < fishAmount; i++) {
 						fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
 					}

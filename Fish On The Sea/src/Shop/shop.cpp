@@ -6,7 +6,7 @@ namespace fish {
 
 		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
-			int& item) {
+			int& item, Vector2& buySize, Vector2& buyPos) {
 
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
@@ -30,6 +30,8 @@ namespace fish {
 			itemPos = {mainPos.x, mainPos.y};
 
 			item = 1;
+
+
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos) {
@@ -87,6 +89,7 @@ namespace fish {
 			}
 		}
 
+		
 
 	}
 }
