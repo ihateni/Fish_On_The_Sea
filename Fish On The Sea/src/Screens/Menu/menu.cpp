@@ -75,21 +75,17 @@ namespace fish {
 
 			DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), BLACK);
 			DrawRectangle(static_cast<int>(rec2M.x), static_cast<int>(rec2M.y), static_cast<int>(rec2M.width), static_cast<int>(rec2M.height), BLACK);
-			DrawTexture(texture,static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45/*(static_cast<int>(rec2M.height))*/ , WHITE);
+			DrawTexture(texture,static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
 			DrawRectangle(static_cast<int>(rec3M.x), static_cast<int>(rec3M.y), static_cast<int>(rec3M.width), static_cast<int>(rec3M.height), BLACK);
 			DrawRectangle(static_cast<int>(rec4M.x), static_cast<int>(rec4M.y), static_cast<int>(rec4M.width), static_cast<int>(rec4M.height), BLACK);
 
 			DrawText("Play", static_cast<int>(rec1M.x) + 18, static_cast<int>(rec1M.y) + 10, 20, WHITE);
-			DrawText("Credits", static_cast<int>(rec2M.x) + 18, static_cast<int>(rec2M.y) + 10, 20, WHITE);
 			DrawText("Controls", static_cast<int>(rec3M.x) + 5, static_cast<int>(rec3M.y) + 10, 20, WHITE);
 			DrawText("Exit", static_cast<int>(rec4M.x) + 18, static_cast<int>(rec4M.y) + 10, 20, WHITE);
 
 			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
-		/*	DrawText("MEGA", static_cast<int>(GetScreenWidth() - 400), 200, 50, LIME);
-			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 400), 300, 50, SKYBLUE);*/
-
-			DrawText("V0.4.4", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
-		//	DrawText("Use the mouse to move and interact!", 5, static_cast<int>(GetScreenHeight()) - 40, 30, RED);
+		
+			DrawText("V0.4.5", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
 
 			EndDrawing();
 		}

@@ -269,6 +269,7 @@ namespace fish {
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
 						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
 						shop::drawClose(shop.closeSize, shop.closePos);
+						shop::drawBuy(shop.buySize,shop.buyPos);
 					}
 					break;
 				case GameplayModes::Descend:

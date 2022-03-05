@@ -31,7 +31,9 @@ namespace fish {
 
 			item = 1;
 
-
+			buySize = { mainSize.x / 3, mainSize.y / 10 };
+			buyPos = { mainSize.x / 2 - buySize.x / 9, leftArrowPos.y - buySize.y };
+			
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos) {
@@ -89,7 +91,9 @@ namespace fish {
 			}
 		}
 
-		
-
+		void drawBuy(Vector2& butSize, Vector2& buyPos) {
+			DrawRectangle(static_cast<int>(buyPos.x), static_cast<int>(buyPos.y), static_cast<int>(butSize.x),
+				static_cast<int>(butSize.y), RED);
+		}
 	}
 }
