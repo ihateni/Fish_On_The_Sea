@@ -36,7 +36,7 @@ namespace fish {
 		void increaseItem(int& item);
 		void decreaseItem(int& item);
 		void drawBuy(Vector2& buySize, Vector2& buyPos);
-		void upgradeItem();
+		void upgradeItem(int& item, int& capasity, int& reach, int& points);
 	}
 }
 #endif

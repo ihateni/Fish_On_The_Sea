@@ -85,7 +85,7 @@ namespace fish {
 
 			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
 		
-			DrawText("V0.4.5", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
+			DrawText("V0.4.6", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
 
 			EndDrawing();
 		}

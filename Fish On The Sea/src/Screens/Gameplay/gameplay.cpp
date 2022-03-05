@@ -226,6 +226,13 @@ namespace fish {
 								shop::increaseItem(shop.item);
 							}
 						}
+
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
+							shop.buySize.y })) {
+							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+								shop::upgradeItem(shop.item, player.capasity, player.reach, points);
+							}
+						}
 					}
 					break;
 				case GameplayModes::Descend:

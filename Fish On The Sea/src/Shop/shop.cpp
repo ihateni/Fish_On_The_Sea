@@ -95,5 +95,28 @@ namespace fish {
 			DrawRectangle(static_cast<int>(buyPos.x), static_cast<int>(buyPos.y), static_cast<int>(butSize.x),
 				static_cast<int>(butSize.y), RED);
 		}
+
+		void upgradeItem(int& item, int& capasity, int& reach, int& points) {
+			switch (item) {
+			case 1:
+				if (capasity ==1 ) {
+					std::cout << " it works" << std::endl;
+					if (points > 50) {
+						capasity = 2;
+						points = points - 50;
+					}
+
+				}
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+				break;
+			default:
+				break;
+			}
+		}
 	}
 }
