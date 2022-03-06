@@ -50,7 +50,8 @@ namespace fish {
 			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
-				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.CloseTex1,shop.CloseTex2);
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1,shop.closeTex2,
+				shop.mainTex,shop.openState,shop.closeState);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -201,17 +202,37 @@ namespace fish {
 							}
 						}
 
+						//open button
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.openPos.x,shop.openPos.y,shop.openSize.x,shop.openSize.y })) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								shop.openState = false;
+							}
+							else {
+								shop.openState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								activeShop = !activeShop;
 							}
 						}
+						else {
+							shop.openState = true;
+						}
 					}
 					else {
+						//close button
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.closePos.x,shop.closePos.y,shop.closeSize.x,shop.closeSize.y })) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								shop.closeState = false;
+							}
+							else {
+								shop.closeState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								activeShop = !activeShop;
 							}
+						}
+						else {
+							shop.closeState = true;
 						}
 
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
@@ -269,14 +290,14 @@ namespace fish {
 						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
 						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
 							static_cast<int>(rec1M.height), RED);
-						shop::drawOpen(shop.openSize, shop.openPos, shop.CloseTex1, shop.CloseTex2);
+						shop::drawOpen(shop.openSize, shop.openPos, shop.closeTex1, shop.closeTex2, shop.openState);
 					}
 					else {
-						shop::drawShop(shop.mainSize, shop.mainPos);
+						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
-						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
-						shop::drawClose(shop.closeSize, shop.closePos,shop.CloseTex1,shop.CloseTex2);
+						//shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
+						shop::drawClose(shop.closeSize, shop.closePos,shop.closeTex1,shop.closeTex2,shop.closeState);
 						shop::drawBuy(shop.buySize,shop.buyPos);
 					}
 					break;
