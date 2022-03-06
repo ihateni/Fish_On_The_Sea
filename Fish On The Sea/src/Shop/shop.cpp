@@ -50,7 +50,7 @@ namespace fish {
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos, Texture2D& mainTex) {
 #if _DEBUG
-			DrawRectangle(static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), static_cast<int>(mainSize.x), static_cast<int>(mainSize.y), ORANGE);
+			DrawRectangleLines(static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), static_cast<int>(mainSize.x), static_cast<int>(mainSize.y), ORANGE);
 #endif
 			DrawTexture(mainTex, static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), WHITE);
 
@@ -58,7 +58,7 @@ namespace fish {
 
 		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& closeTex1, Texture2D& closeTex2, bool& openState) {
 #if _DEBUG
-			DrawRectangle(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y), ORANGE);
+			DrawRectangleLines(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y), ORANGE);
 #endif
 			if (openState) {
 				DrawTexture(closeTex1, static_cast<int>(openPos.x), static_cast<int>(openPos.y), WHITE);
@@ -71,7 +71,7 @@ namespace fish {
 
 		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& closeTex1, Texture2D& closeTex2, bool& closeState) {
 #if _DEBUG
-			DrawRectangle(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
+			DrawRectangleLines(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
 #endif
 			if (closeState) {
 				DrawTexture(closeTex1, static_cast<int>(closePos.x), static_cast<int>(closePos.y), WHITE);
@@ -85,7 +85,7 @@ namespace fish {
 		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos, Texture2D& leftTex1, Texture2D& leftTex2, bool& leftState){
 #if _DEBUG
 
-			DrawRectangle(static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y), static_cast<int>(leftArrowSize.x),
+			DrawRectangleLines(static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y), static_cast<int>(leftArrowSize.x),
 				static_cast<int>(leftArrowSize.y), RED);
 #endif
 			if (leftState) {
@@ -97,22 +97,22 @@ namespace fish {
 		}
 
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos, Texture2D& rightTex1, Texture2D& rightTex2, bool& rightState) {
-			DrawRectangle(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
+			DrawRectangleLines(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
 				static_cast<int>(rightArrowSize.y), RED);
 		}
 
 		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item) {
 			switch (item) {
 			case 1:
-				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
 				break;
 			case 2:
-				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
 				break;
 			case 3:
-				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
+				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), COLORALPHA);
 				break;
 			default:
@@ -135,7 +135,7 @@ namespace fish {
 		}
 
 		void drawBuy(Vector2& butSize, Vector2& buyPos) {
-			DrawRectangle(static_cast<int>(buyPos.x), static_cast<int>(buyPos.y), static_cast<int>(butSize.x),
+			DrawRectangleLines(static_cast<int>(buyPos.x), static_cast<int>(buyPos.y), static_cast<int>(butSize.x),
 				static_cast<int>(butSize.y), RED);
 		}
 

@@ -314,7 +314,7 @@ namespace fish {
 						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos,shop.leftTex1,shop.leftTex2, shop.leftState);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
-						//shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
+						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
 						shop::drawClose(shop.closeSize, shop.closePos, shop.closeTex1, shop.closeTex2, shop.closeState);
 						shop::drawBuy(shop.buySize, shop.buyPos);
 					}
