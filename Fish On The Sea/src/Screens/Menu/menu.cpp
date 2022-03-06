@@ -34,6 +34,8 @@ namespace fish {
 		Texture2D background;
 		Texture2D title;
 
+		Font font;
+
 		void menuInit() {
 			play1 = LoadTexture("res/Menu_buttons/play1.png");
 			play2 = LoadTexture("res/Menu_buttons/play2.png");
@@ -53,6 +55,9 @@ namespace fish {
 
 			background = LoadTexture("res/Background/Background.png");
 			title = LoadTexture("res/Background/title.png");
+
+			font = LoadFont("res/Font/aAsianNinja.otf");
+
 
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
@@ -191,11 +196,10 @@ namespace fish {
 			}
 
 			
-			//DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawText("V0.6.1", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, RED);
-		
+			DrawTextEx(font, "V0.6.2", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+
 			EndDrawing();
 		}
 	}
