@@ -1,5 +1,15 @@
 changelog
 ---------
+Release actual:    Fish_On_The_Sea 0.6 (06 Marzo 2022)
+-------------------------------------------------------------------------
+Changes:
+-Menu textures
+-Player textures
+-Background
+-Title texture
+-First are fish texture.
+
+-------------------------------------------------------------------------
 Release actual:    Fish_On_The_Sea 0.5 (06 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
