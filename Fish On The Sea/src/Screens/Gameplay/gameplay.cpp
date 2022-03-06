@@ -54,8 +54,8 @@ namespace fish {
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
-				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.openState, shop.closeState, shop.leftState, 
-				shop.rightState);
+				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2,shop.buyTex1,shop.buyTex2, shop.openState, shop.closeState,
+				shop.leftState, shop.rightState, shop.buyState);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -63,9 +63,9 @@ namespace fish {
 			camera.rotation = 0.0f;
 			camera.zoom = 1.0f;
 
-			rec1M.height = static_cast<float>(GetScreenHeight()) / 10;
-			rec1M.width = static_cast<float>(GetScreenWidth()) / 5;
-			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width;
+			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
+			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
+			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width/2;
 			rec1M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
 
 			stop1.height = static_cast<float>(GetScreenHeight()) / 20;
@@ -256,13 +256,6 @@ namespace fish {
 							shop.leftState = true;
 						}
 
-					/*	if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
-							shop.rightArrowSize.y })) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-								shop::increaseItem(shop.item);
-							}
-						}*/
-
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
 							shop.rightArrowSize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -279,11 +272,28 @@ namespace fish {
 							shop.rightState = true;
 						}
 
+						//if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
+						//	shop.buySize.y })) {
+						//	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+						//		shop::upgradeItem(shop.item, player.capasity, player.reach, points);
+						//	}
+						//}
+
+
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
 							shop.buySize.y })) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								shop.buyState = false;
+							}
+							else {
+								shop.buyState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								shop::upgradeItem(shop.item, player.capasity, player.reach, points);
 							}
+						}
+						else {
+							shop.buyState = true;
 						}
 					}
 					break;
@@ -328,7 +338,7 @@ namespace fish {
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
 						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
 						shop::drawClose(shop.closeSize, shop.closePos, shop.closeTex1, shop.closeTex2, shop.closeState);
-						shop::drawBuy(shop.buySize, shop.buyPos);
+						shop::drawBuy(shop.buySize, shop.buyPos,shop.buyTex1,shop.buyTex2,shop.buyState);
 					}
 					break;
 				case GameplayModes::Descend:

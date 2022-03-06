@@ -7,7 +7,8 @@ namespace fish {
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
 			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2, Texture2D& mainTex, Texture2D& leftTex1,
-			Texture2D& leftTex2,Texture2D& rightTex1, Texture2D& rightTex2,bool& openState, bool& closeState, bool& leftState, bool& rightState) {
+			Texture2D& leftTex2,Texture2D& rightTex1, Texture2D& rightTex2, Texture2D& buyTex1, Texture2D& buyTex2, 
+			bool& openState, bool& closeState, bool& leftState, bool& rightState, bool& buyState) {
 
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
@@ -47,7 +48,9 @@ namespace fish {
 			buySize = { (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3,
 				(static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15 };
 			buyPos = { mainSize.x / 2 - buySize.x / 9, leftArrowPos.y - buySize.y };
-
+			buyTex1 = LoadTexture("res/Shop_buttons/buy1.png");
+			buyTex2 = LoadTexture("res/Shop_buttons/buy2.png");
+			buyState = true;
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos, Texture2D& mainTex) {
@@ -145,9 +148,18 @@ namespace fish {
 			}
 		}
 
-		void drawBuy(Vector2& butSize, Vector2& buyPos) {
+		void drawBuy(Vector2& butSize, Vector2& buyPos, Texture2D& buyTex1, Texture2D& buyTex2, bool& buytState) {
+#if _DEBUG
+
 			DrawRectangleLines(static_cast<int>(buyPos.x), static_cast<int>(buyPos.y), static_cast<int>(butSize.x),
 				static_cast<int>(butSize.y), RED);
+#endif
+			if (buytState) {
+				DrawTexture(buyTex1, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - 43, WHITE);
+			}
+			else {
+				DrawTexture(buyTex2, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - 43, WHITE);
+			}
 		}
 
 		void upgradeItem(int& item, int& capasity, int& reach, int& points) {
