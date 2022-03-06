@@ -21,7 +21,7 @@ namespace fish {
 		static 	void Init();
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.5.9");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.5.10");
 
 			Init();
 

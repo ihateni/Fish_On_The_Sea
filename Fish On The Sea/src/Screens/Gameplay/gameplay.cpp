@@ -39,6 +39,8 @@ namespace fish {
 		static Rectangle stop2;
 		static Rectangle stop3;
 
+		Texture2D background;
+
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
@@ -47,10 +49,12 @@ namespace fish {
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
+			points = 0;
+			background = LoadTexture("res/Background/Background.png");
+
 #if _DEBUG
 			points = 100000;
 #endif
-			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
@@ -317,11 +321,11 @@ namespace fish {
 		void gameplayDraw() {
 			BeginDrawing();
 			ClearBackground(RAYWHITE);
+			BeginMode2D(camera);
+			DrawTexture(background, 0, 0, WHITE);
 
 			switch (Stage) {
 			case GameStage::Main:
-				BeginMode2D(camera);
-				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex);
 				switch (Modes) {

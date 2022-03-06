@@ -31,6 +31,9 @@ namespace fish {
 		Texture2D exit2;
 		bool exitState;
 
+		Texture2D background;
+		Texture2D title;
+
 		void menuInit() {
 			play1 = LoadTexture("res/Menu_buttons/play1.png");
 			play2 = LoadTexture("res/Menu_buttons/play2.png");
@@ -47,6 +50,9 @@ namespace fish {
 			exit1 = LoadTexture("res/Menu_buttons/exit1.png");
 			exit2 = LoadTexture("res/Menu_buttons/exit2.png");
 			exitState = true;
+
+			background = LoadTexture("res/Background/Background.png");
+			title = LoadTexture("res/Background/title.png");
 
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
@@ -154,6 +160,7 @@ namespace fish {
 			DrawRectangleLines(static_cast<int>(rec3M.x), static_cast<int>(rec3M.y), static_cast<int>(rec3M.width), static_cast<int>(rec3M.height), BLACK);
 			DrawRectangleLines(static_cast<int>(rec4M.x), static_cast<int>(rec4M.y), static_cast<int>(rec4M.width), static_cast<int>(rec4M.height), BLACK);
 #endif
+			DrawTexture(background, 0, 0, WHITE);
 
 			if (playState) {
 				DrawTexture(play1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
@@ -184,9 +191,10 @@ namespace fish {
 			}
 
 			
-			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
+			//DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
+			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawText("V0.5.9", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
+			DrawText("V0.5.10", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, RED);
 		
 			EndDrawing();
 		}
