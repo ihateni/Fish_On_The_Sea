@@ -4,7 +4,7 @@
 
 #include "Screens/Menu/menu.h"
 #include "Screens/Gameplay/gameplay.h"
-//#include "Screens/Credits/credits.h"
+#include "Screens/Credits/credits.h"
 //#include "Screens/Controls/controls.h"
 
 namespace fish {
@@ -37,14 +37,13 @@ namespace fish {
 			switch (Screens) {
 			case GameScreen::Menu:
 				menu::menuUpdate();
-				//gameplay::gameplayUpdate();
 
 				break;
 			case GameScreen::Game:
 				gameplay::gameplayUpdate();
 				break;
 			case GameScreen::Credits:
-			//	credits::creditsUpdate();
+				credits::creditsUpdate();
 				break;
 			case GameScreen::Controls:
 				//controls::controlsUpdate();
@@ -64,6 +63,7 @@ namespace fish {
 		}
 
 		void deInit() {
+			menu::menuDeInit();
 			CloseAudioDevice();
 		}
 	}

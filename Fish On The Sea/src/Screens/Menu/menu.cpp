@@ -112,7 +112,7 @@ namespace fish {
 					creditsState = true;
 				}
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-					//gameManager::Screens = gameManager::GameScreen::Credits;
+					gameManager::Screens = gameManager::GameScreen::Credits;
 				}
 			}
 			else {
@@ -201,6 +201,21 @@ namespace fish {
 			DrawTextEx(font, "V0.6.2", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
 
 			EndDrawing();
+		}
+
+		void menuDeInit() {
+			UnloadTexture(play1);
+			UnloadTexture(play2);
+			UnloadTexture(control1);
+			UnloadTexture(control2);
+			UnloadTexture(credits1);
+			UnloadTexture(credits2);
+			UnloadTexture(exit1);
+			UnloadTexture(exit2);
+			UnloadTexture(background);
+			UnloadTexture(title);
+
+		
 		}
 	}
 }

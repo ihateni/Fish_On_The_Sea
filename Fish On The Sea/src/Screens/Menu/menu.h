@@ -5,6 +5,7 @@ namespace fish {
 	namespace menu {
 		void menuInit();
 		void menuUpdate();
+		void menuDeInit();
 	}
 }
 #endif // Menu_H
