@@ -1,9 +1,11 @@
 #include "fish.h"
 
+#include <iostream>
 namespace fish {
 	namespace fishs {
 
-		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, int& type, bool& dir) {
+		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, int& type, bool& dir, Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
 			int temp = GetRandomValue(1, 2);
 			int temp2;
 			type = GetRandomValue(1, 3);
@@ -14,13 +16,22 @@ namespace fish {
 			else {
 				dir = false;
 			}
+			small1 = LoadTexture("res/Fish_textures/fish_S2.png");
+			small2 = LoadTexture("res/Fish_textures/fish_S2 _invert.png");
+
+			medium1 = LoadTexture("res/Fish_textures/fish_M2.png");
+			medium2 = LoadTexture("res/Fish_textures/fish_M2_invert.png");
+
+			big1 = LoadTexture("res/Fish_textures/fish_L3.png");
+			big2 = LoadTexture("res/Fish_textures/fish_L3_invert.png");
 
 			switch (type) {
 			case 1:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 10,static_cast<float>(GetScreenWidth()) / 10 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenWidth()) / 10 };
 				break;
 			case 2:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 20,static_cast<float>(GetScreenWidth()) / 20 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 7 /*20*/,static_cast<float>(GetScreenWidth()) / 20 };
+
 				break;
 			case 3:		
 				fishSize = { static_cast<float>(GetScreenWidth()) / 30,static_cast<float>(GetScreenWidth()) / 30 };
@@ -49,17 +60,42 @@ namespace fish {
 			}
 		}
 
-		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY, int& type) {
+		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY, int& type, bool& dir, Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
 
 			switch (type) {
 			case 1:
+				if (dir) {
+					DrawTexture(big1, static_cast<int>(fishPosX), static_cast<int>(fishPosY) - 5, WHITE);
+				}
+				else {
+					DrawTexture(big2, static_cast<int>(fishPosX), static_cast<int>(fishPosY) - 5, WHITE);
+				}
+#if _DEBUG
 				DrawRectangleLines(static_cast<int>(fishPosX), static_cast<int>(fishPosY), static_cast<int>(fishSizeX), static_cast<int>(fishSizeY), YELLOW);
+#endif
 				break;
 			case 2:
+				if (dir) {
+					DrawTexture(medium1, static_cast<int>(fishPosX), static_cast<int>(fishPosY) - 5, WHITE);
+				}
+				else {
+					DrawTexture(medium2, static_cast<int>(fishPosX)  , static_cast<int>(fishPosY) - 5, WHITE);
+				}
+#if _DEBUG
 				DrawRectangleLines(static_cast<int>(fishPosX), static_cast<int>(fishPosY), static_cast<int>(fishSizeX), static_cast<int>(fishSizeY), RED);
+#endif
 				break;
 			case 3:
+				if (dir) {
+					DrawTexture(small1, static_cast<int>(fishPosX) - 15, static_cast<int>(fishPosY) - 5, WHITE);
+				}
+				else {
+					DrawTexture(small2, static_cast<int>(fishPosX) - 15, static_cast<int>(fishPosY) - 5, WHITE);
+				}
+#if _DEBUG
 				DrawRectangleLines(static_cast<int>(fishPosX), static_cast<int>(fishPosY), static_cast<int>(fishSizeX), static_cast<int>(fishSizeY), BLUE);
+#endif
 				break;
 			default:
 				break;
@@ -74,10 +110,10 @@ namespace fish {
 				points += 10;
 				break;
 			case 2:
-				points += 30;
+				points += 20;
 				break;
 			case 3:
-				points += 50;
+				points += 30;
 				break;
 			default:
 				break;

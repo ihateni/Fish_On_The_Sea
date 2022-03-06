@@ -276,14 +276,6 @@ namespace fish {
 							shop.rightState = true;
 						}
 
-						//if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
-						//	shop.buySize.y })) {
-						//	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-						//		shop::upgradeItem(shop.item, player.capasity, player.reach, points);
-						//	}
-						//}
-
-
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
 							shop.buySize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -326,7 +318,9 @@ namespace fish {
 
 			switch (Stage) {
 			case GameStage::Main:
+#if _DEBUG
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
+#endif
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex);
 				switch (Modes) {
 				case GameplayModes::Shop:
@@ -346,21 +340,25 @@ namespace fish {
 					}
 					break;
 				case GameplayModes::Descend:
+#if _DEBUG
 					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width),
 						static_cast<int>(stop1.height), YELLOW);
 					DrawRectangle(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width),
 						static_cast<int>(stop2.height), YELLOW);
 					DrawRectangle(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width),
 						static_cast<int>(stop3.height), YELLOW);
+#endif
 
 					for (int i = 0; i < fishAmount; i++) {
-						fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
+						fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type, 
+							fish[i].dir,fish[i].small1,fish[i].small2, fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
 					}
 					break;
 				case GameplayModes::Ascend:
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
-							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type);
+							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type,
+								fish[i].dir, fish[i].small1, fish[i].small2, fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
 						}
 					}
 					break;
@@ -382,7 +380,8 @@ namespace fish {
 
 		void initFishGameplay() {
 			for (int i = 0; i < fishAmount; i++) {
-				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir);
+				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir,fish[i].small1,fish[i].small2,
+					fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
 			}
 
 		}
