@@ -43,7 +43,7 @@ namespace fish {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
 
-			player::initPlayer(player.size, player.position, player.capasity, player.reach);
+			player::initPlayer(player.size, player.position, player.capasity, player.reach,player.playerTex);
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
@@ -262,7 +262,7 @@ namespace fish {
 				BeginMode2D(camera);
 				DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), SKYBLUE);
 				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
-				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y);
+				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex);
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
