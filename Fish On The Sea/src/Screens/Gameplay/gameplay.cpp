@@ -47,6 +47,7 @@ namespace fish {
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
+			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos);

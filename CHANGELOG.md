@@ -1,7 +1,17 @@
 changelog
 ---------
+Release actual:    Fish_On_The_Sea 0.5 (06 Marzo 2022)
+-------------------------------------------------------------------------
+Changes:
+-Point system
+-Limit to fish capture
+-Texture test
+-More areas
+-Buy function
+-Player upgrades
 
-Release actual:    Fish_On_The_Sea 0.4 (03 Marzo2022)
+-------------------------------------------------------------------------
+Release: Fish_On_The_Sea 0.4 (03 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
 -Shop structure
