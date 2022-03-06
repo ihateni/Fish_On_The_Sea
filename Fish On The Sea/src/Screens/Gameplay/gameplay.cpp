@@ -47,6 +47,9 @@ namespace fish {
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
+#if _DEBUG
+			points = 100000;
+#endif
 			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
@@ -237,13 +240,6 @@ namespace fish {
 							shop.closeState = true;
 						}
 
-						//if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
-						//	shop.leftArrowSize.y })) {
-						//	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-						//		shop::decreaseItem(shop.item);
-						//	}
-						//}
-
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
 							shop.leftArrowSize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -260,11 +256,27 @@ namespace fish {
 							shop.leftState = true;
 						}
 
-						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
+					/*	if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
 							shop.rightArrowSize.y })) {
 							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
 								shop::increaseItem(shop.item);
 							}
+						}*/
+
+						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
+							shop.rightArrowSize.y })) {
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								shop.rightState = false;
+							}
+							else {
+								shop.rightState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+								shop::increaseItem(shop.item);
+							}
+						}
+						else {
+							shop.rightState = true;
 						}
 
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,

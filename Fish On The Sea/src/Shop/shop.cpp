@@ -32,18 +32,20 @@ namespace fish {
 			leftTex2 = LoadTexture("res/Shop_buttons/left2.png");
 			leftState = true;
 
-			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
+			rightArrowSize = { (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3,
+				(static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15 };
 			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) - 83, leftArrowPos.y };
 			rightTex1 = LoadTexture("res/Shop_buttons/right1.png");
 			rightTex2 = LoadTexture("res/Shop_buttons/right2.png");
 			rightState = true;
 
-			itemSize = { mainSize.x ,mainSize.y - leftArrowSize.y * 2 };
+			itemSize = { mainSize.x , mainSize.y - leftArrowSize.y * 2 };
 			itemPos = { mainPos.x, mainPos.y };
 
 			item = 1;
 
-			buySize = { mainSize.x / 3, mainSize.y / 10 };
+			buySize = { (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3,
+				(static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15 };
 			buyPos = { mainSize.x / 2 - buySize.x / 9, leftArrowPos.y - buySize.y };
 
 		}
@@ -97,8 +99,17 @@ namespace fish {
 		}
 
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos, Texture2D& rightTex1, Texture2D& rightTex2, bool& rightState) {
+#if _DEBUG
+
 			DrawRectangleLines(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
 				static_cast<int>(rightArrowSize.y), RED);
+#endif
+			if (rightState) {
+				DrawTexture(rightTex1, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - 43, WHITE);
+			}
+			else {
+				DrawTexture(rightTex2, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - 43, WHITE);
+			}
 		}
 
 		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item) {
