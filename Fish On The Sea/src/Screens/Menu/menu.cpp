@@ -32,20 +32,20 @@ namespace fish {
 		bool exitState;
 
 		void menuInit() {
-			play1 = LoadTexture("res/Menu buttons/play1.png");
-			play2 = LoadTexture("res/Menu buttons/play2.png");
+			play1 = LoadTexture("res/Menu_buttons/play1.png");
+			play2 = LoadTexture("res/Menu_buttons/play2.png");
 			playState = true;
 
-			credits1 = LoadTexture("res/Menu buttons/credits1.png");
-			credits2 = LoadTexture("res/Menu buttons/credits2.png");
+			credits1 = LoadTexture("res/Menu_buttons/credits1.png");
+			credits2 = LoadTexture("res/Menu_buttons/credits2.png");
 			creditsState = true;
 
-			control1 = LoadTexture("res/Menu buttons/instructions1.png");
-			control2 = LoadTexture("res/Menu buttons/instructions2.png");
+			control1 = LoadTexture("res/Menu_buttons/instructions1.png");
+			control2 = LoadTexture("res/Menu_buttons/instructions2.png");
 			controlsState = true;
 
-			exit1 = LoadTexture("res/Menu buttons/exit1.png");
-			exit2 = LoadTexture("res/Menu buttons/exit2.png");
+			exit1 = LoadTexture("res/Menu_buttons/exit1.png");
+			exit2 = LoadTexture("res/Menu_buttons/exit2.png");
 			exitState = true;
 
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
@@ -149,10 +149,10 @@ namespace fish {
 			ClearBackground(RAYWHITE);
 
 #if _DEBUG
-			DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), BLACK);
-			DrawRectangle(static_cast<int>(rec2M.x), static_cast<int>(rec2M.y), static_cast<int>(rec2M.width), static_cast<int>(rec2M.height), BLACK);
-			DrawRectangle(static_cast<int>(rec3M.x), static_cast<int>(rec3M.y), static_cast<int>(rec3M.width), static_cast<int>(rec3M.height), BLACK);
-			DrawRectangle(static_cast<int>(rec4M.x), static_cast<int>(rec4M.y), static_cast<int>(rec4M.width), static_cast<int>(rec4M.height), BLACK);
+			DrawRectangleLines(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width), static_cast<int>(rec1M.height), BLACK);
+			DrawRectangleLines(static_cast<int>(rec2M.x), static_cast<int>(rec2M.y), static_cast<int>(rec2M.width), static_cast<int>(rec2M.height), BLACK);
+			DrawRectangleLines(static_cast<int>(rec3M.x), static_cast<int>(rec3M.y), static_cast<int>(rec3M.width), static_cast<int>(rec3M.height), BLACK);
+			DrawRectangleLines(static_cast<int>(rec4M.x), static_cast<int>(rec4M.y), static_cast<int>(rec4M.width), static_cast<int>(rec4M.height), BLACK);
 #endif
 
 			if (playState) {
@@ -186,7 +186,7 @@ namespace fish {
 			
 			DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
 
-			DrawText("V0.5.2", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
+			DrawText("V0.5.3", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, SKYBLUE);
 
 			EndDrawing();
 		}

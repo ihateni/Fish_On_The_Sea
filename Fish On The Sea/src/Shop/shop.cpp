@@ -6,7 +6,7 @@ namespace fish {
 
 		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
-			int& item, Vector2& buySize, Vector2& buyPos) {
+			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2) {
 
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
@@ -31,19 +31,47 @@ namespace fish {
 
 			buySize = { mainSize.x / 3, mainSize.y / 10 };
 			buyPos = { mainSize.x / 2 - buySize.x / 9, leftArrowPos.y - buySize.y };
+
+			CloseTex1 = LoadTexture("res/Shop_buttons/x1.png");
+			CloseTex2 = LoadTexture("res/Shop_buttons/x2.png");
 			
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos) {
+#if _DEBUG
 			DrawRectangle(static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), static_cast<int>(mainSize.x), static_cast<int>(mainSize.y), ORANGE);
+#endif
 		}
 
-		void drawOpen(Vector2& openSize, Vector2& openPos){
+		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& CloseTex1, Texture2D& CloseTex2){
+#if _DEBUG
 			DrawRectangle(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y), ORANGE);
+#endif
+			if (CheckCollisionPointRec(GetMousePosition(), { openPos.x ,openPos.y ,openSize.x ,openSize.y })) {
+				if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+					DrawTexture(CloseTex1, static_cast<int>(openPos.x), static_cast<int>(openPos.y), WHITE);
+				}
+				else {
+					DrawTexture(CloseTex1, static_cast<int>(openPos.x), static_cast<int>(openPos.y), WHITE);
+				}
+
+				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+					//gameManager::Screens = gameManager::GameScreen::Game;
+				}
+			}
+			else {
+				DrawTexture(CloseTex1, static_cast<int>(openPos.x), static_cast<int>(openPos.y), WHITE);
+
+			}
+
 		}
 
-		void drawClose(Vector2& closeSize, Vector2& closePos) {
+		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& CloseTex1, Texture2D& CloseTex2) {
+#if _DEBUG
 			DrawRectangle(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
+#endif
+			DrawTexture(CloseTex1, static_cast<int>(closePos.x), static_cast<int>(closePos.y), WHITE);
+
 		}
 
 		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos) {

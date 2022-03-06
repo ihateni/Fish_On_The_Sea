@@ -50,7 +50,7 @@ namespace fish {
 			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
-				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos);
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.CloseTex1,shop.CloseTex2);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -269,14 +269,14 @@ namespace fish {
 						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
 						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
 							static_cast<int>(rec1M.height), RED);
-						shop::drawOpen(shop.openSize, shop.openPos);
+						shop::drawOpen(shop.openSize, shop.openPos, shop.CloseTex1, shop.CloseTex2);
 					}
 					else {
 						shop::drawShop(shop.mainSize, shop.mainPos);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
 						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
-						shop::drawClose(shop.closeSize, shop.closePos);
+						shop::drawClose(shop.closeSize, shop.closePos,shop.CloseTex1,shop.CloseTex2);
 						shop::drawBuy(shop.buySize,shop.buyPos);
 					}
 					break;

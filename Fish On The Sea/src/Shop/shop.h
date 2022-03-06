@@ -22,14 +22,17 @@ namespace fish {
 			Vector2 buySize;
 			Vector2 buyPos;
 			int item;
+			Texture2D CloseTex1;
+			Texture2D CloseTex2;
+
 		};
 
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos, 
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
-			int& item, Vector2& buySize, Vector2& buyPos);
+			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2);
 		void drawShop(Vector2& mainSize, Vector2& mainPos);
-		void drawOpen(Vector2& openSize, Vector2& openPos);
-		void drawClose(Vector2& closeSize, Vector2& closePos);
+		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& CloseTex1, Texture2D& CloseTex2);
+		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& CloseTex1, Texture2D& CloseTex2);
 		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos);
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos);
 		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item);
@@ -37,6 +40,7 @@ namespace fish {
 		void decreaseItem(int& item);
 		void drawBuy(Vector2& buySize, Vector2& buyPos);
 		void upgradeItem(int& item, int& capasity, int& reach, int& points);
+
 	}
 }
 #endif

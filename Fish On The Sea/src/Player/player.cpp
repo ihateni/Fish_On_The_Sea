@@ -11,7 +11,7 @@ namespace fish {
 			position = { static_cast<float>(GetScreenWidth()) / 2 - size.x / 2, static_cast<float>(GetScreenHeight()) / 2 - size.y / 2 };
 			capacity = 1;
 			reach = 1;
-			playerTex= LoadTexture("res/hand.png");
+			playerTex = LoadTexture("res/Player/hand.png");
 		}
 
 		void movement(float& playerPosX) {
