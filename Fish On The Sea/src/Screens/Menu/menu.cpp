@@ -32,20 +32,20 @@ namespace fish {
 		bool exitState;
 
 		void menuInit() {
-			play1 = LoadTexture("res/play1.png");
-			play2 = LoadTexture("res/play2.png");
+			play1 = LoadTexture("res/Menu buttons/play1.png");
+			play2 = LoadTexture("res/Menu buttons/play2.png");
 			playState = true;
 
-			credits1 = LoadTexture("res/credits1.png");
-			credits2 = LoadTexture("res/credits2.png");
+			credits1 = LoadTexture("res/Menu buttons/credits1.png");
+			credits2 = LoadTexture("res/Menu buttons/credits2.png");
 			creditsState = true;
 
-			control1 = LoadTexture("res/instructions1.png");
-			control2 = LoadTexture("res/instructions2.png");
+			control1 = LoadTexture("res/Menu buttons/instructions1.png");
+			control2 = LoadTexture("res/Menu buttons/instructions2.png");
 			controlsState = true;
 
-			exit1 = LoadTexture("res/exit1.png");
-			exit2 = LoadTexture("res/exit2.png");
+			exit1 = LoadTexture("res/Menu buttons/exit1.png");
+			exit2 = LoadTexture("res/Menu buttons/exit2.png");
 			exitState = true;
 
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
