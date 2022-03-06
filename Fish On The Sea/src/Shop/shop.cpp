@@ -4,17 +4,17 @@
 namespace fish {
 	namespace shop {
 
-		void initShop(Vector2& mainSize, Vector2& mainPos,Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
+		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
-			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2, Texture2D& mainTex,bool& openState,
-			bool& closeState) {
+			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2, Texture2D& mainTex, Texture2D& leftTex1,
+			Texture2D& leftTex2,Texture2D& rightTex1, Texture2D& rightTex2,bool& openState, bool& closeState, bool& leftState, bool& rightState) {
 
-			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10 )* 2 ),
+			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
-			mainPos = { static_cast<float>(GetScreenWidth())/10,static_cast<float> (GetScreenHeight()) / 10};
+			mainPos = { static_cast<float>(GetScreenWidth()) / 10,static_cast<float> (GetScreenHeight()) / 10 };
 			mainTex = LoadTexture("res/Shop_buttons/box.png");
 
-			openSize = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenWidth()) / 10)};
+			openSize = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenWidth()) / 10) };
 			openPos = { static_cast<float>(GetScreenWidth()) / 10 , (static_cast<float>(GetScreenHeight()) / 10) };
 			openState = true;
 
@@ -25,14 +25,21 @@ namespace fish {
 			CloseTex1 = LoadTexture("res/Shop_buttons/x1.png");
 			CloseTex2 = LoadTexture("res/Shop_buttons/x2.png");
 
-			leftArrowSize = { mainSize .x / 3, mainSize.y / 10};
-			leftArrowPos = {mainPos.x,mainSize.y};
-	
-			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
-			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) -83, leftArrowPos.y};
+			leftArrowSize = { (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3 ,
+				(static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15 };
+			leftArrowPos = { mainPos.x,mainSize.y };
+			leftTex1 = LoadTexture("res/Shop_buttons/left1.png");
+			leftTex2 = LoadTexture("res/Shop_buttons/left2.png");
+			leftState = true;
 
-			itemSize = { mainSize.x ,mainSize.y - leftArrowSize.y*2};
-			itemPos = {mainPos.x, mainPos.y};
+			rightArrowSize = { mainSize.x / 3, mainSize.y / 10 };
+			rightArrowPos = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2) - 83, leftArrowPos.y };
+			rightTex1 = LoadTexture("res/Shop_buttons/right1.png");
+			rightTex2 = LoadTexture("res/Shop_buttons/right2.png");
+			rightState = true;
+
+			itemSize = { mainSize.x ,mainSize.y - leftArrowSize.y * 2 };
+			itemPos = { mainPos.x, mainPos.y };
 
 			item = 1;
 
@@ -49,7 +56,7 @@ namespace fish {
 
 		}
 
-		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& closeTex1, Texture2D& closeTex2, bool& openState){
+		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& closeTex1, Texture2D& closeTex2, bool& openState) {
 #if _DEBUG
 			DrawRectangle(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y), ORANGE);
 #endif
@@ -66,7 +73,7 @@ namespace fish {
 #if _DEBUG
 			DrawRectangle(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
 #endif
-			if(closeState){
+			if (closeState) {
 				DrawTexture(closeTex1, static_cast<int>(closePos.x), static_cast<int>(closePos.y), WHITE);
 			}
 			else {
@@ -75,18 +82,27 @@ namespace fish {
 
 		}
 
-		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos) {
+		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos, Texture2D& leftTex1, Texture2D& leftTex2, bool& leftState){
+#if _DEBUG
+
 			DrawRectangle(static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y), static_cast<int>(leftArrowSize.x),
 				static_cast<int>(leftArrowSize.y), RED);
+#endif
+			if (leftState) {
+				DrawTexture(leftTex1, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - 43, WHITE);
+			}
+			else {
+				DrawTexture(leftTex2, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - 43, WHITE);
+			}
 		}
 
-		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos) {
+		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos, Texture2D& rightTex1, Texture2D& rightTex2, bool& rightState) {
 			DrawRectangle(static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y), static_cast<int>(rightArrowSize.x),
 				static_cast<int>(rightArrowSize.y), RED);
 		}
 
 		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item) {
-			switch (item){
+			switch (item) {
 			case 1:
 				DrawRectangle(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
@@ -126,7 +142,7 @@ namespace fish {
 		void upgradeItem(int& item, int& capasity, int& reach, int& points) {
 			switch (item) {
 			case 1:
-				switch (capasity){				
+				switch (capasity) {
 				case 1:
 					if (points > 100) {
 						std::cout << " it works" << std::endl;
@@ -214,7 +230,7 @@ namespace fish {
 				default:
 					break;
 				}
-			
+
 				break;
 			default:
 				break;

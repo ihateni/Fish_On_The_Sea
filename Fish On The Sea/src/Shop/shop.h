@@ -25,19 +25,25 @@ namespace fish {
 			Texture2D closeTex1;
 			Texture2D closeTex2;
 			Texture2D mainTex;
+			Texture2D leftTex1;
+			Texture2D leftTex2;
+			Texture2D rightTex1;
+			Texture2D rightTex2;
 			bool openState;
 			bool closeState;
+			bool leftState;
+			bool rightState;
 		};
 
-		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos, 
+		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
-			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& closeTex1, Texture2D& closeTex2, Texture2D& mainTex, bool& openState,
-			bool& closeState);
+			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& closeTex1, Texture2D& closeTex2, Texture2D& mainTex, Texture2D& leftTex1,
+			Texture2D& leftTex2,Texture2D& rightTex1, Texture2D& rightTex2, bool& openState, bool& closeState, bool& leftState, bool& rightState);
 		void drawShop(Vector2& mainSize, Vector2& mainPos, Texture2D& mainTex);
 		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& closeTex1, Texture2D& closeTex2, bool& openState);
 		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& closeTex1, Texture2D& closeTex2, bool& closeState);
-		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos);
-		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos);
+		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos, Texture2D& leftTex1, Texture2D& leftTex2, bool& leftState);
+		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos, Texture2D& rightTex1, Texture2D& rightTex2, bool& rightState);
 		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item);
 		void increaseItem(int& item);
 		void decreaseItem(int& item);

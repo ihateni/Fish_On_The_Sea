@@ -43,15 +43,16 @@ namespace fish {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
 
-			player::initPlayer(player.size, player.position, player.capasity, player.reach,player.playerTex);
+			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.playerTex);
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
 			points = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
-				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1,shop.closeTex2,
-				shop.mainTex,shop.openState,shop.closeState);
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
+				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.openState, shop.closeState, shop.leftState, 
+				shop.rightState);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -78,6 +79,7 @@ namespace fish {
 			stop3.width = static_cast<float>(GetScreenWidth());
 			stop3.x = 0;
 			stop3.y = static_cast<float>(GetScreenHeight()) * 4;
+			std::cout << stop3.y << std::endl;
 		}
 
 		void gameplayUpdate() {
@@ -126,7 +128,7 @@ namespace fish {
 					default:
 						break;
 					}
-					
+
 
 					break;
 				case GameplayModes::Ascend:
@@ -235,11 +237,27 @@ namespace fish {
 							shop.closeState = true;
 						}
 
+						//if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
+						//	shop.leftArrowSize.y })) {
+						//	if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+						//		shop::decreaseItem(shop.item);
+						//	}
+						//}
+
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
 							shop.leftArrowSize.y })) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								shop.leftState = false;
+							}
+							else {
+								shop.leftState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								shop::decreaseItem(shop.item);
 							}
+						}
+						else {
+							shop.leftState = true;
 						}
 
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
@@ -294,19 +312,19 @@ namespace fish {
 					}
 					else {
 						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
-						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos);
-						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos);
+						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos,shop.leftTex1,shop.leftTex2, shop.leftState);
+						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
 						//shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
-						shop::drawClose(shop.closeSize, shop.closePos,shop.closeTex1,shop.closeTex2,shop.closeState);
-						shop::drawBuy(shop.buySize,shop.buyPos);
+						shop::drawClose(shop.closeSize, shop.closePos, shop.closeTex1, shop.closeTex2, shop.closeState);
+						shop::drawBuy(shop.buySize, shop.buyPos);
 					}
 					break;
 				case GameplayModes::Descend:
-					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width), 
+					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width),
 						static_cast<int>(stop1.height), YELLOW);
-					DrawRectangle(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width), 
+					DrawRectangle(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width),
 						static_cast<int>(stop2.height), YELLOW);
-					DrawRectangle(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width), 
+					DrawRectangle(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width),
 						static_cast<int>(stop3.height), YELLOW);
 
 					for (int i = 0; i < fishAmount; i++) {
