@@ -99,20 +99,95 @@ namespace fish {
 		void upgradeItem(int& item, int& capasity, int& reach, int& points) {
 			switch (item) {
 			case 1:
-				if (capasity ==1 ) {
-					std::cout << " it works" << std::endl;
-					if (points > 50) {
+				switch (capasity){				
+				case 1:
+					if (points > 100) {
+						std::cout << " it works" << std::endl;
+
 						capasity = 2;
 						points = points - 50;
 					}
+					break;
+				case 2:
+					if (points > 1000) {
+						std::cout << " it works" << std::endl;
 
+						capasity = 3;
+						points = points - 50;
+					}
+					break;
+				case 3:
+					if (points > 2000) {
+						std::cout << " it works" << std::endl;
+
+						capasity = 4;
+						points = points - 50;
+					}
+					break;
+				default:
+					break;
 				}
 				break;
 			case 2:
-				
+				switch (reach) {
+				case 1:
+					if (points > 600) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 2;
+						points = points - 50;
+					}
+					break;
+				case 2:
+					if (points > 2000) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 3;
+						points = points - 50;
+					}
+					break;
+				case 3:
+					if (points > 4000) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 4;
+						points = points - 50;
+					}
+					break;
+				default:
+					break;
+				}
 				break;
 			case 3:
-				
+				switch (reach) {
+				case 1:
+					if (points > 600) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 2;
+						points = points - 50;
+					}
+					break;
+				case 2:
+					if (points > 2000) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 3;
+						points = points - 50;
+					}
+					break;
+				case 3:
+					if (points > 4000) {
+						std::cout << " it works2" << std::endl;
+
+						reach = 4;
+						points = points - 50;
+					}
+					break;
+				default:
+					break;
+				}
+			
 				break;
 			default:
 				break;

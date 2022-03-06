@@ -10,6 +10,7 @@ namespace fish {
 			Vector2 size;
 			int capasity;
 			int reach;
+			int evolution;
 		};
 
 		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach);
