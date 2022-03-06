@@ -21,7 +21,7 @@ namespace fish {
 		static 	void Init();
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.6.2");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.6.3");
 
 			Init();
 
@@ -57,13 +57,14 @@ namespace fish {
 		void Init() {
 			menu::menuInit();
 			gameplay::gameplayInit();
-			/*credits::creditsInit();
-			controls::controlsInit();*/
+			credits::creditsInit();
+		/*	controls::controlsInit(); */
 			InitAudioDevice();
 		}
 
 		void deInit() {
 			menu::menuDeInit();
+			credits::creditsDeInit();
 			CloseAudioDevice();
 		}
 	}

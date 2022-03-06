@@ -8,42 +8,94 @@ namespace fish {
 	namespace credits {
 		static void creditsDraw();
 
-		static Vector2 mousePoint;
 		static Rectangle rec1CR;
 
+		static bool backState;
+		static Texture2D background;
+		static Texture2D backButton1;
+		static Texture2D backButton2;
+		static Texture2D box;
+
+		static Font font;
+
 		void creditsInit() {
-			rec1CR.width = static_cast<float>(GetScreenWidth()) / 10;
-			rec1CR.height = static_cast<float>(GetScreenHeight()) / 10;
-			rec1CR.x = static_cast<float>(GetScreenWidth()) / 9 - rec1CR.width;
-			rec1CR.y = static_cast<float>(GetScreenHeight()) / 9 - rec1CR.height;
+			rec1CR.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
+			rec1CR.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15; 
+			rec1CR.x = 10;
+			rec1CR.y = 10;
+
+			backState = true;
+
+			background = LoadTexture("res/Background/Background.png");
+			backButton1 = LoadTexture("res/Control_buttons/menu1.png" );
+			backButton2 = LoadTexture("res/Control_buttons/menu2.png");
+
+			box = LoadTexture("res/Control_buttons/box_large.png");
+
+			font = LoadFont("res/Font/aAsianNinja.otf");
+
 		}
 
 		void creditsUpdate() {
 			creditsDraw();
-			mousePoint = GetMousePosition();
 
-			if (CheckCollisionPointRec(mousePoint, rec1CR)) {
-				if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-					gameManager::Screens = gameManager::GameScreen::Game;
+			if (CheckCollisionPointRec(GetMousePosition(), rec1CR)) {
+				if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+					backState = false;
 				}
+				else {
+					backState = true;
+				}
+
+				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+					gameManager::Screens = gameManager::GameScreen::Menu;
+				}
+			}
+			else {
+				backState = true;
+
 			}
 		}
 
 		void creditsDraw() {
+			BeginDrawing();
 			ClearBackground(RAYWHITE);
 
-			DrawRectangle(static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y), static_cast<int>(rec1CR.width), static_cast<int>(rec1CR.height), BLACK);
-			DrawText("atras", static_cast<int>(rec1CR.x) + 18, static_cast<int>(rec1CR.y) + 10, 20, WHITE);
+			DrawTexture(background, 0, 0, WHITE);
 
-			DrawText("Made by: Martin Concetti", static_cast<int>(GetScreenWidth() / 4), 0, 30, SKYBLUE);
-			DrawText("Player ball collision from raylib example, bricks from Matias Karplus", static_cast<int>(GetScreenWidth() / 4), static_cast<int>(GetScreenHeight()) / 19, 20, SKYBLUE);
-			DrawText("Using raylib", static_cast<int>(GetScreenWidth() / 4), static_cast<int>(GetScreenHeight()) / 10, 30, SKYBLUE);
-			DrawText("V1.0", static_cast<int>(GetScreenWidth() / 2), static_cast<int>(GetScreenHeight()) / 7, 30, SKYBLUE);
-			DrawText("Collision  sound effect by Martin Concetti in bfxr", 5, static_cast<int>(GetScreenHeight()) / 4, 30, BLACK);
-			DrawText("melodic-techno-03-extended-version-moogify-9867.mp3", 5, static_cast<int>(GetScreenHeight()) / 3, 30, BLACK);
-			DrawText("created by Zen Man, more info in the resource folder!", 5, static_cast<int>(GetScreenHeight()) / 2, 30, BLACK);
+			DrawRectangleLines(static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y), static_cast<int>(rec1CR.width), static_cast<int>(rec1CR.height), 
+				BLACK);
+			DrawTexture(box, 0,0, WHITE);
 
+			if (backState) {
+				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+			}
+			else {
+				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+			}
+
+			DrawTextEx(font, "Made by : Martin Concetti", { 23,70 }, 26, 3, BLACK);
+			DrawTextEx(font, "With help from Raylib examples", { 23,95 }, 26, 3, BLACK);
+			DrawTextEx(font, "Art by: Leonardo Perugini", { 23,120 }, 26, 3, BLACK);
+			DrawTextEx(font, "Programs use: PaintTool SAI, VS 2019", { 23,145 }, 26, 3, BLACK);
+			DrawTextEx(font, "Git, Git kraken.", { 23,170 }, 25, 3, BLACK);
+			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { 23,195 }, 26, 3, BLACK);
+			DrawTextEx(font, "melodyloops,github,google drive.", { 23,220 }, 26, 3, BLACK);
+			DrawTextEx(font, "For more extensive information please", { 23,245 }, 26, 3, BLACK);
+			DrawTextEx(font, "consult the readme docuemnt", { 23,270 }, 26, 3, BLACK);
+
+		
 			EndDrawing();
+		}
+
+		void creditsDeInit() {
+			UnloadTexture(background);
+			UnloadTexture(backButton1);
+			UnloadTexture(backButton2);
+			UnloadTexture(box);
+
+			UnloadFont(font);
+
 		}
 	}
 }

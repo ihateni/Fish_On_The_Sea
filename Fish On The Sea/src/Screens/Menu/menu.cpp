@@ -15,26 +15,26 @@ namespace fish {
 		static Rectangle rec3M;
 		static Rectangle rec4M;
 
-		Texture2D play1;
-		Texture2D play2;
-		bool playState;
+		static Texture2D play1;
+		static 	Texture2D play2;
+		static 	bool playState;
 
-		Texture2D control1;
-		Texture2D control2;
-		bool controlsState;
+		static Texture2D control1;
+		static 	Texture2D control2;
+		static bool controlsState;
 
-		Texture2D credits1;
-		Texture2D credits2;
-		bool creditsState;
+		static 	Texture2D credits1;
+		static Texture2D credits2;
+		static bool creditsState;
 
-		Texture2D exit1;
-		Texture2D exit2;
-		bool exitState;
+		static Texture2D exit1;
+		static Texture2D exit2;
+		static 	bool exitState;
 
-		Texture2D background;
-		Texture2D title;
+		static Texture2D background;
+		static Texture2D title;
 
-		Font font;
+		static Font font;
 
 		void menuInit() {
 			play1 = LoadTexture("res/Menu_buttons/play1.png");
@@ -198,7 +198,7 @@ namespace fish {
 			
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawTextEx(font, "V0.6.2", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+			DrawTextEx(font, "V0.6.3", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
 
 			EndDrawing();
 		}
@@ -214,7 +214,7 @@ namespace fish {
 			UnloadTexture(exit2);
 			UnloadTexture(background);
 			UnloadTexture(title);
-
+			UnloadFont(font);
 		
 		}
 	}
