@@ -26,6 +26,9 @@
     <Filter Include="Shop">
       <UniqueIdentifier>{3ce0db62-c2d4-42ca-8a09-5082f8f469aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Credits">
+      <UniqueIdentifier>{528f9859-488e-441d-8b5d-2546e7fedc81}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -47,6 +50,9 @@
     <ClCompile Include="src\Shop\shop.cpp">
       <Filter>Shop</Filter>
     </ClCompile>
+    <ClCompile Include="src\Screens\Credits\credits.cpp">
+      <Filter>Screens\Credits</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -66,6 +72,9 @@
     </ClInclude>
     <ClInclude Include="src\Shop\shop.h">
       <Filter>Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screens\Credits\credits.h">
+      <Filter>Screens\Credits</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

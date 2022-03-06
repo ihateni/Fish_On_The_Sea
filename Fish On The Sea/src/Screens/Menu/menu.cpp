@@ -194,7 +194,7 @@ namespace fish {
 			//DrawText("Fish On The Sea", static_cast<int>(GetScreenWidth() - 450), 100, 50, RED);
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawText("V0.6", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, RED);
+			DrawText("V0.6.1", static_cast<int>(GetScreenWidth() - 100), static_cast<int>(GetScreenHeight()) - 40, 20, RED);
 		
 			EndDrawing();
 		}
