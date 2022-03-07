@@ -22,7 +22,7 @@ namespace fish {
 		};
 
 		void initFish(Vector2& fishSize, Vector2& fishPosition,bool& active, int& type, bool& dir, Texture2D& small1, Texture2D& small2,
-			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2,int& area);
 		void movement(float& fishPosX, float& fishWidth, bool& type);
 		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY,int& type, bool& dir, Texture2D& small1, Texture2D& small2, 
 			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);

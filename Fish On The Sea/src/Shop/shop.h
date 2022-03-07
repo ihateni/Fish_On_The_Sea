@@ -50,11 +50,11 @@ namespace fish {
 		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& closeTex1, Texture2D& closeTex2, bool& closeState);
 		void drawLeftArrow(Vector2& leftArrowSize, Vector2& leftArrowPos, Texture2D& leftTex1, Texture2D& leftTex2, bool& leftState);
 		void drawRightArrow(Vector2& rightArrowSize, Vector2& rightArrowPos, Texture2D& rightTex1, Texture2D& rightTex2, bool& rightState);
-		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item, Font& font, int& capasity, int& reach);
+		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item, Font& font, int& capasity, int& reach, int& evolution);
 		void increaseItem(int& item);
 		void decreaseItem(int& item);
 		void drawBuy(Vector2& buySize, Vector2& buyPos, Texture2D& buyTex1, Texture2D& buyTex2, bool& buytState);
-		void upgradeItem(int& item, int& capasity, int& reach, int& points);
+		void upgradeItem(int& item, int& capasity, int& reach, int& points, int& evolution);
 		//void shopDeInit();
 	}
 }

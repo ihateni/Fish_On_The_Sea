@@ -118,7 +118,7 @@ namespace fish {
 			}
 		}
 
-		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item, Font& font, int& capasity, int& reach) {
+		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item, Font& font, int& capasity, int& reach, int& evolution) {
 			switch (item) {
 			case 1:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
@@ -168,9 +168,41 @@ namespace fish {
 			case 3:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), COLORALPHA);
-				DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK); 
-				DrawTextEx(font, "into a golden core to reach", { 70,160 }, 26, 3, BLACK);
-				DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+			
+				switch (evolution) {
+				case 1:
+					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK);
+					DrawTextEx(font, "into a golden core to reach", { 70,160 }, 26, 3, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+					
+					DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 2:
+					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK);
+					DrawTextEx(font, "your scales and claws to reach", { 70,160 }, 25, 3, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+
+					DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 3:
+					DrawTextEx(font, "No longer a sad fish but a", { 70,135 }, 26, 3, BLACK);
+					DrawTextEx(font, "perfect dragon,your body  ", { 70,160 }, 26, 3, BLACK);
+					DrawTextEx(font, "will survive the heavenly ", { 70,185 }, 26, 3, BLACK);
+					DrawTextEx(font, "tribulation, your are almost", { 70,215 }, 26, 3, BLACK);
+					DrawTextEx(font, "ready", { 70,240 }, 26, 3, BLACK);
+
+					DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 4:
+					DrawTextEx(font, "Finish your training", { 70,135 }, 26, 3, BLACK);
+					DrawTextEx(font, "Reach forthe lost treasure", { 70,160 }, 26, 3, BLACK);
+					DrawTextEx(font, "Become free from this ocean", { 70,185 }, 26, 3, BLACK);
+
+					DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+					break;
+				default:
+					break;
+				}
 
 				break;
 			default:
@@ -206,7 +238,7 @@ namespace fish {
 			}
 		}
 
-		void upgradeItem(int& item, int& capasity, int& reach, int& points) {
+		void upgradeItem(int& item, int& capasity, int& reach, int& points, int& evolution) {
 			switch (item) {
 			case 1:
 				switch (capasity) {
@@ -278,12 +310,12 @@ namespace fish {
 				}
 				break;
 			case 3:
-				switch (reach) {
+				switch (evolution) {
 				case 1:
 					if (points > 600) {
 						std::cout << " it works2" << std::endl;
 
-						reach = 2;
+						evolution = 2;
 						points = points - 50;
 					}
 					break;
@@ -291,7 +323,7 @@ namespace fish {
 					if (points > 2000) {
 						std::cout << " it works2" << std::endl;
 
-						reach = 3;
+						evolution = 3;
 						points = points - 50;
 					}
 					break;
@@ -299,9 +331,15 @@ namespace fish {
 					if (points > 4000) {
 						std::cout << " it works2" << std::endl;
 
-						reach = 4;
+						evolution = 4;
 						points = points - 50;
 					}
+					break;
+				case 4:
+					std::cout << " it works4" << std::endl;
+
+					evolution = 4;
+
 					break;
 				default:
 					break;
