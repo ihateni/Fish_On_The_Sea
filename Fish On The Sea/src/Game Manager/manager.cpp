@@ -5,7 +5,7 @@
 #include "Screens/Menu/menu.h"
 #include "Screens/Gameplay/gameplay.h"
 #include "Screens/Credits/credits.h"
-//#include "Screens/Controls/controls.h"
+#include "Screens/Controls/controls.h"
 
 namespace fish {
 	namespace gameManager {
@@ -21,7 +21,7 @@ namespace fish {
 		static 	void Init();
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.6.8");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.6.9");
 
 			Init();
 
@@ -37,7 +37,6 @@ namespace fish {
 			switch (Screens) {
 			case GameScreen::Menu:
 				menu::menuUpdate();
-
 				break;
 			case GameScreen::Game:
 				gameplay::gameplayUpdate();
@@ -46,7 +45,7 @@ namespace fish {
 				credits::creditsUpdate();
 				break;
 			case GameScreen::Controls:
-				//controls::controlsUpdate();
+				controls::controlsUpdate();
 				break;
 			case GameScreen::End:
 				playing = false;
@@ -58,7 +57,7 @@ namespace fish {
 			menu::menuInit();
 			gameplay::gameplayInit();
 			credits::creditsInit();
-		/*	controls::controlsInit(); */
+			controls::controlsInit(); 
 			InitAudioDevice();
 		}
 

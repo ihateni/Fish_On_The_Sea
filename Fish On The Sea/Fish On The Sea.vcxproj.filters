@@ -29,6 +29,9 @@
     <Filter Include="Screens\Credits">
       <UniqueIdentifier>{528f9859-488e-441d-8b5d-2546e7fedc81}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Controls">
+      <UniqueIdentifier>{bfc42826-1723-4b3a-8950-6273facd4678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -53,6 +56,9 @@
     <ClCompile Include="src\Screens\Credits\credits.cpp">
       <Filter>Screens\Credits</Filter>
     </ClCompile>
+    <ClCompile Include="src\Screens\Controls\controls.cpp">
+      <Filter>Screens\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -75,6 +81,9 @@
     </ClInclude>
     <ClInclude Include="src\Screens\Credits\credits.h">
       <Filter>Screens\Credits</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screens\Controls\controls.h">
+      <Filter>Screens\Controls</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
