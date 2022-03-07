@@ -20,10 +20,13 @@ namespace fish {
 		static void gameplayInput();
 		static void gameplayDraw();
 
-		const int fishAmount = 60;
+		const int fishAmount = 20;
 
 		player::Player player;
 		fishs::Fish fish[fishAmount];
+		fishs::Fish fish2[fishAmount];
+		fishs::Fish fish3[fishAmount];
+
 		shop::Shop shop;
 
 		Camera2D camera = { 0 };
@@ -41,6 +44,11 @@ namespace fish {
 
 		float boxPosX;
 		float boxPosY;
+		float fontPosY1;
+		float fontPosY2;
+		float fontPosY3;
+		float fontPosY4;
+		float fontPosY5;
 
 		Sound poing;
 		Music music;
@@ -68,8 +76,8 @@ namespace fish {
 			sphere = LoadTexture("res/Player/sphere.png");
 
 
-			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution,player.playerTex,player.evoTex1,player.evoTex2
-			,player.evoTex3);
+			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution, player.playerTex, player.evoTex1, player.evoTex2
+				, player.evoTex3);
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
@@ -89,6 +97,12 @@ namespace fish {
 #endif
 			boxPosX = 0;
 			boxPosY = 0;
+			fontPosY1 = 70;
+			fontPosY2 = 95;
+			fontPosY3 = 140;
+			fontPosY4 = 165;
+			fontPosY5 = 190;
+
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
@@ -109,7 +123,7 @@ namespace fish {
 			sphereRec.height = (static_cast<float> (GetScreenWidth()) / 5);
 			sphereRec.width = (static_cast<float> (GetScreenWidth()) / 5);
 			sphereRec.x = rec1M.x;
-			sphereRec.y = rec1M.y + static_cast<float>(GetScreenHeight()) * 4 - static_cast<float>(GetScreenHeight())/2;
+			sphereRec.y = rec1M.y + static_cast<float>(GetScreenHeight()) * 4 - static_cast<float>(GetScreenHeight()) / 2;
 
 			rec2M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec2M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
@@ -154,21 +168,38 @@ namespace fish {
 				case GameplayModes::Descend:
 					player::fall(player.position.y);
 					player::fall(boxPosY);
-					player::fall(rec2M.y);
+					player::fall(fontPosY1);
+					player::fall(fontPosY2);
+					player::fall(fontPosY3);
+					player::fall(fontPosY4);
+					player::fall(fontPosY5);
 
-					if (player.capasity == 4 || player.evolution == 4 || player.reach == 4) {
-					
+					player::movement(player.position.x);
+					if (player.capasity == 4 && player.evolution == 4 && player.reach == 4) {
+
 					}
-					else{
+					else {
 						player::movement(player.position.x);
 					}
-
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
 						}
 					}
-					switch (player.reach){
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish2[i].active) {
+							fishs::movement(fish2[i].position.x, fish2[i].size.y, fish2[i].dir);
+						}
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish3[i].active) {
+							fishs::movement(fish3[i].position.x, fish3[i].size.y, fish3[i].dir);
+						}
+					}
+					switch (player.reach)
+					{
 					case 1:
 						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
 							Modes = GameplayModes::Ascend;
@@ -183,17 +214,16 @@ namespace fish {
 						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
 							Modes = GameplayModes::Ascend;
 						}
-						break;
 					case 4:
-						if(player.capasity == 4 || player.evolution == 4 || player.reach == 4){
-							
+						if (player.capasity == 4 && player.evolution == 4 && player.reach == 4) {
+
 						}
 						else {
 							if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
 								Modes = GameplayModes::Ascend;
 							}
 						}
-						
+
 						break;
 					default:
 						break;
@@ -208,14 +238,32 @@ namespace fish {
 						gameplayInit();
 					}
 
+					break;
 				case GameplayModes::Ascend:
 					player::movement(player.position.x);
 					player::ascension(player.position.y);
 					player::ascension(boxPosY);
-					player::ascension(rec2M.y);
+					player::ascension(fontPosY1);
+					player::ascension(fontPosY2);
+					player::ascension(fontPosY3);
+					player::ascension(fontPosY4);
+					player::ascension(fontPosY5);
+
+
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
+						}
+					}
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish2[i].active) {
+							fishs::movement(fish2[i].position.x, fish2[i].size.y, fish2[i].dir);
+						}
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish3[i].active) {
+							fishs::movement(fish3[i].position.x, fish3[i].size.y, fish3[i].dir);
 						}
 					}
 					if (player.position.y <= posYSave) {
@@ -230,7 +278,7 @@ namespace fish {
 							case 1:
 								if (fishCounter < 3) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type, fish[i].area);
+										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
 									}
 								}
@@ -238,7 +286,7 @@ namespace fish {
 							case 2:
 								if (fishCounter < 6) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
+										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
 									}
 								}
@@ -246,15 +294,14 @@ namespace fish {
 							case 3:
 								if (fishCounter < 10) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
+										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
 									}
 								}
-								break;
 							case 4:
-								if (fishCounter < 10) {
+								if (fishCounter < 12) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
+										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
 									}
 								}
@@ -262,7 +309,90 @@ namespace fish {
 							default:
 								break;
 							}
+						}
+					}
 
+					for (int i = 0; i < fishAmount; i++) {
+						if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish2[i].position.x,
+							fish2[i].position.y,fish2[i].size.x,fish2[i].size.y })) {
+							switch (player.capasity) {
+							case 1:
+								if (fishCounter < 3) {
+									if (fish2[i].active == true) {
+										fishs::deactivate(fish2[i].active, points, fish2[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 2:
+								if (fishCounter < 6) {
+									if (fish2[i].active == true) {
+										fishs::deactivate(fish2[i].active, points, fish2[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 3:
+								if (fishCounter < 10) {
+									if (fish2[i].active == true) {
+										fishs::deactivate(fish2[i].active, points, fish2[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 4:
+								if (fishCounter < 12) {
+									if (fish2[i].active == true) {
+										fishs::deactivate(fish2[i].active, points, fish2[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							default:
+								break;
+							}
+						}
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (CheckCollisionRecs({ player.position.x, player.position.y,player.size.x,player.size.y }, { fish3[i].position.x,
+							fish3[i].position.y,fish3[i].size.x,fish3[i].size.y })) {
+							switch (player.capasity) {
+							case 1:
+								if (fishCounter < 3) {
+									if (fish3[i].active == true) {
+										fishs::deactivate(fish3[i].active, points, fish3[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 2:
+								if (fishCounter < 6) {
+									if (fish3[i].active == true) {
+										fishs::deactivate(fish3[i].active, points, fish3[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 3:
+								if (fishCounter < 10) {
+									if (fish3[i].active == true) {
+										fishs::deactivate(fish3[i].active, points, fish3[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 4:
+								if (fishCounter < 12) {
+									if (fish3[i].active == true) {
+										fishs::deactivate(fish3[i].active, points, fish3[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							default:
+								break;
+							}
 						}
 					}
 					break;
@@ -389,7 +519,7 @@ namespace fish {
 								shop.buyState = true;
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
-								shop::upgradeItem(shop.item, player.capasity, player.reach, points,player.evolution);
+								shop::upgradeItem(shop.item, player.capasity, player.reach, points, player.evolution);
 								PlaySound(click);
 
 							}
@@ -448,14 +578,14 @@ namespace fish {
 #if _DEBUG
 				DrawRectangleLines(0, GetScreenHeight(), 100, 800, RED);
 #endif
-				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex,player.evoTex1, player.evoTex2
+				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex, player.evoTex1, player.evoTex2
 					, player.evoTex3, player.evolution);
 #if _DEBUG
 
 				DrawRectangleLines(static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y), static_cast<int>(sphereRec.width),
 					static_cast<int>(sphereRec.height), BLACK);
 #endif
-				DrawTexture(sphere, static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y) , WHITE);
+				DrawTexture(sphere, static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y), WHITE);
 
 				switch (Modes) {
 				case GameplayModes::Shop:
@@ -499,12 +629,36 @@ namespace fish {
 						fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type,
 							fish[i].dir, fish[i].small1, fish[i].small2, fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
 					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						fishs::drawFish(fish2[i].position.x, fish2[i].position.y, fish2[i].size.x, fish2[i].size.y, fish2[i].type,
+							fish2[i].dir, fish2[i].small1, fish2[i].small2, fish2[i].medium1, fish2[i].medium2, fish2[i].big1, fish2[i].big2);
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						fishs::drawFish(fish3[i].position.x, fish3[i].position.y, fish3[i].size.x, fish3[i].size.y, fish3[i].type,
+							fish3[i].dir, fish3[i].small1, fish3[i].small2, fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
+					}
 					break;
 				case GameplayModes::Ascend:
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type,
 								fish[i].dir, fish[i].small1, fish[i].small2, fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
+						}
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish2[i].active) {
+							fishs::drawFish(fish2[i].position.x, fish2[i].position.y, fish2[i].size.x, fish2[i].size.y, fish2[i].type,
+								fish2[i].dir, fish2[i].small1, fish2[i].small2, fish2[i].medium1, fish2[i].medium2, fish2[i].big1, fish2[i].big2);
+						}
+					}
+
+					for (int i = 0; i < fishAmount; i++) {
+						if (fish3[i].active) {
+							fishs::drawFish(fish3[i].position.x, fish3[i].position.y, fish3[i].size.x, fish3[i].size.y, fish3[i].type,
+								fish3[i].dir, fish3[i].small1, fish3[i].small2, fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
 						}
 					}
 					break;
@@ -516,11 +670,12 @@ namespace fish {
 				break;
 			case GameStage::Pause:
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
-				DrawTextEx(font, "Press P ro go back to the game", { 23,70 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,95 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press M to mute or un mute", { 23,140 }, 24, 3, BLACK);
-				DrawTextEx(font, "you can only use the mute and menu options", { 23,165 }, 24, 3, BLACK);
-				DrawTextEx(font, "Once the hand is at the top", { 23,190 }, 24, 3, BLACK);
+				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
+				DrawTextEx(font, "Press P ro go back to the game", { 23,fontPosY1 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,fontPosY2 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press M to mute or un mute", { 23,fontPosY3 }, 24, 3, BLACK);
+				DrawTextEx(font, "you can only use the mute and menu options", { 23,fontPosY4 }, 24, 3, BLACK);
+				DrawTextEx(font, "Once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
 
 				if (menuState) {
 					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
@@ -528,6 +683,8 @@ namespace fish {
 				else {
 					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
 				}
+
+
 
 
 				break;
@@ -540,19 +697,19 @@ namespace fish {
 		}
 
 		void initFishGameplay() {
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < fishAmount; i++) {
 				fishs::initFish(fish[i].size, fish[i].position, fish[i].active, fish[i].type, fish[i].dir, fish[i].small1, fish[i].small2,
-					fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2, fishArea1);
+					fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
 			}
 
-			for (int j = 20; j < 40; j++) {
-				fishs::initFish(fish[j].size, fish[j].position, fish[j].active, fish[j].type, fish[j].dir, fish[j].small1, fish[j].small2,
-					fish[j].medium1, fish[j].medium2, fish[j].big1, fish[j].big2, fishArea2);
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::initFish2(fish2[i].size, fish2[i].position, fish2[i].active, fish2[i].type, fish2[i].dir, fish2[i].small1, fish2[i].small2,
+					fish2[i].medium1, fish2[i].medium2, fish2[i].big1, fish2[i].big2);
 			}
-			
-			for (int k = 40; k < fishAmount; k++) {
-				fishs::initFish(fish[k].size, fish[k].position, fish[k].active, fish[k].type, fish[k].dir, fish[k].small1, fish[k].small2,
-					fish[k].medium1, fish[k].medium2, fish[k].big1, fish[k].big2, fishArea3);
+
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::initFish3(fish3[i].size, fish3[i].position, fish3[i].active, fish3[i].type, fish3[i].dir, fish3[i].small1, fish3[i].small2,
+					fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
 			}
 		}
 	}

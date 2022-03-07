@@ -8,7 +8,7 @@ namespace fish {
 
 		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach, int& evolution, Texture2D& playerTex, Texture2D& evoTex1
 			, Texture2D& evoTex2, Texture2D& evoTex3) {
-			size = { 40, 40};
+			size = { 40, 40 };
 
 			position = { static_cast<float>(GetScreenWidth()) / 2 - size.x / 2, static_cast<float>(GetScreenHeight()) / 2 - size.y / 2 };
 			capacity = 1;
@@ -62,8 +62,8 @@ namespace fish {
 			default:
 				break;
 			}
-			
-			DrawTexture(playerTex, static_cast<int>(playerPosX), static_cast<int>(playerPosY) , WHITE);
+
+			DrawTexture(playerTex, static_cast<int>(playerPosX), static_cast<int>(playerPosY), WHITE);
 
 		}
 	}
