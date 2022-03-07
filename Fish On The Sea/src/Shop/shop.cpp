@@ -4,6 +4,10 @@
 namespace fish {
 	namespace shop {
 
+		int fonstSize = 25;
+		int fonstSizeBig = 40;
+		int fonstSeparation = 3;
+
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
 			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2, Texture2D& mainTex, Texture2D& leftTex1,
@@ -123,20 +127,22 @@ namespace fish {
 			case 1:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
-				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, 26, 3, BLACK);
-				DrawTextEx(font, "hand to catch more fish", { 70,160 }, 26, 3, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "hand to catch more fish", { 70,160 }, fonstSize, fonstSeparation, BLACK);
 				switch (capasity){
 					case 1:
-						DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+						DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 						break;
 					case 2:
-						DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+						DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 						break;
 					case 3:
-						DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+						DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 						break;
 					case 4:
-						DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+						DrawTextEx(font, "A hand Worthy of the treasure", { 70,185 }, fonstSize, fonstSeparation, GOLD);
+
+						DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
 						break;
 				default:
 					break;
@@ -146,20 +152,23 @@ namespace fish {
 			case 2:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
-				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, 26, 3, BLACK);
-				DrawTextEx(font, "reach to reach deeper waters", { 70,160 }, 26, 3, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "reach to reach deeper waters", { 70,160 }, fonstSize, fonstSeparation, BLACK);
 				switch (reach) {
 				case 1:
-					DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+					DrawTextEx(font, "A mind that will survive the ", { 70,185 }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "world", { 70,210 }, fonstSize, fonstSeparation, GOLD);
+
+					DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
 					break;
 				default:
 					break;
@@ -171,34 +180,34 @@ namespace fish {
 			
 				switch (evolution) {
 				case 1:
-					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK);
-					DrawTextEx(font, "into a golden core to reach", { 70,160 }, 26, 3, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "into a golden core to reach", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { 70,185 }, fonstSize, fonstSeparation, BLACK);
 					
-					DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK);
-					DrawTextEx(font, "your scales and claws to reach", { 70,160 }, 25, 3, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your scales and claws to reach", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { 70,185 }, fonstSize, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, "No longer a sad fish but a", { 70,135 }, 26, 3, BLACK);
-					DrawTextEx(font, "perfect dragon,your body  ", { 70,160 }, 26, 3, BLACK);
-					DrawTextEx(font, "will survive the heavenly ", { 70,185 }, 26, 3, BLACK);
-					DrawTextEx(font, "tribulation, your are almost", { 70,215 }, 26, 3, BLACK);
-					DrawTextEx(font, "ready", { 70,240 }, 26, 3, BLACK);
+					DrawTextEx(font, "No longer a sad fish but a", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "perfect dragon,your body  ", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "will survive the heavenly ", { 70,185 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "tribulation, your are almost", { 70,215 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "ready", { 70,240 }, fonstSize, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+					DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "Finish your training", { 70,135 }, 26, 3, BLACK);
-					DrawTextEx(font, "Reach forthe lost treasure", { 70,160 }, 26, 3, BLACK);
-					DrawTextEx(font, "Become free from this ocean", { 70,185 }, 26, 3, BLACK);
+					DrawTextEx(font, "Finish your training", { 70,135 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "Reach forthe lost treasure", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "Free yourself from this ocean", { 70,185 }, fonstSize, fonstSeparation, GOLD);
 
-					DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+					DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
 					break;
 				default:
 					break;

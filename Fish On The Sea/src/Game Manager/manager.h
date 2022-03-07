@@ -8,8 +8,8 @@ namespace fish {
 			Game,
 			Credits,
 			Controls,
-			End
-			
+			End,
+			Victory
 		};
 
 		extern GameScreen Screens;

@@ -50,19 +50,22 @@ namespace fish {
 		static Rectangle stop1;
 		static Rectangle stop2;
 		static Rectangle stop3;
+		static Rectangle sphereRec;
 
-		Texture2D background;
-		Texture2D playTex1;
-		Texture2D playTex2;
-		Texture2D bigBox;
-		Texture2D menuTex1;
-		Texture2D menuTex2;
-
+		static Texture2D background;
+		static Texture2D playTex1;
+		static Texture2D playTex2;
+		static Texture2D bigBox;
+		static Texture2D menuTex1;
+		static Texture2D menuTex2;
+		static Texture2D sphere;
 		static Font font;
 
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
 			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
+			sphere = LoadTexture("res/Player/sphere.png");
+
 
 			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution,player.playerTex,player.evoTex1,player.evoTex2
 			,player.evoTex3);
@@ -101,6 +104,11 @@ namespace fish {
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
 			rec1M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
+
+			sphereRec.height = (static_cast<float> (GetScreenWidth()) / 5);
+			sphereRec.width = (static_cast<float> (GetScreenWidth()) / 5);
+			sphereRec.x = rec1M.x;
+			sphereRec.y = rec1M.y + static_cast<float>(GetScreenHeight()) * 4 - static_cast<float>(GetScreenHeight())/2;
 
 			rec2M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec2M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
@@ -147,14 +155,19 @@ namespace fish {
 					player::fall(boxPosY);
 					player::fall(rec2M.y);
 
-					player::movement(player.position.x);
+					if (player.capasity == 4 || player.evolution == 4 || player.reach == 4) {
+					
+					}
+					else{
+						player::movement(player.position.x);
+					}
+
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
 						}
 					}
-					switch (player.reach)
-					{
+					switch (player.reach){
 					case 1:
 						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop1)) {
 							Modes = GameplayModes::Ascend;
@@ -171,16 +184,29 @@ namespace fish {
 						}
 						break;
 					case 4:
-						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
-							Modes = GameplayModes::Ascend;
+						if(player.capasity == 4 || player.evolution == 4 || player.reach == 4){
+							
 						}
+						else {
+							if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
+								Modes = GameplayModes::Ascend;
+							}
+						}
+						
 						break;
 					default:
 						break;
 					}
 
+					if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, sphereRec)) {
+						gameManager::Screens = gameManager::GameScreen::Victory;
+						gameplayInit();
+					}
+					if (player.position.y > sphereRec.y) {
+						gameManager::Screens = gameManager::GameScreen::Victory;
+						gameplayInit();
+					}
 
-					break;
 				case GameplayModes::Ascend:
 					player::movement(player.position.x);
 					player::ascension(player.position.y);
@@ -308,6 +334,7 @@ namespace fish {
 							shop.closeState = true;
 						}
 
+						//shop left arrow
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.leftArrowPos.x,shop.leftArrowPos.y,shop.leftArrowSize.x,
 							shop.leftArrowSize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -324,6 +351,7 @@ namespace fish {
 							shop.leftState = true;
 						}
 
+						//shop right arrow
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.rightArrowPos.x,shop.rightArrowPos.y,shop.rightArrowSize.x,
 							shop.rightArrowSize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -340,6 +368,7 @@ namespace fish {
 							shop.rightState = true;
 						}
 
+						//shop but button
 						if (CheckCollisionPointRec(GetMousePosition(), { shop.buyPos.x,shop.buyPos.y,shop.buySize.x,
 							shop.buySize.y })) {
 							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -406,6 +435,13 @@ namespace fish {
 #endif
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex,player.evoTex1, player.evoTex2
 					, player.evoTex3, player.evolution);
+#if _DEBUG
+
+				DrawRectangleLines(static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y), static_cast<int>(sphereRec.width),
+					static_cast<int>(sphereRec.height), BLACK);
+#endif
+				DrawTexture(sphere, static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y) , WHITE);
+
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {

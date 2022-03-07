@@ -1,7 +1,13 @@
 changelog
 ---------
-
-Release actual:    Fish_On_The_Sea 0.7 (07 Marzo 2022)
+Release actual:    Fish_On_The_Sea 0. (07 Marzo 2022)
+-------------------------------------------------------------------------
+Changes:
+-Text for items
+-Main cahracter
+-Fish for all areas
+-------------------------------------------------------------------------
+Release Fish_On_The_Sea 0.7 (07 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
 -LFS added
@@ -11,7 +17,7 @@ Changes:
 -Custom font
 -Pause funtion
 -------------------------------------------------------------------------
-Release actual:    Fish_On_The_Sea 0.6 (06 Marzo 2022)
+Release Fish_On_The_Sea 0.6 (06 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
 -Menu textures
@@ -21,7 +27,7 @@ Changes:
 -First are fish texture.
 
 -------------------------------------------------------------------------
-Release actual:    Fish_On_The_Sea 0.5 (06 Marzo 2022)
+Release Fish_On_The_Sea 0.5 (06 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
 -Point system

@@ -71,19 +71,19 @@ namespace fish {
 			switch (area)
 			{
 			case 1:
-				temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
+				temp = GetRandomValue(fishSize.x, GetScreenWidth() - fishSize.x);
 				temp2 = GetRandomValue(GetScreenHeight(), GetScreenHeight() * 2 - fishSize.y);
 				fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 
 				break;
 			case 2:
-				temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
+				temp = GetRandomValue(fishSize.x, GetScreenWidth() - fishSize.x);
 				temp2 = GetRandomValue(GetScreenHeight() * 2 - fishSize.y, GetScreenHeight() * 3 - fishSize.y);
 				fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 				break;
 				break;
 			case 3:
-				temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
+				temp = GetRandomValue(fishSize.x, GetScreenWidth() - fishSize.x);
 				temp2 = GetRandomValue(GetScreenHeight() * 3 - fishSize.y, GetScreenHeight() * 4 - fishSize.y);
 				fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 				break;

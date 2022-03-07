@@ -80,9 +80,10 @@ namespace fish {
 			DrawTextEx(font, "Programs use: PaintTool SAI, VS 2019", { 23,145 }, 26, 3, BLACK);
 			DrawTextEx(font, "Git, Git kraken.", { 23,170 }, 25, 3, BLACK);
 			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { 23,195 }, 26, 3, BLACK);
-			DrawTextEx(font, "melodyloops,github,google drive.", { 23,220 }, 26, 3, BLACK);
+			DrawTextEx(font, "melodyloops,github, opengameart.", { 23,220 }, 26, 3, BLACK);
 			DrawTextEx(font, "For more extensive information please", { 23,245 }, 26, 3, BLACK);
 			DrawTextEx(font, "consult the readme docuemnt", { 23,270 }, 26, 3, BLACK);
+			DrawTextEx(font, "Victory art by: Crisisworks", { 23,295 }, 26, 3, BLACK);
 
 		
 			EndDrawing();

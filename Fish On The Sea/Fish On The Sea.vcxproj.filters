@@ -32,6 +32,9 @@
     <Filter Include="Screens\Controls">
       <UniqueIdentifier>{bfc42826-1723-4b3a-8950-6273facd4678}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Screens\Vistory">
+      <UniqueIdentifier>{82952431-0861-4250-9aad-726951b14620}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -59,6 +62,9 @@
     <ClCompile Include="src\Screens\Controls\controls.cpp">
       <Filter>Screens\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="src\Screens\Victory\victory.cpp">
+      <Filter>Screens\Vistory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -84,6 +90,9 @@
     </ClInclude>
     <ClInclude Include="src\Screens\Controls\controls.h">
       <Filter>Screens\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Screens\Victory\victory.h">
+      <Filter>Screens\Vistory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
