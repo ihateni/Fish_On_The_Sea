@@ -238,7 +238,7 @@ namespace fish {
 							case 2:
 								if (fishCounter < 6) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
 										fishCounter++;
 									}
 								}
@@ -246,7 +246,7 @@ namespace fish {
 							case 3:
 								if (fishCounter < 10) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
 										fishCounter++;
 									}
 								}
@@ -254,7 +254,7 @@ namespace fish {
 							case 4:
 								if (fishCounter < 10) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishs::deactivate(fish[i].active, points, fish[i].type,fish[i].area);
 										fishCounter++;
 									}
 								}

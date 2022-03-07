@@ -260,7 +260,7 @@ namespace fish {
 					}
 					break;
 				case 2:
-					if (points > 1000) {
+					if (points > 500) {
 						std::cout << " it works" << std::endl;
 
 						capasity = 3;
@@ -268,7 +268,7 @@ namespace fish {
 					}
 					break;
 				case 3:
-					if (points > 2000) {
+					if (points > 1500) {
 						std::cout << " it works" << std::endl;
 
 						capasity = 4;
@@ -293,7 +293,7 @@ namespace fish {
 					}
 					break;
 				case 2:
-					if (points > 2000) {
+					if (points > 1500) {
 						std::cout << " it works2" << std::endl;
 
 						reach = 3;
@@ -301,7 +301,7 @@ namespace fish {
 					}
 					break;
 				case 3:
-					if (points > 4000) {
+					if (points > 2000) {
 						std::cout << " it works2" << std::endl;
 
 						reach = 4;
@@ -321,7 +321,7 @@ namespace fish {
 			case 3:
 				switch (evolution) {
 				case 1:
-					if (points > 600) {
+					if (points > 100) {
 						std::cout << " it works2" << std::endl;
 
 						evolution = 2;
@@ -337,7 +337,7 @@ namespace fish {
 					}
 					break;
 				case 3:
-					if (points > 4000) {
+					if (points > 3000) {
 						std::cout << " it works2" << std::endl;
 
 						evolution = 4;

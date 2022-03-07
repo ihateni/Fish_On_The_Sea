@@ -149,21 +149,59 @@ namespace fish {
 
 		}
 
-		void deactivate(bool& active, int& points, int& type) {
-
-			switch (type) {
+		void deactivate(bool& active, int& points, int& type, int& area) {
+			switch (area)
+			{
 			case 1:
-				points += 10;
+				switch (type) {
+				case 1:
+					points += 10;
+					break;
+				case 2:
+					points += 20;
+					break;
+				case 3:
+					points += 30;
+					break;
+				default:
+					break;
+				}
 				break;
 			case 2:
-				points += 20;
+				switch (type) {
+				case 1:
+					points += 40;
+					break;
+				case 2:
+					points += 60;
+					break;
+				case 3:
+					points += 10;
+					break;
+				default:
+					break;
+				}
 				break;
 			case 3:
-				points += 30;
+				switch (type) {
+				case 1:
+					points += 500;
+					break;
+				case 2:
+					points += 700;
+					break;
+				case 3:
+					points += 999;
+					break;
+				default:
+					break;
+				}
 				break;
 			default:
 				break;
 			}
+
+			
 			active = !active;
 		}
 	}

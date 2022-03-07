@@ -1,6 +1,13 @@
 changelog
 ---------
-Release actual:    Fish_On_The_Sea 0. (07 Marzo 2022)
+Release actual:    Fish_On_The_Sea 1.0 (07 Marzo 2022)
+-------------------------------------------------------------------------
+Changes:
+-Sound effect
+-Music
+
+-------------------------------------------------------------------------
+Release actual:    Fish_On_The_Sea 0.8 (07 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:
 -Text for items

@@ -26,7 +26,7 @@ namespace fish {
 		void movement(float& fishPosX, float& fishWidth, bool& type);
 		void drawFish(float& fishPosX, float& fishPosY, float& fishSizeX, float& fishSizeY,int& type, bool& dir, Texture2D& small1, Texture2D& small2, 
 			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);
-		void deactivate(bool& active, int& points, int& type);
+		void deactivate(bool& active, int& points, int& type,int& area);
 	}
 }
 #endif
