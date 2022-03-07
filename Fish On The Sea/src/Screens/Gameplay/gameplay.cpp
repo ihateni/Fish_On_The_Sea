@@ -518,7 +518,7 @@ namespace fish {
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
 				DrawTextEx(font, "Press P ro go back to the game", { 23,70 }, 24, 3, BLACK);
 				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,95 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press the sound icon to mute or un mute", { 23,140 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press M to mute or un mute", { 23,140 }, 24, 3, BLACK);
 				DrawTextEx(font, "you can only use the mute and menu options", { 23,165 }, 24, 3, BLACK);
 				DrawTextEx(font, "Once the hand is at the top", { 23,190 }, 24, 3, BLACK);
 

@@ -22,6 +22,7 @@ namespace fish {
 		static 	void Init();
 
 		static Music music1;
+		bool state = true;
 
 		void run() {
 			InitWindow(screenWidth, screenHeight, "Fish On The Sea V1.0");
@@ -31,9 +32,13 @@ namespace fish {
 			PlayMusicStream(music1);
 
 			while (!WindowShouldClose() && playing) {
+				if (IsKeyPressed('M')) {
+					state = !state;
+				}
+				if (state) {
+					UpdateMusicStream(music1);
+				}
 				change();
-				UpdateMusicStream(music1);
-
 			}
 			deInit();
 			CloseWindow();

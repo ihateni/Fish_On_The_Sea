@@ -86,6 +86,8 @@ namespace fish {
 			DrawTextEx(font, "Open and close the upgrade store by", { 23,324 }, 25, 3, BLACK);
 			DrawTextEx(font, "pressing the X", { 23,344 }, 26, 3, BLACK);
 			DrawTextEx(font, "Press P for pause.", { 23,419 }, 26, 3, BLACK);
+			DrawTextEx(font, "Press M to stop or play music.", { 23,440 }, 24, 3, BLACK);
+
 			DrawTextEx(font, "Reach the bottomb of the map and", { 23,511 }, 26, 3, BLACK);
 			DrawTextEx(font, "face the heavens!", { 23,531 }, 26, 3, BLACK);
 
