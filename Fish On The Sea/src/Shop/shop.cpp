@@ -8,7 +8,7 @@ namespace fish {
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
 			int& item, Vector2& buySize, Vector2& buyPos, Texture2D& CloseTex1, Texture2D& CloseTex2, Texture2D& mainTex, Texture2D& leftTex1,
 			Texture2D& leftTex2,Texture2D& rightTex1, Texture2D& rightTex2, Texture2D& buyTex1, Texture2D& buyTex2, 
-			bool& openState, bool& closeState, bool& leftState, bool& rightState, bool& buyState) {
+			bool& openState, bool& closeState, bool& leftState, bool& rightState, bool& buyState, Font& font) {
 
 			mainSize = { static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2),
 			static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2) };
@@ -51,6 +51,9 @@ namespace fish {
 			buyTex1 = LoadTexture("res/Shop_buttons/buy1.png");
 			buyTex2 = LoadTexture("res/Shop_buttons/buy2.png");
 			buyState = true;
+
+			font = LoadFont("res/Font/aAsianNinja.otf");
+
 		}
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos, Texture2D& mainTex) {
@@ -115,19 +118,60 @@ namespace fish {
 			}
 		}
 
-		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item) {
+		void drawItem(Vector2& itemSize, Vector2& itemPos, int& item, Font& font, int& capasity, int& reach) {
 			switch (item) {
 			case 1:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
+				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, 26, 3, BLACK);
+				DrawTextEx(font, "hand to catch more fish", { 70,160 }, 26, 3, BLACK);
+				switch (capasity){
+					case 1:
+						DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+						break;
+					case 2:
+						DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+						break;
+					case 3:
+						DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+						break;
+					case 4:
+						DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+						break;
+				default:
+					break;
+				}
+
 				break;
 			case 2:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
+				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, 26, 3, BLACK);
+				DrawTextEx(font, "reach to reach deeper waters", { 70,160 }, 26, 3, BLACK);
+				switch (reach) {
+				case 1:
+					DrawTextEx(font, "1 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 2:
+					DrawTextEx(font, "2 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 3:
+					DrawTextEx(font, "3 / 4", { 220,400 }, 40, 3, BLACK);
+					break;
+				case 4:
+					DrawTextEx(font, "4 / 4", { 220,400 }, 40, 3, GOLD);
+					break;
+				default:
+					break;
+				}
 				break;
 			case 3:
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), COLORALPHA);
+				DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, 26, 3, BLACK); 
+				DrawTextEx(font, "into a golden core to reach", { 70,160 }, 26, 3, BLACK);
+				DrawTextEx(font, "your next stage of evolution", { 70,185 }, 26, 3, BLACK);
+
 				break;
 			default:
 				break;
@@ -189,6 +233,9 @@ namespace fish {
 						capasity = 4;
 						points = points - 50;
 					}
+				case 4:
+					capasity = 4;
+
 					break;
 				default:
 					break;
@@ -219,6 +266,12 @@ namespace fish {
 						reach = 4;
 						points = points - 50;
 					}
+					break;
+				case 4:
+						std::cout << " it works4" << std::endl;
+
+						reach = 4;
+					
 					break;
 				default:
 					break;

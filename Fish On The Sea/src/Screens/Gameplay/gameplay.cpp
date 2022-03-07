@@ -85,7 +85,7 @@ namespace fish {
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
 				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2,shop.buyTex1,shop.buyTex2, shop.openState, shop.closeState,
-				shop.leftState, shop.rightState, shop.buyState);
+				shop.leftState, shop.rightState, shop.buyState,shop.font);
 
 			activeShop = false;
 			camera.target = { player.position.x + player.size.x / 2, player.position.y };
@@ -166,6 +166,11 @@ namespace fish {
 							Modes = GameplayModes::Ascend;
 						}
 						break;
+					case 4:
+						if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, stop3)) {
+							Modes = GameplayModes::Ascend;
+						}
+						break;
 					default:
 						break;
 					}
@@ -208,6 +213,14 @@ namespace fish {
 								}
 								break;
 							case 3:
+								if (fishCounter < 10) {
+									if (fish[i].active == true) {
+										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishCounter++;
+									}
+								}
+								break;
+							case 4:
 								if (fishCounter < 10) {
 									if (fish[i].active == true) {
 										fishs::deactivate(fish[i].active, points, fish[i].type);
@@ -411,7 +424,7 @@ namespace fish {
 						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos,shop.leftTex1,shop.leftTex2, shop.leftState);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
-						shop::drawItem(shop.itemSize, shop.itemPos, shop.item);
+						shop::drawItem(shop.itemSize, shop.itemPos, shop.item, shop.font,player.capasity,player.reach);
 						shop::drawClose(shop.closeSize, shop.closePos, shop.closeTex1, shop.closeTex2, shop.closeState);
 						shop::drawBuy(shop.buySize, shop.buyPos,shop.buyTex1,shop.buyTex2,shop.buyState);
 					}
