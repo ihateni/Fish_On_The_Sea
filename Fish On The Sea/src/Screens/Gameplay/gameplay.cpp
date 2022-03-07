@@ -21,16 +21,19 @@ namespace fish {
 		static void gameplayDraw();
 
 		const int fishAmount = 20;
+
 		player::Player player;
 		fishs::Fish fish[fishAmount];
 		shop::Shop shop;
+
 		Camera2D camera = { 0 };
+
 		float posYSave;
 		float posXSave;
 		bool activeShop;
 		int points;
 		int fishCounter;
-
+		bool playState;
 		Sound poing;
 		Music music;
 
@@ -40,6 +43,9 @@ namespace fish {
 		static Rectangle stop3;
 
 		Texture2D background;
+		Texture2D playTex1;
+		Texture2D playTex2;
+
 
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
@@ -51,7 +57,9 @@ namespace fish {
 			fishCounter = 0;
 			points = 0;
 			background = LoadTexture("res/Background/Background.png");
-
+			playTex1 = LoadTexture("res/Menu_buttons/play1.png");
+			playTex2 = LoadTexture("res/Menu_buttons/play2.png");
+			playState = true;
 #if _DEBUG
 			points = 100000;
 #endif
@@ -204,11 +212,22 @@ namespace fish {
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
-						if (CheckCollisionPointRec(GetMousePosition(), rec1M)) {
-							if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+
+						//play button
+						if (CheckCollisionPointRec(GetMousePosition(), rec1M)){
+							if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+								playState = false;
+							}
+							else {
+								playState = true;
+							}
+							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								Modes = GameplayModes::Descend;
 								initFishGameplay();
 							}
+						}
+						else {
+							playState = true;
 						}
 
 						//open button
@@ -319,15 +338,25 @@ namespace fish {
 			switch (Stage) {
 			case GameStage::Main:
 #if _DEBUG
-				DrawRectangle(0, GetScreenHeight(), 100, 800, RED);
+				DrawRectangleLines(0, GetScreenHeight(), 100, 800, RED);
 #endif
 				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex);
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
 						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
-						DrawRectangle(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
+#if _DEBUG
+
+						DrawRectangleLines(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
 							static_cast<int>(rec1M.height), RED);
+#endif
+						if (playState) {
+							DrawTexture(playTex1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+						}
+						else {
+							DrawTexture(playTex2, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+						}
+
 						shop::drawOpen(shop.openSize, shop.openPos, shop.closeTex1, shop.closeTex2, shop.openState);
 					}
 					else {
@@ -341,11 +370,11 @@ namespace fish {
 					break;
 				case GameplayModes::Descend:
 #if _DEBUG
-					DrawRectangle(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width),
+					DrawRectangleLines(static_cast<int>(stop1.x), static_cast<int>(stop1.y), static_cast<int>(stop1.width),
 						static_cast<int>(stop1.height), YELLOW);
-					DrawRectangle(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width),
+					DrawRectangleLines(static_cast<int>(stop2.x), static_cast<int>(stop2.y), static_cast<int>(stop2.width),
 						static_cast<int>(stop2.height), YELLOW);
-					DrawRectangle(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width),
+					DrawRectangleLines(static_cast<int>(stop3.x), static_cast<int>(stop3.y), static_cast<int>(stop3.width),
 						static_cast<int>(stop3.height), YELLOW);
 #endif
 
