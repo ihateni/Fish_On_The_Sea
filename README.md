@@ -33,9 +33,15 @@ A calming fishing game created in raylib and c++, please have a good time.
  
  # `instructions`
 >Use the mouse to intect in the menus
+>
 >Once inside the game you can pause with the letter P.
+>
 >Use the mouse to move your character.
+>
 >Colect fish.
+>
 >Buy upgrades.
+>
 >Take your time to win.
+>
 
