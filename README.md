@@ -1,6 +1,6 @@
 # Fish_On_The_Sea
 
-![Fish](Fish%On%The%Sea/res/Background/title.png)
+![Fish](Fish%20On%20The%20Sea/res/Background/title.png)
 
 # **` Fish_On_The_Sea`** a calming fishing game made in Raylib.
 
