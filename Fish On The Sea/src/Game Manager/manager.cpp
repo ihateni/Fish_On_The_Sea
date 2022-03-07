@@ -6,6 +6,7 @@
 #include "Screens/Gameplay/gameplay.h"
 #include "Screens/Credits/credits.h"
 #include "Screens/Controls/controls.h"
+#include "Screens/Pause/pause.h"
 
 namespace fish {
 	namespace gameManager {
@@ -21,7 +22,7 @@ namespace fish {
 		static 	void Init();
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.6.10");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.7");
 
 			Init();
 
@@ -50,6 +51,9 @@ namespace fish {
 			case GameScreen::End:
 				playing = false;
 				break;
+			case GameScreen::Pause:
+				pause::pauseUpdate();
+				break;
 			}
 		}
 
@@ -58,12 +62,15 @@ namespace fish {
 			gameplay::gameplayInit();
 			credits::creditsInit();
 			controls::controlsInit(); 
+			pause::pauseInit();
 			InitAudioDevice();
 		}
 
 		void deInit() {
 			menu::menuDeInit();
 			credits::creditsDeInit();
+			controls::controlsDeInit();
+			pause::pauseDeInit();
 			CloseAudioDevice();
 		}
 	}

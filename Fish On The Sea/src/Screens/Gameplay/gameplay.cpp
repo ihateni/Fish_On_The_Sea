@@ -34,10 +34,16 @@ namespace fish {
 		int points;
 		int fishCounter;
 		bool playState;
+		bool menuState;
+
+		float boxPosX;
+		float boxPosY;
+
 		Sound poing;
 		Music music;
 
 		static Rectangle rec1M;
+		static Rectangle rec2M;
 		static Rectangle stop1;
 		static Rectangle stop2;
 		static Rectangle stop3;
@@ -46,6 +52,9 @@ namespace fish {
 		Texture2D playTex1;
 		Texture2D playTex2;
 		Texture2D bigBox;
+		Texture2D menuTex1;
+		Texture2D menuTex2;
+
 		static Font font;
 
 		void gameplayInit() {
@@ -63,10 +72,15 @@ namespace fish {
 			playState = true;
 			bigBox = LoadTexture("res/Gameplay_buttons/box_large.png");
 			font = LoadFont("res/Font/aAsianNinja.otf");
+			menuTex1 = LoadTexture("res/Gameplay_buttons/menu1.png");
+			menuTex2 = LoadTexture("res/Gameplay_buttons/menu2.png");
+			menuState = true; 
 
 #if _DEBUG
 			points = 100000;
 #endif
+			boxPosX = 0;
+			boxPosY = 0;
 
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
@@ -83,6 +97,11 @@ namespace fish {
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width/2;
 			rec1M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
+
+			rec2M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
+			rec2M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
+			rec2M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
+			rec2M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
 
 			stop1.height = static_cast<float>(GetScreenHeight()) / 20;
 			stop1.width = static_cast<float>(GetScreenWidth());
@@ -121,6 +140,9 @@ namespace fish {
 					break;
 				case GameplayModes::Descend:
 					player::fall(player.position.y);
+					player::fall(boxPosY);
+					player::fall(rec2M.y);
+
 					player::movement(player.position.x);
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
@@ -153,6 +175,8 @@ namespace fish {
 				case GameplayModes::Ascend:
 					player::movement(player.position.x);
 					player::ascension(player.position.y);
+					player::ascension(boxPosY);
+					player::ascension(rec2M.y);
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::movement(fish[i].position.x, fish[i].size.y, fish[i].dir);
@@ -327,7 +351,26 @@ namespace fish {
 				break;
 			case GameStage::Pause:
 				if (IsKeyReleased(KEY_P)) Stage = GameStage::Main;
-				break;
+
+
+				if (CheckCollisionPointRec(GetMousePosition(), rec2M)) {
+					if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+						menuState = false;
+					}
+					else {
+						menuState = true;
+					}
+					if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
+						gameManager::Screens = gameManager::GameScreen::Menu;
+						gameplayInit();
+						Stage = GameStage::Main;
+					}
+
+					else {
+						menuState = true;
+					}
+					break;
+				}
 			case  GameStage::Victory:
 				break;
 			}
@@ -348,7 +391,6 @@ namespace fish {
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
-						//DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
 						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, 35, 2, BLACK);
 
 #if _DEBUG
@@ -401,17 +443,30 @@ namespace fish {
 					break;
 				}
 				break;
-				EndMode2D();
+				//EndMode2D();
 				break;
 			case GameStage::Pause:
-				DrawText("Press P to play again", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 9, 40, RED);
-				DrawText("Press enter to go to menu", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 6, 40, RED);
-				DrawTexture(bigBox, 0, 0, WHITE);
+				DrawTexture(bigBox, boxPosX, boxPosY, WHITE);
+				DrawTextEx(font, "Press P ro go back to the game", { 23,70 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,95 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press the sound icon to mute or un mute", { 23,140 }, 24, 3, BLACK);
+				DrawTextEx(font, "you can only use the mute and menu options", { 23,165 }, 24, 3, BLACK);
+				DrawTextEx(font, "Once the hand is at the top", { 23,190 }, 24, 3, BLACK);
+
+				if (menuState) {
+					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+				}
+				else {
+					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+				}
+
 
 				break;
 			case  GameStage::Victory:
 				break;
 			}
+			EndMode2D();
+
 			EndDrawing();
 		}
 

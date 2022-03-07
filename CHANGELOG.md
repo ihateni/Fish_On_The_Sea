@@ -1,5 +1,16 @@
 changelog
 ---------
+
+Release actual:    Fish_On_The_Sea 0.7 (07 Marzo 2022)
+-------------------------------------------------------------------------
+Changes:
+-LFS added
+-Credits added
+-Controls added
+-More textures
+-Custom font
+-Pause funtion
+-------------------------------------------------------------------------
 Release actual:    Fish_On_The_Sea 0.6 (06 Marzo 2022)
 -------------------------------------------------------------------------
 Changes:

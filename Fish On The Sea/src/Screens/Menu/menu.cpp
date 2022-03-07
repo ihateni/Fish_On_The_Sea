@@ -197,7 +197,7 @@ namespace fish {
 
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawTextEx(font, "V0.6.10", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+			DrawTextEx(font, "V0.7", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
 
 			EndDrawing();
 		}
