@@ -32,9 +32,6 @@
     <Filter Include="Screens\Controls">
       <UniqueIdentifier>{bfc42826-1723-4b3a-8950-6273facd4678}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Screens\Pause">
-      <UniqueIdentifier>{c8d8cb69-0db9-4fd8-b9f1-23d001112c95}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
@@ -62,9 +59,6 @@
     <ClCompile Include="src\Screens\Controls\controls.cpp">
       <Filter>Screens\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="src\Screens\Pause\pause.cpp">
-      <Filter>Screens\Pause</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game Manager\manager.h">
@@ -90,9 +84,6 @@
     </ClInclude>
     <ClInclude Include="src\Screens\Controls\controls.h">
       <Filter>Screens\Controls</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Screens\Pause\pause.h">
-      <Filter>Screens\Pause</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
