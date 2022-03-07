@@ -230,7 +230,7 @@ namespace fish {
 							case 1:
 								if (fishCounter < 3) {
 									if (fish[i].active == true) {
-										fishs::deactivate(fish[i].active, points, fish[i].type);
+										fishs::deactivate(fish[i].active, points, fish[i].type, fish[i].area);
 										fishCounter++;
 									}
 								}

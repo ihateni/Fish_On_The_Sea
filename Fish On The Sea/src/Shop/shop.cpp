@@ -4,9 +4,9 @@
 namespace fish {
 	namespace shop {
 
-		int fonstSize = 25;
-		int fonstSizeBig = 40;
-		int fonstSeparation = 3;
+		float fonstSize = 25;
+		float fonstSizeBig = 40;
+		float fonstSeparation = 3;
 
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
