@@ -61,9 +61,10 @@ namespace fish {
 		static Texture2D sphere;
 		static Font font;
 
+		static	Sound click;
+
 		void gameplayInit() {
-			poing = LoadSound("res/Player_colition.wav");
-			music = LoadMusicStream("res/melodic-techno-03-extended-version-moogify-9867.mp3");
+			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 			sphere = LoadTexture("res/Player/sphere.png");
 
 
@@ -294,6 +295,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								Modes = GameplayModes::Descend;
+								PlaySound(click);
+
 								initFishGameplay();
 							}
 						}
@@ -311,6 +314,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								activeShop = !activeShop;
+								PlaySound(click);
+
 							}
 						}
 						else {
@@ -328,6 +333,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								activeShop = !activeShop;
+								PlaySound(click);
+
 							}
 						}
 						else {
@@ -345,6 +352,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								shop::decreaseItem(shop.item);
+								PlaySound(click);
+
 							}
 						}
 						else {
@@ -362,6 +371,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								shop::increaseItem(shop.item);
+								PlaySound(click);
+
 							}
 						}
 						else {
@@ -379,6 +390,8 @@ namespace fish {
 							}
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								shop::upgradeItem(shop.item, player.capasity, player.reach, points,player.evolution);
+								PlaySound(click);
+
 							}
 						}
 						else {
@@ -408,6 +421,8 @@ namespace fish {
 					}
 					if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 						gameManager::Screens = gameManager::GameScreen::Menu;
+						PlaySound(click);
+
 						gameplayInit();
 						Stage = GameStage::Main;
 					}

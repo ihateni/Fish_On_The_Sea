@@ -16,8 +16,11 @@ namespace fish {
 		static Texture2D backButton2;
 
 		static Font font;
+		static	Sound click;
 
 		void victoryInit() {
+			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
+
 			rec1CR.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec1CR.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec1CR.x = 10;
@@ -47,6 +50,8 @@ namespace fish {
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 					gameManager::Screens = gameManager::GameScreen::Menu;
+					PlaySound(click);
+
 				}
 			}
 			else {
@@ -80,6 +85,7 @@ namespace fish {
 			UnloadTexture(backButton2);
 
 			UnloadFont(font);
+			UnloadSound(click);
 
 		}
 	}

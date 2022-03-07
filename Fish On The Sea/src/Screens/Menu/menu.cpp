@@ -36,7 +36,11 @@ namespace fish {
 
 		static Font font;
 
+		static	Sound click;
+
 		void menuInit() {
+			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
+			
 			play1 = LoadTexture("res/Menu_buttons/play1.png");
 			play2 = LoadTexture("res/Menu_buttons/play2.png");
 			playState = true;
@@ -83,7 +87,6 @@ namespace fish {
 			menuDraw();
 
 			mousePoint = GetMousePosition();
-
 			//play button
 			if (CheckCollisionPointRec(mousePoint, rec1M)) {
 				if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
@@ -95,6 +98,7 @@ namespace fish {
 
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 					gameManager::Screens = gameManager::GameScreen::Game;
+					PlaySound(click);
 				}
 			}
 			else {
@@ -112,6 +116,8 @@ namespace fish {
 				}
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 					gameManager::Screens = gameManager::GameScreen::Credits;
+					PlaySound(click);
+
 				}
 			}
 			else {
@@ -129,6 +135,8 @@ namespace fish {
 				}
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 					gameManager::Screens = gameManager::GameScreen::Controls;
+					PlaySound(click);
+
 				}
 			}
 			else {
@@ -146,6 +154,8 @@ namespace fish {
 				}
 				if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 					gameManager::Screens = gameManager::GameScreen::End;
+					PlaySound(click);
+
 				}
 			}
 			else {
@@ -197,7 +207,7 @@ namespace fish {
 
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawTextEx(font, "V0.8", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+			DrawTextEx(font, "V1.0", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
 
 			EndDrawing();
 		}
@@ -215,6 +225,8 @@ namespace fish {
 			UnloadTexture(title);
 			UnloadFont(font);
 		
+			UnloadSound(click);
+
 		}
 	}
 }

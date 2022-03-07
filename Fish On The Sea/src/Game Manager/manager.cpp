@@ -21,13 +21,18 @@ namespace fish {
 		static void deInit();
 		static 	void Init();
 
+		static Music music1;
+
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V0.8");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V1.0");
 
 			Init();
+			music1 = LoadMusicStream("res/Sound/melodyloops-preview-china-dream-10m30s.mp3");
+			PlayMusicStream(music1);
 
 			while (!WindowShouldClose() && playing) {
 				change();
+				UpdateMusicStream(music1);
 
 			}
 			deInit();
@@ -72,6 +77,8 @@ namespace fish {
 			credits::creditsDeInit();
 			controls::controlsDeInit();
 			victory::victoryDeInit();
+			UnloadMusicStream(music1);
+
 			CloseAudioDevice();
 		}
 	}
