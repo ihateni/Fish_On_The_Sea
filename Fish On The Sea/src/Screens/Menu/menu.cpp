@@ -58,7 +58,6 @@ namespace fish {
 
 			font = LoadFont("res/Font/aAsianNinja.otf");
 
-
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
@@ -198,7 +197,7 @@ namespace fish {
 			
 			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
 
-			DrawTextEx(font, "V0.6.3", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+			DrawTextEx(font, "V0.6.8", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
 
 			EndDrawing();
 		}

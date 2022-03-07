@@ -46,6 +46,7 @@ namespace fish {
 		Texture2D playTex1;
 		Texture2D playTex2;
 
+		static Font font;
 
 		void gameplayInit() {
 			poing = LoadSound("res/Player_colition.wav");
@@ -60,6 +61,8 @@ namespace fish {
 			playTex1 = LoadTexture("res/Menu_buttons/play1.png");
 			playTex2 = LoadTexture("res/Menu_buttons/play2.png");
 			playState = true;
+			font = LoadFont("res/Font/aAsianNinja.otf");
+
 #if _DEBUG
 			points = 100000;
 #endif
@@ -344,7 +347,9 @@ namespace fish {
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
-						DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
+						//DrawText(TextFormat("Points: %i", points), 280, 50, 30, MAROON);
+						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, 35, 2, BLACK);
+
 #if _DEBUG
 
 						DrawRectangleLines(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
