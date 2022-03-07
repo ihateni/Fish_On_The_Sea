@@ -74,15 +74,15 @@ namespace fish {
 				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
 			}
 
-			DrawTextEx(font, "Made by : Martin Concetti", { 23,70 }, 26, 3, BLACK);
-			DrawTextEx(font, "With help from Raylib examples", { 23,95 }, 26, 3, BLACK);
-			DrawTextEx(font, "Art by: Leonardo Perugini", { 23,120 }, 26, 3, BLACK);
-			DrawTextEx(font, "Programs use: PaintTool SAI, VS 2019", { 23,145 }, 26, 3, BLACK);
-			DrawTextEx(font, "Git, Git kraken.", { 23,170 }, 25, 3, BLACK);
-			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { 23,195 }, 26, 3, BLACK);
-			DrawTextEx(font, "melodyloops,github,google drive.", { 23,220 }, 26, 3, BLACK);
-			DrawTextEx(font, "For more extensive information please", { 23,245 }, 26, 3, BLACK);
-			DrawTextEx(font, "consult the readme docuemnt", { 23,270 }, 26, 3, BLACK);
+			DrawTextEx(font, "Use your mind hand to colect fish", { 23,70 }, 26, 3, BLACK);
+			DrawTextEx(font, "this will turn the fish into QI points", { 23,95 }, 26, 3, BLACK);
+			DrawTextEx(font, "Diferent fish give diferent QI amounts", { 23,140 }, 26, 3, BLACK);
+			DrawTextEx(font, "Use your mause to guide the hand", { 23,232 }, 26, 3, BLACK);
+			DrawTextEx(font, "Open and close the upgrade store by", { 23,324 }, 25, 3, BLACK);
+			DrawTextEx(font, "pressing the X", { 23,344 }, 26, 3, BLACK);
+			DrawTextEx(font, "Press P for pause.", { 23,419 }, 26, 3, BLACK);
+			DrawTextEx(font, "Reach the bottomb of the map and", { 23,511 }, 26, 3, BLACK);
+			DrawTextEx(font, "face the heavens!", { 23,531 }, 26, 3, BLACK);
 
 
 			EndDrawing();

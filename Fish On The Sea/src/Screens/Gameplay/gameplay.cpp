@@ -45,7 +45,7 @@ namespace fish {
 		Texture2D background;
 		Texture2D playTex1;
 		Texture2D playTex2;
-
+		Texture2D bigBox;
 		static Font font;
 
 		void gameplayInit() {
@@ -58,9 +58,10 @@ namespace fish {
 			fishCounter = 0;
 			points = 0;
 			background = LoadTexture("res/Background/Background.png");
-			playTex1 = LoadTexture("res/Menu_buttons/play1.png");
-			playTex2 = LoadTexture("res/Menu_buttons/play2.png");
+			playTex1 = LoadTexture("res/Gameplay_buttons/play1.png");
+			playTex2 = LoadTexture("res/Gameplay_buttons/play2.png");
 			playState = true;
+			bigBox = LoadTexture("res/Gameplay_buttons/box_large.png");
 			font = LoadFont("res/Font/aAsianNinja.otf");
 
 #if _DEBUG
@@ -405,6 +406,8 @@ namespace fish {
 			case GameStage::Pause:
 				DrawText("Press P to play again", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 9, 40, RED);
 				DrawText("Press enter to go to menu", static_cast<int>(GetScreenWidth()) / 9, static_cast<int>(GetScreenHeight()) / 6, 40, RED);
+				DrawTexture(bigBox, 0, 0, WHITE);
+
 				break;
 			case  GameStage::Victory:
 				break;
