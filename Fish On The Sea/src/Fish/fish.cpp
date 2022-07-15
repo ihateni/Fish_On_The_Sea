@@ -139,7 +139,7 @@ namespace fish {
 
 			}
 
-			if (fishPosX <= 0 || fishPosX >= static_cast<float>(GetScreenWidth()) - (fishWidth + fishWidth / 3)) {
+			if (fishPosX <= 0 || fishPosX >= static_cast<float>(GetScreenWidth()) - (fishWidth + fishWidth / 2)) {			
 				dir = !dir;
 			}
 		}
