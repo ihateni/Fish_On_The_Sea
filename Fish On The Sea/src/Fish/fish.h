@@ -5,6 +5,7 @@
 
 namespace fish {
 	namespace fishs {
+
 		struct Fish {
 			Vector2 position;
 			Vector2 size;

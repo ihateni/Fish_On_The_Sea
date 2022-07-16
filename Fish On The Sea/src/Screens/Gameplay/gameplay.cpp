@@ -266,6 +266,7 @@ namespace fish {
 							fishs::movement(fish3[i].position.x, fish3[i].size.y, fish3[i].dir);
 						}
 					}
+
 					if (player.position.y <= posYSave) {
 						Modes = GameplayModes::Shop;
 						player.position.y = posYSave;

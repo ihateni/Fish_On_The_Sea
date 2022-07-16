@@ -4,6 +4,8 @@
 namespace fish {
 	namespace fishs {
 
+		static int speed = 100;
+
 		void initFish(Vector2& fishSize, Vector2& fishPosition, bool& active, int& type, bool& dir, Texture2D& small1, Texture2D& small2,
 			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
 			int temp = GetRandomValue(1, 2);
@@ -40,8 +42,8 @@ namespace fish {
 				break;
 			}
 
-			temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
-			temp2 = GetRandomValue(GetScreenHeight(), GetScreenHeight() * 2 - fishSize.y);
+			temp = GetRandomValue(0, GetScreenWidth() - static_cast<int>(fishSize.x));
+			temp2 = GetRandomValue(GetScreenHeight(), GetScreenHeight() * 2 - static_cast<int>(fishSize.y));
 			fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 
 		}
@@ -62,7 +64,7 @@ namespace fish {
 			small2 = LoadTexture("res/Fish_textures/fish_S1_invert.png");
 
 			medium1 = LoadTexture("res/Fish_textures/fish_M1.png");
-			medium2 = LoadTexture("res/Fish_textures/fish_S1_invert.png");
+			medium2 = LoadTexture("res/Fish_textures/fish_M1_invert.png");
 
 			big1 = LoadTexture("res/Fish_textures/fish_L1.png");
 			big2 = LoadTexture("res/Fish_textures/fish_L1_invert.png");
@@ -82,8 +84,8 @@ namespace fish {
 				break;
 			}
 
-			temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
-			temp2 = GetRandomValue(GetScreenHeight() * 2 - fishSize.y, GetScreenHeight() * 3 - fishSize.y);
+			temp = GetRandomValue(0, GetScreenWidth() - static_cast<int>(fishSize.x));
+			temp2 = GetRandomValue(GetScreenHeight() * 2 - static_cast<int>(fishSize.y), GetScreenHeight() * 3 - static_cast<int>(fishSize.y));
 			fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 
 		}
@@ -125,21 +127,28 @@ namespace fish {
 			}
 
 
-			temp = GetRandomValue(0, GetScreenWidth() - fishSize.x);
-			temp2 = GetRandomValue(GetScreenHeight() * 3 - fishSize.y, GetScreenHeight() * 4 - fishSize.y);
+			temp = GetRandomValue(0, GetScreenWidth() - static_cast<int>(fishSize.x));
+			temp2 = GetRandomValue(GetScreenHeight() * 3 - static_cast<int>(fishSize.y), GetScreenHeight() * 4 - static_cast<int>(fishSize.y));
 			fishPosition = { static_cast<float>(temp), static_cast<float>(temp2) };
 
 		}
 		void movement(float& fishPosX, float& fishWidth, bool& dir) {
 			if (dir == true) {
-				fishPosX -= 50 * GetFrameTime();
+				fishPosX -= speed * GetFrameTime();
 			}
 			else {
-				fishPosX += 50 * GetFrameTime();
+				fishPosX += speed * GetFrameTime();
 
 			}
 
-			if (fishPosX <= 0 || fishPosX >= static_cast<float>(GetScreenWidth()) - (fishWidth + fishWidth / 2)) {			
+			if (fishPosX <= 0 || fishPosX >= static_cast<float>(GetScreenWidth()) - (fishWidth + fishWidth / 2)) {
+				if (dir == true) {
+					fishPosX = fishPosX + (fishWidth );
+				}
+				else {
+					fishPosX = fishPosX - (fishWidth );
+
+				}
 				dir = !dir;
 			}
 		}
