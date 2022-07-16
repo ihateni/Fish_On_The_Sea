@@ -32,7 +32,7 @@ namespace fish {
 		}
 
 		void ascension(float& playerPosY) {
-			//playerPosY -= 200 * GetFrameTime();
+			playerPosY -= 200 * GetFrameTime();
 
 		}
 
