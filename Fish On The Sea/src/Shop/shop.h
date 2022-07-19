@@ -55,7 +55,6 @@ namespace fish {
 		void decreaseItem(int& item);
 		void drawBuy(Vector2& buySize, Vector2& buyPos, Texture2D& buyTex1, Texture2D& buyTex2, bool& buytState);
 		void upgradeItem(int& item, int& capasity, int& reach, int& points, int& evolution);
-		//void shopDeInit();
 	}
 }
 #endif

@@ -74,7 +74,8 @@ namespace fish {
 
 		void drawShop(Vector2& mainSize, Vector2& mainPos, Texture2D& mainTex) {
 #if _DEBUG
-			DrawRectangleLines(static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), static_cast<int>(mainSize.x), static_cast<int>(mainSize.y), ORANGE);
+			DrawRectangleLines(static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), static_cast<int>(mainSize.x), static_cast<int>(mainSize.y),
+				ORANGE);
 #endif
 			DrawTexture(mainTex, static_cast<int>(mainPos.x), static_cast<int>(mainPos.y), WHITE);
 
@@ -82,7 +83,8 @@ namespace fish {
 
 		void drawOpen(Vector2& openSize, Vector2& openPos, Texture2D& closeTex1, Texture2D& closeTex2, bool& openState) {
 #if _DEBUG
-			DrawRectangleLines(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y), ORANGE);
+			DrawRectangleLines(static_cast<int>(openPos.x), static_cast<int>(openPos.y), static_cast<int>(openSize.x), static_cast<int>(openSize.y),
+				ORANGE);
 #endif
 			if (openState) {
 				DrawTexture(closeTex1, static_cast<int>(openPos.x), static_cast<int>(openPos.y), WHITE);
@@ -95,7 +97,8 @@ namespace fish {
 
 		void drawClose(Vector2& closeSize, Vector2& closePos, Texture2D& closeTex1, Texture2D& closeTex2, bool& closeState) {
 #if _DEBUG
-			DrawRectangleLines(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y), RED);
+			DrawRectangleLines(static_cast<int>(closePos.x), static_cast<int>(closePos.y), static_cast<int>(closeSize.x), static_cast<int>(closeSize.y),
+				RED);
 #endif
 			if (closeState) {
 				DrawTexture(closeTex1, static_cast<int>(closePos.x), static_cast<int>(closePos.y), WHITE);
