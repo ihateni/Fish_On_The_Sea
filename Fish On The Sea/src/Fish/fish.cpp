@@ -32,7 +32,7 @@ namespace fish {
 				fishSize = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenWidth()) / 10 };
 				break;
 			case 2:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 7 /*20*/,static_cast<float>(GetScreenWidth()) / 20 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 7,static_cast<float>(GetScreenWidth()) / 20 };
 
 				break;
 			case 3:
@@ -74,7 +74,7 @@ namespace fish {
 				fishSize = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenWidth()) / 10 };
 				break;
 			case 2:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 7 /*20*/,static_cast<float>(GetScreenWidth()) / 20 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 7,static_cast<float>(GetScreenWidth()) / 20 };
 
 				break;
 			case 3:
@@ -116,7 +116,7 @@ namespace fish {
 				fishSize = { static_cast<float>(GetScreenWidth()) / 6,static_cast<float>(GetScreenWidth()) / 10 };
 				break;
 			case 2:
-				fishSize = { static_cast<float>(GetScreenWidth()) / 7 /*20*/,static_cast<float>(GetScreenWidth()) / 20 };
+				fishSize = { static_cast<float>(GetScreenWidth()) / 7,static_cast<float>(GetScreenWidth()) / 20 };
 
 				break;
 			case 3:
