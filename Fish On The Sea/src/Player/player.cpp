@@ -6,8 +6,8 @@ namespace fish {
 		float  direction;
 		int evoY = 100;
 
-		int fallSpeed = 500;
-		int ascensionSpeed = 200;
+		int fallSpeed;
+		int ascensionSpeed;
 
 		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach, int& evolution, Texture2D& playerTex, Texture2D& evoTex1
 			, Texture2D& evoTex2, Texture2D& evoTex3) {
@@ -22,7 +22,8 @@ namespace fish {
 			evoTex1 = LoadTexture("res/Player/main1.png");
 			evoTex2 = LoadTexture("res/Player/main2.png");
 			evoTex3 = LoadTexture("res/Player/main3.png");
-
+			fallSpeed = 500;
+			ascensionSpeed = 200;
 		}
 
 		void movement(float& playerPosX) {

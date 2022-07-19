@@ -8,17 +8,11 @@ namespace fish {
 		float fonstSizeBig = 40;
 		float fonstSeparation = 3;
 
-		int price1 = 100;
-		int price2 = 500;
-		int price3 = 1300;
+		int price[] = { 100, 500, 1300, 600, 1500, 2000, 200, 2000, 3000};
+		float textPosX[] = { 70, 220};
+		float textPosY[] = { 135, 160, 185, 210, 215, 240, 290, 400};
 
-		int price4 = 600;
-		int price5 = 1500;
-		int price6 = 2000;
-
-		int price7 = 200;
-		int price8 = 2000;
-		int price9 = 3000;
+		int drawTextureOffset = 43;
 
 		void initShop(Vector2& mainSize, Vector2& mainPos, Vector2& openSize, Vector2& openPos, Vector2& closeSize, Vector2& closePos,
 			Vector2& leftArrowSize, Vector2& leftArrowPos, Vector2& rightArrowSize, Vector2& rightArrowPos, Vector2& itemSize, Vector2& itemPos,
@@ -116,10 +110,10 @@ namespace fish {
 				static_cast<int>(leftArrowSize.y), RED);
 #endif
 			if (leftState) {
-				DrawTexture(leftTex1, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - 43, WHITE);
+				DrawTexture(leftTex1, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - drawTextureOffset, WHITE);
 			}
 			else {
-				DrawTexture(leftTex2, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - 43, WHITE);
+				DrawTexture(leftTex2, static_cast<int>(leftArrowPos.x), static_cast<int>(leftArrowPos.y) - drawTextureOffset, WHITE);
 			}
 		}
 
@@ -130,10 +124,10 @@ namespace fish {
 				static_cast<int>(rightArrowSize.y), RED);
 #endif
 			if (rightState) {
-				DrawTexture(rightTex1, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - 43, WHITE);
+				DrawTexture(rightTex1, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - drawTextureOffset, WHITE);
 			}
 			else {
-				DrawTexture(rightTex2, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - 43, WHITE);
+				DrawTexture(rightTex2, static_cast<int>(rightArrowPos.x), static_cast<int>(rightArrowPos.y) - drawTextureOffset, WHITE);
 			}
 		}
 
@@ -145,28 +139,28 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-				DrawTextEx(font, "hand to catch more fish", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "hand to catch more fish", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
 				switch (capasity) {
 				case 1:
-					DrawTextEx(font, TextFormat("QI: %i", price1), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[0]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, TextFormat("QI: %i", price2), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[1]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, TextFormat("QI: %i", price3), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[2]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "A hand Worthy of the treasure", { 70,185 }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "A hand Worthy of the treasure", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
 
-					DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
 					break;
 				default:
 					break;
@@ -179,29 +173,29 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-				DrawTextEx(font, "reach to reach deeper waters", { 70,160 }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "reach to reach deeper waters", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
 				switch (reach) {
 				case 1:
-					DrawTextEx(font, TextFormat("QI: %i", price4), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[3]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, TextFormat("QI: %i", price5), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[4]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, TextFormat("QI: %i", price6), { 70,185 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[5]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "A mind that will survive the ", { 70,185 }, fonstSize, fonstSeparation, GOLD);
-					DrawTextEx(font, "world", { 70,210 }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "A mind that will survive the ", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "world", { textPosX[0],textPosY[3] }, fonstSize, fonstSeparation, GOLD);
 
-					DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
 					break;
 				default:
 					break;
@@ -215,37 +209,37 @@ namespace fish {
 #endif		
 				switch (evolution) {
 				case 1:
-					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "into a golden core to reach", { 70,160 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { 70,185 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price7), { 70,210 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "into a golden core to reach", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[6]), { textPosX[0],textPosY[3] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "1 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, "Focus a great amount of Qi", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your scales and claws to reach", { 70,160 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { 70,185 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price8), { 70,210 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your scales and claws to reach", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[7]), { textPosX[0],textPosY[3] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "2 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
-				case 3:
-					DrawTextEx(font, "No longer a sad fish but a", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "perfect dragon,your body  ", { 70,160 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "will survive the heavenly ", { 70,185 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "tribulation, your are almost", { 70,215 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "ready", { 70,240 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price9), { 70,290 }, fonstSizeBig, fonstSeparation, BLACK);
+				case 3: 		
+					DrawTextEx(font, "No longer a sad fish but a", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "perfect dragon,your body  ", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "will survive the heavenly ", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "tribulation, your are almost", { textPosX[0],textPosY[4] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "ready", { textPosX[0],textPosY[5] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[8]), { textPosX[0],textPosY[6] }, fonstSizeBig, fonstSeparation, BLACK);
 
-					DrawTextEx(font, "3 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "Finish your training", { 70,135 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "Reach forthe lost treasure", { 70,160 }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "Free yourself from this ocean", { 70,185 }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "Finish your training", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "Reach forthe lost treasure", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+					DrawTextEx(font, "Free yourself from this ocean", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
 
-					DrawTextEx(font, "4 / 4", { 220,400 }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
 					break;
 				default:
 					break;
@@ -278,10 +272,10 @@ namespace fish {
 				static_cast<int>(butSize.y), RED);
 #endif
 			if (buytState) {
-				DrawTexture(buyTex1, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - 43, WHITE);
+				DrawTexture(buyTex1, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - drawTextureOffset, WHITE);
 			}
 			else {
-				DrawTexture(buyTex2, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - 43, WHITE);
+				DrawTexture(buyTex2, static_cast<int>(buyPos.x), static_cast<int>(buyPos.y) - drawTextureOffset, WHITE);
 			}
 		}
 
@@ -290,27 +284,27 @@ namespace fish {
 			case 1:
 				switch (capasity) {
 				case 1:
-					if (points > price1) {
+					if (points > price[0]) {
 						std::cout << " it works" << std::endl;
 
 						capasity = 2;
-						points = points - 50;
+						points = points - price[0];
 					}
 					break;
 				case 2:
-					if (points > price2) {
+					if (points > price[1]) {
 						std::cout << " it works" << std::endl;
 
 						capasity = 3;
-						points = points - 50;
+						points = points - price[1];
 					}
 					break;
 				case 3:
-					if (points > price3) {
+					if (points > price[2]) {
 						std::cout << " it works" << std::endl;
 
 						capasity = 4;
-						points = points - 50;
+						points = points - price[2];
 					}
 				case 4:
 					capasity = 4;
@@ -323,27 +317,27 @@ namespace fish {
 			case 2:
 				switch (reach) {
 				case 1:
-					if (points > price4) {
+					if (points > price[3]) {
 						std::cout << " it works2" << std::endl;
 
 						reach = 2;
-						points = points - 50;
+						points = points - price[3];
 					}
 					break;
 				case 2:
-					if (points > price5) {
+					if (points > price[4]) {
 						std::cout << " it works2" << std::endl;
 
 						reach = 3;
-						points = points - 50;
+						points = points - price[4];
 					}
 					break;
 				case 3:
-					if (points > price6) {
+					if (points > price[5]) {
 						std::cout << " it works2" << std::endl;
 
 						reach = 4;
-						points = points - 50;
+						points = points - price[5];
 					}
 					break;
 				case 4:
@@ -359,27 +353,27 @@ namespace fish {
 			case 3:
 				switch (evolution) {
 				case 1:
-					if (points > price7) {
+					if (points > price[6]) {
 						std::cout << " it works2" << std::endl;
 
 						evolution = 2;
-						points = points - 50;
+						points = points - price[6];
 					}
 					break;
 				case 2:
-					if (points > price8) {
+					if (points > price[7]) {
 						std::cout << " it works2" << std::endl;
 
 						evolution = 3;
-						points = points - 50;
+						points = points - price[7];
 					}
 					break;
 				case 3:
-					if (points > price9) {
+					if (points > price[8]) {
 						std::cout << " it works2" << std::endl;
 
 						evolution = 4;
-						points = points - 50;
+						points = points - price[8];
 					}
 					break;
 				case 4:
