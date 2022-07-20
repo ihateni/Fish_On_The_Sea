@@ -6,7 +6,7 @@ namespace fish {
 
 		float fonstSize = 25;
 		float fonstSizeBig = 40;
-		float fonstSeparation = 3;
+		float fontSpacing = 3;
 
 		int price[] = { 100, 500, 1300, 600, 1500, 2000, 200, 2000, 3000};
 		float textPosX[] = { 70, 220};
@@ -139,28 +139,28 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-				DrawTextEx(font, "hand to catch more fish", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+				DrawTextEx(font, "hand to catch more fish", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
 				switch (capasity) {
 				case 1:
-					DrawTextEx(font, TextFormat("QI: %i", price[0]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[0]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, TextFormat("QI: %i", price[1]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[1]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, TextFormat("QI: %i", price[2]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[2]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "A hand Worthy of the treasure", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "A hand Worthy of the treasure", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, GOLD);
 
-					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, GOLD);
 					break;
 				default:
 					break;
@@ -173,29 +173,29 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-				DrawTextEx(font, "reach to reach deeper waters", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
+				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+				DrawTextEx(font, "reach to reach deeper waters", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
 				switch (reach) {
 				case 1:
-					DrawTextEx(font, TextFormat("QI: %i", price[3]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[3]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, TextFormat("QI: %i", price[4]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[4]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 3:
-					DrawTextEx(font, TextFormat("QI: %i", price[5]), { textPosX[0],textPosY[2] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[5]), { textPosX[0],textPosY[2] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "A mind that will survive the ", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
-					DrawTextEx(font, "world", { textPosX[0],textPosY[3] }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "A mind that will survive the ", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, GOLD);
+					DrawTextEx(font, "world", { textPosX[0],textPosY[3] }, fonstSize, fontSpacing, GOLD);
 
-					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, GOLD);
 					break;
 				default:
 					break;
@@ -209,37 +209,37 @@ namespace fish {
 #endif		
 				switch (evolution) {
 				case 1:
-					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "into a golden core to reach", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price[6]), { textPosX[0],textPosY[3] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "into a golden core to reach", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[6]), { textPosX[0],textPosY[3] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "1 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 2:
-					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your scales and claws to reach", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price[7]), { textPosX[0],textPosY[3] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "Focus a great amount of Qi", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "your scales and claws to reach", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "your next stage of evolution", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[7]), { textPosX[0],textPosY[3] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "2 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 3: 		
-					DrawTextEx(font, "No longer a sad fish but a", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "perfect dragon,your body  ", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "will survive the heavenly ", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "tribulation, your are almost", { textPosX[0],textPosY[4] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "ready", { textPosX[0],textPosY[5] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, TextFormat("QI: %i", price[8]), { textPosX[0],textPosY[6] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "No longer a sad fish but a", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "perfect dragon,your body  ", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "will survive the heavenly ", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "tribulation, your are almost", { textPosX[0],textPosY[4] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "ready", { textPosX[0],textPosY[5] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, TextFormat("QI: %i", price[8]), { textPosX[0],textPosY[6] }, fonstSizeBig, fontSpacing, BLACK);
 
-					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, BLACK);
+					DrawTextEx(font, "3 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, BLACK);
 					break;
 				case 4:
-					DrawTextEx(font, "Finish your training", { textPosX[0],textPosY[0] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "Reach forthe lost treasure", { textPosX[0],textPosY[1] }, fonstSize, fonstSeparation, BLACK);
-					DrawTextEx(font, "Free yourself from this ocean", { textPosX[0],textPosY[2] }, fonstSize, fonstSeparation, GOLD);
+					DrawTextEx(font, "Finish your training", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "Reach forthe lost treasure", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, BLACK);
+					DrawTextEx(font, "Free yourself from this ocean", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, GOLD);
 
-					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fonstSeparation, GOLD);
+					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, GOLD);
 					break;
 				default:
 					break;
