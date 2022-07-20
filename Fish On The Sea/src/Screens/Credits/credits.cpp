@@ -19,6 +19,12 @@ namespace fish {
 		static Font font;
 		static	Sound click;
 
+		static int textureOffset = 45;
+		static int fontSize = 26;
+		static int fontSpacing = 3;
+		static float textPosX[] = { 23 };
+		static float textPosY[] = { 70, 95, 120, 145, 170, 195, 220, 245, 270, 295 };
+
 		void creditsInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 
@@ -73,22 +79,22 @@ namespace fish {
 			DrawTexture(box, 0,0, WHITE);
 
 			if (backState) {
-				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
-			}
+				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
+			}			
 
-			DrawTextEx(font, "Made by : Martin Concetti", { 23,70 }, 26, 3, BLACK);
-			DrawTextEx(font, "With help from Raylib examples", { 23,95 }, 26, 3, BLACK);
-			DrawTextEx(font, "Art by: Leonardo Perugini", { 23,120 }, 26, 3, BLACK);
-			DrawTextEx(font, "Programs use: PaintTool SAI, VS 2019", { 23,145 }, 26, 3, BLACK);
-			DrawTextEx(font, "Git, Git kraken.", { 23,170 }, 25, 3, BLACK);
-			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { 23,195 }, 26, 3, BLACK);
-			DrawTextEx(font, "melodyloops,github, opengameart.", { 23,220 }, 26, 3, BLACK);
-			DrawTextEx(font, "For more extensive information please", { 23,245 }, 26, 3, BLACK);
-			DrawTextEx(font, "consult the readme docuemnt", { 23,270 }, 26, 3, BLACK);
-			DrawTextEx(font, "Victory art by: Crisisworks", { 23,295 }, 26, 3, BLACK);
+			DrawTextEx(font, "Made by : Martin Concetti", { textPosX[0], textPosY[0] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "With help from Raylib examples", { textPosX[0], textPosY[1] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Art by: Leonardo Perugini", { textPosX[0], textPosY[2] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Programs use: PaintTool SAI, VS 2019", { textPosX[0], textPosY[3] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Git, Git kraken.", { textPosX[0], textPosY[4] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { textPosX[0], textPosY[5] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "melodyloops,github, opengameart.", { textPosX[0], textPosY[6] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "For more extensive information please", { textPosX[0], textPosY[7] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "consult the readme docuemnt", { textPosX[0], textPosY[8] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Victory art by: Crisisworks", { textPosX[0], textPosY[9] }, fontSize, fontSpacing, BLACK);
 
 		
 			EndDrawing();

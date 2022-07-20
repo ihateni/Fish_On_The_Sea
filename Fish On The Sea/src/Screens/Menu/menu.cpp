@@ -217,7 +217,7 @@ namespace fish {
 
 			DrawTexture(title, titlePosX, titlePosY, WHITE);
 
-			DrawTextEx(font, "V1.0", versionPos, fontSize, fontSpacing, RED);
+			DrawTextEx(font, "V1.2", versionPos, fontSize, fontSpacing, RED);
 
 			EndDrawing();
 		}

@@ -25,7 +25,7 @@ namespace fish {
 		bool state = true;
 
 		void run() {
-			InitWindow(screenWidth, screenHeight, "Fish On The Sea V1.0");
+			InitWindow(screenWidth, screenHeight, "Fish On The Sea V1.2");
 
 			Init();
 			music1 = LoadMusicStream("res/Sound/melodyloops-preview-china-dream-10m30s.mp3");
