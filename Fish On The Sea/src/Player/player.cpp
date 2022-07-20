@@ -3,7 +3,7 @@
 #include <iostream>
 namespace fish {
 	namespace player {
-		float  direction;
+		static float  direction;
 		int evoY = 100;
 
 		int fallSpeed;

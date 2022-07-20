@@ -18,6 +18,12 @@ namespace fish {
 		static Font font;
 		static	Sound click;
 
+		static int textureOffset = 45;
+		static float textPosX[] = {23};
+		static float textPosY[] = { 511, 531 };
+		static int fontSize = 26;
+		static int fontSpacing = 3;
+
 		void victoryInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 
@@ -68,13 +74,13 @@ namespace fish {
 
 
 			if (backState) {
-				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
 			}
-			DrawTextEx(font, "You are free from teh ocea!", { 23,511 }, 26, 3, RED);
-			DrawTextEx(font, "Thanks for playing", { 23,531 }, 26, 3, RED);
+			DrawTextEx(font, "You are free from the ocean!", { textPosX[0],textPosY[0] }, fontSize, fontSpacing, RED);
+			DrawTextEx(font, "Thanks for playing", { textPosX[0],textPosY[1] }, fontSize, fontSpacing, RED);
 
 			EndDrawing();
 		}
