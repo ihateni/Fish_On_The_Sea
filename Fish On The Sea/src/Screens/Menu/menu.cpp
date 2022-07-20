@@ -33,10 +33,17 @@ namespace fish {
 
 		static Texture2D background;
 		static Texture2D title;
-
+		static int titlePosX;
+		static int titlePosY;
 		static Font font;
 
 		static	Sound click;
+
+		static Vector2 versionPos = { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 };
+
+		static int textureOffset = 45;
+		static int fontSize = 25;
+		static int fontSpacing = 2;
 
 		void menuInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
@@ -81,6 +88,9 @@ namespace fish {
 			rec4M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec4M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
 			rec4M.y = static_cast<float>(GetScreenHeight()) / 2 + rec1M.height * 5;
+
+			titlePosX = GetScreenWidth() - 450;
+			titlePosY = 100;
 		}
 
 		void menuUpdate() {
@@ -171,31 +181,31 @@ namespace fish {
 			DrawTexture(background, 0, 0, WHITE);
 
 			if (playState) {
-				DrawTexture(play1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+				DrawTexture(play1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(play2, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+				DrawTexture(play2, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - textureOffset, WHITE);
 			}
 
 			if (creditsState) {
-				DrawTexture(credits1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+				DrawTexture(credits1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 			}
 			else {				
-				DrawTexture(credits2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+				DrawTexture(credits2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 			}
 
 			if (controlsState) {
-				DrawTexture(control1, static_cast<int>(rec3M.x), static_cast<int>(rec3M.y) - 45, WHITE);
+				DrawTexture(control1, static_cast<int>(rec3M.x), static_cast<int>(rec3M.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(control2, static_cast<int>(rec3M.x), static_cast<int>(rec3M.y) - 45, WHITE);
+				DrawTexture(control2, static_cast<int>(rec3M.x), static_cast<int>(rec3M.y) - textureOffset, WHITE);
 			}
 
 			if (exitState) {
-				DrawTexture(exit1, static_cast<int>(rec4M.x), static_cast<int>(rec4M.y) - 45, WHITE);
+				DrawTexture(exit1, static_cast<int>(rec4M.x), static_cast<int>(rec4M.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(exit2, static_cast<int>(rec4M.x), static_cast<int>(rec4M.y) - 45, WHITE);
+				DrawTexture(exit2, static_cast<int>(rec4M.x), static_cast<int>(rec4M.y) - textureOffset, WHITE);
 			}
 
 #if _DEBUG
@@ -205,9 +215,9 @@ namespace fish {
 			DrawRectangleLines(static_cast<int>(rec4M.x), static_cast<int>(rec4M.y), static_cast<int>(rec4M.width), static_cast<int>(rec4M.height), BLACK);
 #endif
 
-			DrawTexture(title, static_cast<int>(GetScreenWidth() - 450), 100, WHITE);
+			DrawTexture(title, titlePosX, titlePosY, WHITE);
 
-			DrawTextEx(font, "V1.0", { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 }, 25, 2, RED);
+			DrawTextEx(font, "V1.0", versionPos, fontSize, fontSpacing, RED);
 
 			EndDrawing();
 		}
