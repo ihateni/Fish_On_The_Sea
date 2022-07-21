@@ -19,6 +19,12 @@ namespace fish {
 		static Font font;
 		static	Sound click;
 
+		static int textureOffset = 45;
+		static float textPosX[] = { 23 };
+		static float textPosY[] = { 70, 95, 140, 160, 232, 324, 344, 419, 440, 511, 531 };
+		static int fontSize = 26;
+		static int fontSpacing = 3;
+
 		void controlsInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 
@@ -73,23 +79,24 @@ namespace fish {
 			DrawTexture(box, 0, 0, WHITE);
 
 			if (backState) {
-				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+				DrawTexture(backButton1, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
 			}
 			else {
-				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - 45, WHITE);
+				DrawTexture(backButton2, static_cast<int>(rec1CR.x), static_cast<int>(rec1CR.y) - textureOffset, WHITE);
 			}
 
-			DrawTextEx(font, "Use your mind hand to colect fish", { 23,70 }, 26, 3, BLACK);
-			DrawTextEx(font, "this will turn the fish into QI points", { 23,95 }, 26, 3, BLACK);
-			DrawTextEx(font, "Diferent fish give diferent QI amounts", { 23,140 }, 26, 3, BLACK);
-			DrawTextEx(font, "Use your mause to guide the hand", { 23,232 }, 26, 3, BLACK);
-			DrawTextEx(font, "Open and close the upgrade store by", { 23,324 }, 25, 3, BLACK);
-			DrawTextEx(font, "pressing the X", { 23,344 }, 26, 3, BLACK);
-			DrawTextEx(font, "Press P for pause.", { 23,419 }, 26, 3, BLACK);
-			DrawTextEx(font, "Press M to stop or play music.", { 23,440 }, 24, 3, BLACK);
+			DrawTextEx(font, "Use your mind hand to collect fish", { textPosX[0],textPosY[0] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "this will turn the fish into QI points", { textPosX[0],textPosY[1] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Different fish give different QI", { textPosX[0],textPosY[2] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "amounts", { textPosX[0],textPosY[3] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Use your mouse to guide the hand", { textPosX[0],textPosY[4] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Open and close the upgrade store by", { textPosX[0],textPosY[5] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "pressing the X", { textPosX[0],textPosY[6] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Press P for pause.", { textPosX[0],textPosY[7] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "Press M to stop or play music.", { textPosX[0],textPosY[8] }, fontSize, fontSpacing, BLACK);
 
-			DrawTextEx(font, "Reach the bottomb of the map and", { 23,511 }, 26, 3, BLACK);
-			DrawTextEx(font, "face the heavens!", { 23,531 }, 26, 3, BLACK);
+			DrawTextEx(font, "Reach the bottom of the map and", { textPosX[0],textPosY[9] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "face the heavens!", { textPosX[0],textPosY[10] }, fontSize, fontSpacing, BLACK);
 
 
 			EndDrawing();

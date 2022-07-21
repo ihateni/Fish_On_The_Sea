@@ -143,7 +143,7 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), BLUE);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, textColor);
+				DrawTextEx(font, "Press buy to train your mind-", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, textColor);
 				DrawTextEx(font, "hand to catch more fish", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, textColor);
 				switch (capasity) {
 				case 1:
@@ -177,7 +177,7 @@ namespace fish {
 				DrawRectangleLines(static_cast<int>(itemPos.x), static_cast<int>(itemPos.y), static_cast<int>(itemSize.x),
 					static_cast<int>(itemSize.y), MAGENTA);
 #endif
-				DrawTextEx(font, "Pres buy to train your mind ", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, textColor);
+				DrawTextEx(font, "Press buy to train your mind-", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, textColor);
 				DrawTextEx(font, "reach to reach deeper waters", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, textColor);
 				switch (reach) {
 				case 1:
@@ -240,7 +240,7 @@ namespace fish {
 					break;
 				case 4:
 					DrawTextEx(font, "Finish your training", { textPosX[0],textPosY[0] }, fonstSize, fontSpacing, textColor);
-					DrawTextEx(font, "Reach forthe lost treasure", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, textColor);
+					DrawTextEx(font, "Reach for the lost treasure", { textPosX[0],textPosY[1] }, fonstSize, fontSpacing, textColor);
 					DrawTextEx(font, "Free yourself from this ocean", { textPosX[0],textPosY[2] }, fonstSize, fontSpacing, qiFinalStageColor);
 
 					DrawTextEx(font, "4 / 4", { textPosX[1],textPosY[7] }, fonstSizeBig, fontSpacing, qiFinalStageColor);
@@ -288,24 +288,21 @@ namespace fish {
 			case 1:
 				switch (capasity) {
 				case 1:
-					if (points > price[0]) {
-						std::cout << " it works" << std::endl;
+					if (points >= price[0]) {
 
 						capasity = 2;
 						points = points - price[0];
 					}
 					break;
 				case 2:
-					if (points > price[1]) {
-						std::cout << " it works" << std::endl;
+					if (points >= price[1]) {
 
 						capasity = 3;
 						points = points - price[1];
 					}
 					break;
 				case 3:
-					if (points > price[2]) {
-						std::cout << " it works" << std::endl;
+					if (points >= price[2]) {
 
 						capasity = 4;
 						points = points - price[2];
@@ -321,31 +318,27 @@ namespace fish {
 			case 2:
 				switch (reach) {
 				case 1:
-					if (points > price[3]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[3]) {
 
 						reach = 2;
 						points = points - price[3];
 					}
 					break;
 				case 2:
-					if (points > price[4]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[4]) {
 
 						reach = 3;
 						points = points - price[4];
 					}
 					break;
 				case 3:
-					if (points > price[5]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[5]) {
 
 						reach = 4;
 						points = points - price[5];
 					}
 					break;
 				case 4:
-					std::cout << " it works4" << std::endl;
 
 					reach = 4;
 
@@ -357,31 +350,27 @@ namespace fish {
 			case 3:
 				switch (evolution) {
 				case 1:
-					if (points > price[6]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[6]) {
 
 						evolution = 2;
 						points = points - price[6];
 					}
 					break;
 				case 2:
-					if (points > price[7]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[7]) {
 
 						evolution = 3;
 						points = points - price[7];
 					}
 					break;
 				case 3:
-					if (points > price[8]) {
-						std::cout << " it works2" << std::endl;
+					if (points >= price[8]) {
 
 						evolution = 4;
 						points = points - price[8];
 					}
 					break;
 				case 4:
-					std::cout << " it works4" << std::endl;
 
 					evolution = 4;
 

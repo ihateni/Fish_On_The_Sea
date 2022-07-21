@@ -5,6 +5,7 @@ namespace fish {
 	namespace fishs {
 
 		static int speed = 100;
+		int amountOfPoints[] = { 10, 20, 50, 60, 80, 150, 120, 200, 350 };
 
 		void initFish(Vector2& fishSize, Vector2& fishPosition, bool& active, int& type, bool& dir, Texture2D& small1, Texture2D& small2,
 			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
@@ -200,31 +201,32 @@ namespace fish {
 
 			switch (type) {
 			case 1:
-				points += 10;
+				points += amountOfPoints[0];
 				break;
 			case 2:
-				points += 20;
+				points += amountOfPoints[1];
 				break;
 			case 3:
-				points += 30;
+				points += amountOfPoints[2];
 				break;
 			default:
 				break;
 			}
 			active = !active;
+
 		}
 
 		void deactivate2(bool& active, int& points, int& type) {
 
 			switch (type) {
 			case 1:
-				points += 60;
+				points += amountOfPoints[3];
 				break;
 			case 2:
-				points += 80;
+				points += amountOfPoints[4];
 				break;
 			case 3:
-				points += 100;
+				points += amountOfPoints[5];
 				break;
 			default:
 				break;
@@ -236,18 +238,19 @@ namespace fish {
 
 			switch (type) {
 			case 1:
-				points += 100;
+				points += amountOfPoints[6];
 				break;
 			case 2:
-				points += 150;
+				points += amountOfPoints[7];
 				break;
 			case 3:
-				points += 200;
+				points += amountOfPoints[8];
 				break;
 			default:
 				break;
 			}
 			active = !active;
 		}
+
 	}
 }

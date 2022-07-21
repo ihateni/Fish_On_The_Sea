@@ -93,7 +93,7 @@ namespace fish {
 			DrawTextEx(font, "Web pages use: dafont, zapsplat,", { textPosX[0], textPosY[5] }, fontSize, fontSpacing, BLACK);
 			DrawTextEx(font, "melodyloops,github, opengameart.", { textPosX[0], textPosY[6] }, fontSize, fontSpacing, BLACK);
 			DrawTextEx(font, "For more extensive information please", { textPosX[0], textPosY[7] }, fontSize, fontSpacing, BLACK);
-			DrawTextEx(font, "consult the readme docuemnt", { textPosX[0], textPosY[8] }, fontSize, fontSpacing, BLACK);
+			DrawTextEx(font, "consult the readme document", { textPosX[0], textPosY[8] }, fontSize, fontSpacing, BLACK);
 			DrawTextEx(font, "Victory art by: Crisisworks", { textPosX[0], textPosY[9] }, fontSize, fontSpacing, BLACK);
 
 		

@@ -103,7 +103,6 @@ namespace fish {
 			fontPosY4 = 165;
 			fontPosY5 = 190;
 
-
 			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
 				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
 				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.buyTex1, shop.buyTex2, shop.openState, shop.closeState,
@@ -668,17 +667,16 @@ namespace fish {
 					break;
 				}
 				break;
-				//EndMode2D();
 				break;
 			case GameStage::Pause:
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
-				DrawTextEx(font, "Press P ro go back to the game", { 23,fontPosY1 }, 24, 3, BLACK);
+				DrawTextEx(font, "Press P to go back to the game", { 23,fontPosY1 }, 24, 3, BLACK);
 				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,fontPosY2 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press M to mute or un mute", { 23,fontPosY3 }, 24, 3, BLACK);
-				DrawTextEx(font, "you can only use the mute and menu options", { 23,fontPosY4 }, 24, 3, BLACK);
-				DrawTextEx(font, "Once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
-
+				DrawTextEx(font, "Press M to mute or unmute", { 23,fontPosY3 }, 24, 3, BLACK);
+				DrawTextEx(font, "You can only use the mute and menu", { 23,fontPosY4 }, 24, 3, BLACK);
+				DrawTextEx(font, "options once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
+				
 				if (menuState) {
 					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
 				}
