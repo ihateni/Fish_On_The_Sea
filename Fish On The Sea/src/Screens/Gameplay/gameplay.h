@@ -5,7 +5,7 @@
 namespace fish {
 	namespace gameplay {
 
-		enum class GameStage {
+	/*	enum class GameStage {
 			Main = 0,
 			Pause,
 			Victory
@@ -19,7 +19,7 @@ namespace fish {
 		};
 
 		extern GameStage Stage;
-		extern GameplayModes Modes;
+		extern GameplayModes Modes;*/
 
 		void gameplayInit();
 		void gameplayUpdate();

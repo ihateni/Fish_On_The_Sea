@@ -13,6 +13,22 @@
 namespace fish {
 	namespace gameplay {
 
+		enum class GameStage {
+			Main = 0,
+			Pause,
+			Victory
+		};
+
+
+		enum class GameplayModes {
+			Shop = 0,
+			Descend,
+			Ascend
+		};
+
+	/*	GameStage Stage;
+		GameplayModes Modes;*/
+
 		GameStage Stage = GameStage::Main;
 		GameplayModes Modes = GameplayModes::Shop;
 
