@@ -39,7 +39,7 @@ namespace fish {
 
 		static	Sound click;
 
-		static Vector2 versionPos = { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 };
+		static Vector2 versionPos;
 
 		static int textureOffset = 45;
 		static int fontSize = 25;
@@ -91,6 +91,8 @@ namespace fish {
 
 			titlePosX = GetScreenWidth() - 450;
 			titlePosY = 100;
+
+			versionPos = { static_cast<float>(GetScreenWidth() - 100), static_cast<float>(GetScreenHeight()) - 40 };
 		}
 
 		void menuUpdate() {

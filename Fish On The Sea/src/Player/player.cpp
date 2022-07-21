@@ -4,10 +4,10 @@
 namespace fish {
 	namespace player {
 		static float  direction;
-		int evoY = 100;
+		static int evoY = 100;
 
-		int fallSpeed;
-		int ascensionSpeed;
+		static int fallSpeed;
+		static int ascensionSpeed;
 
 		void initPlayer(Vector2& size, Vector2& position, int& capacity, int& reach, int& evolution, Texture2D& playerTex, Texture2D& evoTex1
 			, Texture2D& evoTex2, Texture2D& evoTex3) {

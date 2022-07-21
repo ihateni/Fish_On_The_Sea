@@ -20,8 +20,8 @@ namespace fish {
 		static	Sound click;
 
 		static int textureOffset = 45;
-		static int fontSize = 26;
-		static int fontSpacing = 3;
+		static float fontSize = 26;
+		static float fontSpacing = 3;
 		static float textPosX[] = { 23 };
 		static float textPosY[] = { 70, 95, 120, 145, 170, 195, 220, 245, 270, 295 };
 

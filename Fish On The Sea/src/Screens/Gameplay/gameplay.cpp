@@ -608,6 +608,7 @@ namespace fish {
 						shop::drawOpen(shop.openSize, shop.openPos, shop.closeTex1, shop.closeTex2, shop.openState);
 					}
 					else {
+						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, 35, 2, BLACK);
 						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos, shop.leftTex1, shop.leftTex2, shop.leftState);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
