@@ -698,12 +698,21 @@ namespace fish {
 				DrawTextEx(font, "You can only use the mute and menu", { 23,fontPosY4 }, 24, 3, BLACK);
 				DrawTextEx(font, "options once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
 				
-				if (menuState) {
+				if (Modes == GameplayModes::Shop)
+				{
+					if (menuState) {
+						DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
+					}
+					else {
+						DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
+					}
+				}
+			/*	if (menuState) {
 					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 				}
 				else {
 					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
-				}
+				}*/
 
 
 
