@@ -26,12 +26,6 @@ namespace fish {
 			Ascend
 		};
 
-	/*	GameStage Stage;
-		GameplayModes Modes;*/
-
-		GameStage Stage = GameStage::Main;
-		GameplayModes Modes = GameplayModes::Shop;
-
 		static void initFishGameplay();
 		static void gameplayInput();
 		static void gameplayDraw();
@@ -66,7 +60,8 @@ namespace fish {
 		float fontPosY4;
 		float fontPosY5;
 
-		Sound poing;
+		static int textureOffset = 45;
+
 		Music music;
 
 		static Rectangle rec1M;
@@ -87,10 +82,16 @@ namespace fish {
 
 		static	Sound click;
 
+		GameStage Stage;
+		GameplayModes Modes;
+
 		void gameplayInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 			sphere = LoadTexture("res/Player/sphere.png");
 
+
+			GameStage::Main;
+			GameplayModes::Shop;
 
 			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution, player.playerTex, player.evoTex1, player.evoTex2
 				, player.evoTex3);
@@ -245,12 +246,16 @@ namespace fish {
 					}
 
 					if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, sphereRec)) {
-						gameManager::Screens = gameManager::GameScreen::Victory;
 						gameplayInit();
+						Modes = GameplayModes::Shop;
+						player.position.y = posYSave;
+						gameManager::Screens = gameManager::GameScreen::Victory;
 					}
 					if (player.position.y > sphereRec.y) {
-						gameManager::Screens = gameManager::GameScreen::Victory;
 						gameplayInit();
+						Modes = GameplayModes::Shop;
+						player.position.y = posYSave;
+						gameManager::Screens = gameManager::GameScreen::Victory;
 					}
 
 					break;
@@ -614,10 +619,10 @@ namespace fish {
 							static_cast<int>(rec1M.height), RED);
 #endif
 						if (playState) {
-							DrawTexture(playTex1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+							DrawTexture(playTex1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - textureOffset, WHITE);
 						}
 						else {
-							DrawTexture(playTex2, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - 45, WHITE);
+							DrawTexture(playTex2, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - textureOffset, WHITE);
 						}
 
 						shop::drawOpen(shop.openSize, shop.openPos, shop.closeTex1, shop.closeTex2, shop.openState);
@@ -694,10 +699,10 @@ namespace fish {
 				DrawTextEx(font, "options once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
 				
 				if (menuState) {
-					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 				}
 				else {
-					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - 45, WHITE);
+					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 				}
 
 
