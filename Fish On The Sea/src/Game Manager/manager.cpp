@@ -29,7 +29,7 @@ namespace fish {
 
 			Init();
 			music1 = LoadMusicStream("res/Sound/melodyloops-preview-china-dream-10m30s.mp3");
-			//PlayMusicStream(music1);
+			PlayMusicStream(music1);
 
 			while (!WindowShouldClose() && playing) {
 				if (IsKeyPressed('M')) {

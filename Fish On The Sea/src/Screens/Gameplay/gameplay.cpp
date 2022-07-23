@@ -61,6 +61,14 @@ namespace fish {
 		float fontPosY5;
 
 		static int textureOffset = 45;
+		static float textPausePosY[] = { 511, 531 };
+		static float textPausePosX[] = { 23 };
+		static float fontSize = 24;
+		static float fontSpacing = 3;
+		static float fishCapacity[] = { 3, 6, 10, 12 };
+
+		static float qiFontSize = 35;
+		static float qiFontSpacing = 2;
 
 		Music music;
 
@@ -131,6 +139,7 @@ namespace fish {
 			camera.rotation = 0.0f;
 			camera.zoom = 1.0f;
 
+
 			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
 			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
 			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
@@ -171,7 +180,7 @@ namespace fish {
 
 			switch (Stage) {
 			case GameStage::Main:
-				camera.target.y = player.position.y + player.size.y / 2;
+				camera.target.y =  player.position.y + player.size.y / 2;
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
@@ -297,7 +306,7 @@ namespace fish {
 							fish[i].position.y,fish[i].size.x,fish[i].size.y })) {
 							switch (player.capasity) {
 							case 1:
-								if (fishCounter < 3) {
+								if (fishCounter < fishCapacity[0]) {
 									if (fish[i].active == true) {
 										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
@@ -305,7 +314,7 @@ namespace fish {
 								}
 								break;
 							case 2:
-								if (fishCounter < 6) {
+								if (fishCounter < fishCapacity[1]) {
 									if (fish[i].active == true) {
 										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
@@ -313,14 +322,14 @@ namespace fish {
 								}
 								break;
 							case 3:
-								if (fishCounter < 10) {
+								if (fishCounter < fishCapacity[2]) {
 									if (fish[i].active == true) {
 										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
 									}
 								}
 							case 4:
-								if (fishCounter < 12) {
+								if (fishCounter < fishCapacity[3]) {
 									if (fish[i].active == true) {
 										fishs::deactivate(fish[i].active, points, fish[i].type);
 										fishCounter++;
@@ -338,7 +347,7 @@ namespace fish {
 							fish2[i].position.y,fish2[i].size.x,fish2[i].size.y })) {
 							switch (player.capasity) {
 							case 1:
-								if (fishCounter < 3) {
+								if (fishCounter < fishCapacity[0]) {
 									if (fish2[i].active == true) {
 										fishs::deactivate(fish2[i].active, points, fish2[i].type);
 										fishCounter++;
@@ -346,7 +355,7 @@ namespace fish {
 								}
 								break;
 							case 2:
-								if (fishCounter < 6) {
+								if (fishCounter < fishCapacity[1]) {
 									if (fish2[i].active == true) {
 										fishs::deactivate(fish2[i].active, points, fish2[i].type);
 										fishCounter++;
@@ -354,7 +363,7 @@ namespace fish {
 								}
 								break;
 							case 3:
-								if (fishCounter < 10) {
+								if (fishCounter < fishCapacity[2]) {
 									if (fish2[i].active == true) {
 										fishs::deactivate(fish2[i].active, points, fish2[i].type);
 										fishCounter++;
@@ -362,7 +371,7 @@ namespace fish {
 								}
 								break;
 							case 4:
-								if (fishCounter < 12) {
+								if (fishCounter < fishCapacity[3]) {
 									if (fish2[i].active == true) {
 										fishs::deactivate(fish2[i].active, points, fish2[i].type);
 										fishCounter++;
@@ -380,7 +389,7 @@ namespace fish {
 							fish3[i].position.y,fish3[i].size.x,fish3[i].size.y })) {
 							switch (player.capasity) {
 							case 1:
-								if (fishCounter < 3) {
+								if (fishCounter < fishCapacity[0]) {
 									if (fish3[i].active == true) {
 										fishs::deactivate(fish3[i].active, points, fish3[i].type);
 										fishCounter++;
@@ -388,7 +397,7 @@ namespace fish {
 								}
 								break;
 							case 2:
-								if (fishCounter < 6) {
+								if (fishCounter < fishCapacity[1]) {
 									if (fish3[i].active == true) {
 										fishs::deactivate(fish3[i].active, points, fish3[i].type);
 										fishCounter++;
@@ -396,7 +405,7 @@ namespace fish {
 								}
 								break;
 							case 3:
-								if (fishCounter < 10) {
+								if (fishCounter < fishCapacity[2]) {
 									if (fish3[i].active == true) {
 										fishs::deactivate(fish3[i].active, points, fish3[i].type);
 										fishCounter++;
@@ -404,7 +413,7 @@ namespace fish {
 								}
 								break;
 							case 4:
-								if (fishCounter < 12) {
+								if (fishCounter < fishCapacity[3]) {
 									if (fish3[i].active == true) {
 										fishs::deactivate(fish3[i].active, points, fish3[i].type);
 										fishCounter++;
@@ -599,8 +608,8 @@ namespace fish {
 #if _DEBUG
 				DrawRectangleLines(0, GetScreenHeight(), 100, 800, RED);
 #endif
-				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex, player.evoTex1, player.evoTex2
-					, player.evoTex3, player.evolution);
+				player::drawPlayer(player.position.x, player.position.y, player.size.x, player.size.y, player.playerTex, player.evoTex1, player.evoTex2,
+					player.evoTex3, player.evolution);
 #if _DEBUG
 
 				DrawRectangleLines(static_cast<int>(sphereRec.x), static_cast<int>(sphereRec.y), static_cast<int>(sphereRec.width),
@@ -611,7 +620,7 @@ namespace fish {
 				switch (Modes) {
 				case GameplayModes::Shop:
 					if (!activeShop) {
-						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, 35, 2, BLACK);
+						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, qiFontSize, qiFontSpacing, BLACK);
 
 #if _DEBUG
 
@@ -628,7 +637,7 @@ namespace fish {
 						shop::drawOpen(shop.openSize, shop.openPos, shop.closeTex1, shop.closeTex2, shop.openState);
 					}
 					else {
-						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, 35, 2, BLACK);
+						DrawTextEx(font, TextFormat("QI: %i", points), { static_cast<float>(GetScreenWidth() - 200), 30 }, qiFontSize, qiFontSpacing, BLACK);
 						shop::drawShop(shop.mainSize, shop.mainPos, shop.mainTex);
 						shop::drawLeftArrow(shop.leftArrowSize, shop.leftArrowPos, shop.leftTex1, shop.leftTex2, shop.leftState);
 						shop::drawRightArrow(shop.rightArrowSize, shop.rightArrowPos, shop.rightTex1, shop.rightTex2, shop.rightState);
@@ -661,8 +670,38 @@ namespace fish {
 						fishs::drawFish(fish3[i].position.x, fish3[i].position.y, fish3[i].size.x, fish3[i].size.y, fish3[i].type,
 							fish3[i].dir, fish3[i].small1, fish3[i].small2, fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
 					}
+					
 					break;
 				case GameplayModes::Ascend:
+				
+					switch (player.capasity) {
+					case 1:
+						if (fishCounter < fishCapacity[0]) {
+							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[0]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
+
+						}
+						break;
+					case 2:
+						if (fishCounter < fishCapacity[1]) {
+							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[1]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
+
+						}
+						break;
+					case 3:
+						if (fishCounter < fishCapacity[2]) {
+							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[2]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
+
+						}
+						break;
+					case 4:
+						if (fishCounter < fishCapacity[3]) {
+							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[3]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
+						}
+						break;
+					default:
+						break;
+					}
+
 					for (int i = 0; i < fishAmount; i++) {
 						if (fish[i].active) {
 							fishs::drawFish(fish[i].position.x, fish[i].position.y, fish[i].size.x, fish[i].size.y, fish[i].type,
@@ -692,12 +731,12 @@ namespace fish {
 			case GameStage::Pause:
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
 				DrawTexture(bigBox, static_cast<int>(boxPosX), static_cast<int>(boxPosY), WHITE);
-				DrawTextEx(font, "Press P to go back to the game", { 23,fontPosY1 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press Menu to go back and lose progress", { 23,fontPosY2 }, 24, 3, BLACK);
-				DrawTextEx(font, "Press M to mute or unmute", { 23,fontPosY3 }, 24, 3, BLACK);
-				DrawTextEx(font, "You can only use the mute and menu", { 23,fontPosY4 }, 24, 3, BLACK);
-				DrawTextEx(font, "options once the hand is at the top", { 23,fontPosY5 }, 24, 3, BLACK);
-				
+				DrawTextEx(font, "Press P to go back to the game", { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "Press Menu to go back and lose progress", { textPausePosX[0],fontPosY2 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "Press M to mute or unmute", { textPausePosX[0],fontPosY3 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "You can only use the mute and menu", { textPausePosX[0],fontPosY4 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "options once the hand is at the top", { textPausePosX[0],fontPosY5 }, fontSize, fontSpacing, BLACK);
+			
 				if (Modes == GameplayModes::Shop)
 				{
 					if (menuState) {
@@ -707,16 +746,6 @@ namespace fish {
 						DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
 					}
 				}
-			/*	if (menuState) {
-					DrawTexture(menuTex1, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
-				}
-				else {
-					DrawTexture(menuTex2, static_cast<int>(rec2M.x), static_cast<int>(rec2M.y) - textureOffset, WHITE);
-				}*/
-
-
-
-
 				break;
 			case  GameStage::Victory:
 				break;
