@@ -676,25 +676,25 @@ namespace fish {
 				
 					switch (player.capasity) {
 					case 1:
-						if (fishCounter < fishCapacity[0]) {
+						if (fishCounter <= fishCapacity[0]) {
 							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[0]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
 
 						}
 						break;
 					case 2:
-						if (fishCounter < fishCapacity[1]) {
+						if (fishCounter <= fishCapacity[1]) {
 							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[1]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
 
 						}
 						break;
 					case 3:
-						if (fishCounter < fishCapacity[2]) {
+						if (fishCounter <= fishCapacity[2]) {
 							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[2]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
 
 						}
 						break;
 					case 4:
-						if (fishCounter < fishCapacity[3]) {
+						if (fishCounter <= fishCapacity[3]) {
 							DrawTextEx(font, TextFormat("Fish left to capture: %i", static_cast<int>(fishCapacity[3]) - fishCounter), { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
 						}
 						break;
@@ -734,8 +734,8 @@ namespace fish {
 				DrawTextEx(font, "Press P to go back to the game", { textPausePosX[0],fontPosY1 }, fontSize, fontSpacing, BLACK);
 				DrawTextEx(font, "Press Menu to go back and lose progress", { textPausePosX[0],fontPosY2 }, fontSize, fontSpacing, BLACK);
 				DrawTextEx(font, "Press M to mute or unmute", { textPausePosX[0],fontPosY3 }, fontSize, fontSpacing, BLACK);
-				DrawTextEx(font, "You can only use the mute and menu", { textPausePosX[0],fontPosY4 }, fontSize, fontSpacing, BLACK);
-				DrawTextEx(font, "options once the hand is at the top", { textPausePosX[0],fontPosY5 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "You can only use the menu options", { textPausePosX[0],fontPosY4 }, fontSize, fontSpacing, BLACK);
+				DrawTextEx(font, "once the hand is at the top", { textPausePosX[0],fontPosY5 }, fontSize, fontSpacing, BLACK);
 			
 				if (Modes == GameplayModes::Shop)
 				{
