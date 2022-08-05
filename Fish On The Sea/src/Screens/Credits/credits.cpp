@@ -3,7 +3,7 @@
 #include "raylib.h"
 
 #include "Game Manager/manager.h"
-
+#include <iostream>
 namespace fish {
 	namespace credits {
 		static void creditsDraw();
@@ -42,6 +42,7 @@ namespace fish {
 			box = LoadTexture("res/Control_buttons/box_large.png");
 
 			font = LoadFont("res/Font/aAsianNinja.otf");
+			std::cout << "credits  init" << std::endl;
 
 		}
 
@@ -108,7 +109,7 @@ namespace fish {
 
 			UnloadFont(font);
 			UnloadSound(click);
-
+			std::cout << "credits de init" << std::endl;
 		}
 	}
 }

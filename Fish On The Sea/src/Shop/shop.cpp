@@ -384,5 +384,20 @@ namespace fish {
 				break;
 			}
 		}
+		
+		void shopDeInit(Texture2D& closeTex1, Texture2D& closeTex2, Texture2D& mainTex, Texture2D& leftTex1,
+			Texture2D& leftTex2, Texture2D& rightTex1, Texture2D& rightTex2, Texture2D& buyTex1, Texture2D& buyTex2, Font& font) {
+			UnloadTexture(closeTex1);
+			UnloadTexture(closeTex2);
+			UnloadTexture(mainTex);
+			UnloadTexture(leftTex1);
+			UnloadTexture(leftTex2);
+			UnloadTexture(rightTex1);
+			UnloadTexture(rightTex2);
+			UnloadTexture(buyTex1);
+			UnloadTexture(buyTex2);
+			UnloadFont(font);
+
+		}
 	}
 }

@@ -851,23 +851,23 @@ namespace fish {
 			UnloadFont(font);
 			UnloadTexture(menuTex1);
 			UnloadTexture(menuTex2);
+			std::cout << "Player de init" << std::endl;
 			playerDeInit();
+			std::cout << "shop de init" << std::endl;
+
+			shopDeInit();
+			std::cout << "termina aca" << std::endl;
 
 		}
 
 		void playerDeInit() {
-		/*	UnloadTexture(player.playerTex);
-			UnloadTexture(player.evoTex1);
-			UnloadTexture(player.evoTex2);
-			UnloadTexture(player.evoTex3);*/
 			player::playerDeInit(player.playerTex, player.evoTex1, player.evoTex2, player.evoTex3);
 		}
 
 		void shopDeInit() {
-
-
-			//shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
-			//	shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos,
+			shop::shopDeInit(shop.closeTex1, shop.closeTex2,
+				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.buyTex1, shop.buyTex2, shop.font);
+			
 		}
 	}
 }
