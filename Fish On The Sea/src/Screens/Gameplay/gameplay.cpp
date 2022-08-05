@@ -93,6 +93,71 @@ namespace fish {
 		GameStage Stage;
 		GameplayModes Modes;
 
+		static void gameplayReset() {
+			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution, player.playerTex, player.evoTex1, player.evoTex2
+				, player.evoTex3);
+			posYSave = player.position.y;
+			posXSave = player.position.x;
+			fishCounter = 0;
+			playState = true;
+			menuState = true;
+
+			points = 0;
+#if _DEBUG
+			points = 100000;
+#endif
+
+			boxPosX = 0;
+			boxPosY = 0;
+			fontPosY1 = 70;
+			fontPosY2 = 95;
+			fontPosY3 = 140;
+			fontPosY4 = 165;
+			fontPosY5 = 190;
+
+			shop::initShop(shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
+				shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos, shop.item, shop.buySize, shop.buyPos, shop.closeTex1, shop.closeTex2,
+				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.buyTex1, shop.buyTex2, shop.openState, shop.closeState,
+				shop.leftState, shop.rightState, shop.buyState, shop.font);
+
+			activeShop = false;
+			camera.target = { player.position.x + player.size.x / 2, player.position.y };
+			camera.offset = { static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2 };
+			camera.rotation = 0.0f;
+			camera.zoom = 1.0f;
+
+
+			rec1M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
+			rec1M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
+			rec1M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
+			rec1M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
+
+			sphereRec.height = (static_cast<float> (GetScreenWidth()) / 5);
+			sphereRec.width = (static_cast<float> (GetScreenWidth()) / 5);
+			sphereRec.x = rec1M.x;
+			sphereRec.y = rec1M.y + static_cast<float>(GetScreenHeight()) * 4 - static_cast<float>(GetScreenHeight()) / 2;
+
+			rec2M.height = (static_cast<float> (GetScreenHeight()) - ((static_cast<float>(GetScreenHeight()) / 10) * 2)) / 15;
+			rec2M.width = (static_cast<float> (GetScreenWidth()) - ((static_cast<float>(GetScreenWidth()) / 10) * 2)) / 3;
+			rec2M.x = static_cast<float>(GetScreenWidth()) / 2 - rec1M.width / 2;
+			rec2M.y = static_cast<float>(GetScreenHeight()) - rec1M.height * 2;
+
+			stop1.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop1.width = static_cast<float>(GetScreenWidth());
+			stop1.x = 0;
+			stop1.y = static_cast<float>(GetScreenHeight()) * 2;
+
+			stop2.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop2.width = static_cast<float>(GetScreenWidth());
+			stop2.x = 0;
+			stop2.y = static_cast<float>(GetScreenHeight()) * 3;
+
+			stop3.height = static_cast<float>(GetScreenHeight()) / 20;
+			stop3.width = static_cast<float>(GetScreenWidth());
+			stop3.x = 0;
+			stop3.y = static_cast<float>(GetScreenHeight()) * 4;
+		}
+
 		void gameplayInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");
 			sphere = LoadTexture("res/Player/sphere.png");
@@ -255,13 +320,14 @@ namespace fish {
 					}
 
 					if (CheckCollisionRecs({ player.position.x,player.position.y,player.size.x,player.size.y }, sphereRec)) {
-						gameplayInit();
+						gameplayReset();
 						Modes = GameplayModes::Shop;
 						player.position.y = posYSave;
 						gameManager::Screens = gameManager::GameScreen::Victory;
 					}
 					if (player.position.y > sphereRec.y) {
-						gameplayInit();
+						gameplayReset();
+
 						Modes = GameplayModes::Shop;
 						player.position.y = posYSave;
 						gameManager::Screens = gameManager::GameScreen::Victory;
@@ -582,8 +648,8 @@ namespace fish {
 					if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 						gameManager::Screens = gameManager::GameScreen::Menu;
 						PlaySound(click);
+						gameplayReset();
 
-						gameplayInit();
 						Stage = GameStage::Main;
 					}
 
