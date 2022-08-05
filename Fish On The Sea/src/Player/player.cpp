@@ -70,5 +70,12 @@ namespace fish {
 			DrawTexture(playerTex, static_cast<int>(playerPosX), static_cast<int>(playerPosY), WHITE);
 
 		}
+
+		void playerDeInit(Texture2D& playerTex, Texture2D& evoTex1, Texture2D& evoTex2, Texture2D& evoTex3) {
+			UnloadTexture(playerTex);
+			UnloadTexture(evoTex1);
+			UnloadTexture(evoTex2);
+			UnloadTexture(evoTex3);
+		}
 	}
 }

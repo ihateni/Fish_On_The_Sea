@@ -856,11 +856,18 @@ namespace fish {
 		}
 
 		void playerDeInit() {
-			UnloadTexture(player.playerTex);
+		/*	UnloadTexture(player.playerTex);
 			UnloadTexture(player.evoTex1);
 			UnloadTexture(player.evoTex2);
-			UnloadTexture(player.evoTex3);
-			std::cout << "player de init" << std::endl;
+			UnloadTexture(player.evoTex3);*/
+			player::playerDeInit(player.playerTex, player.evoTex1, player.evoTex2, player.evoTex3);
+		}
+
+		void shopDeInit() {
+
+
+			//shop.mainSize, shop.mainPos, shop.openSize, shop.openPos, shop.closeSize, shop.closePos, shop.leftArrowSize, shop.leftArrowPos,
+			//	shop.rightArrowSize, shop.rightArrowPos, shop.itemSize, shop.itemPos,
 		}
 	}
 }

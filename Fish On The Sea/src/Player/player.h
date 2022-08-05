@@ -25,7 +25,7 @@ namespace fish {
 		void ascension(float& playerPosY);
 		void drawPlayer(float& playerPosX, float& playerPosY, float& playerSizeX, float& playerSizey, Texture2D& playerTex, Texture2D& evoTex1
 			, Texture2D& evoTex2, Texture2D& evoTex3, int& evolution);
-
+		void playerDeInit(Texture2D& playerTex, Texture2D& evoTex1, Texture2D& evoTex2, Texture2D& evoTex3);
 	}
 }
 #endif
