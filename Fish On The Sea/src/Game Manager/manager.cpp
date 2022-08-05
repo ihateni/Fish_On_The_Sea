@@ -82,6 +82,7 @@ namespace fish {
 			credits::creditsDeInit();
 			controls::controlsDeInit();
 			victory::victoryDeInit();
+			gameplay::gameplayDeInit();
 			UnloadMusicStream(music1);
 
 			CloseAudioDevice();

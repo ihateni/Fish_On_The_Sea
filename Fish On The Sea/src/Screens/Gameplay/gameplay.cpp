@@ -29,6 +29,9 @@ namespace fish {
 		static void initFishGameplay();
 		static void gameplayInput();
 		static void gameplayDraw();
+		static void gameplayReset();
+		static void playerDeInit();
+		static void shopDeInit();
 
 		const int fishAmount = 20;
 
@@ -93,7 +96,7 @@ namespace fish {
 		GameStage Stage;
 		GameplayModes Modes;
 
-		static void gameplayReset() {
+		void gameplayReset() {
 			player::initPlayer(player.size, player.position, player.capasity, player.reach, player.evolution, player.playerTex, player.evoTex1, player.evoTex2
 				, player.evoTex3);
 			posYSave = player.position.y;
@@ -836,6 +839,28 @@ namespace fish {
 				fishs::initFish3(fish3[i].size, fish3[i].position, fish3[i].active, fish3[i].type, fish3[i].dir, fish3[i].small1, fish3[i].small2,
 					fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
 			}
+		}
+
+		void gameplayDeInit() {
+			UnloadSound(click);
+			UnloadTexture(sphere);
+			UnloadTexture(background);
+			UnloadTexture(playTex1);
+			UnloadTexture(playTex2);
+			UnloadTexture(bigBox);
+			UnloadFont(font);
+			UnloadTexture(menuTex1);
+			UnloadTexture(menuTex2);
+			playerDeInit();
+
+		}
+
+		void playerDeInit() {
+			UnloadTexture(player.playerTex);
+			UnloadTexture(player.evoTex1);
+			UnloadTexture(player.evoTex2);
+			UnloadTexture(player.evoTex3);
+			std::cout << "player de init" << std::endl;
 		}
 	}
 }
