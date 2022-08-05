@@ -66,34 +66,34 @@ Changes:
 Release: Fish_On_The_Sea 0.4 (03 March 2022)
 -------------------------------------------------------------------------
 Changes:
--Shop structure
--Open and close funtions
--Item display
--Arrows to cahnge items
+- Shop structure
+- Open and close funtions
+- Item display
+- Arrows to cahnge items
 
 -------------------------------------------------------------------------
 Release : Fish_On_The_Sea 0.3 (12 February 2022)
 -------------------------------------------------------------------------
 Changes:
--Fish structure
--Player and fish interaction
--Multiple types of fish
--Ramdom creation of fish
+- Fish structure
+- Player and fish interaction
+- Multiple types of fish
+- Ramdom creation of fish
 
 -------------------------------------------------------------------------
 Release :	Fish_On_The_Sea 0.2 (04 January 2022)
 -------------------------------------------------------------------------
 Changes:
--Player structure
--Camera 2d 
--Changed IF for SWICH statements
+- Player structure
+- Camera 2d 
+- Changed IF for SWICH statements
 
 -------------------------------------------------------------------------
 Release :	Fish_On_The_Sea 0.1 (07 January 2022)
 -------------------------------------------------------------------------
 Changes:
--Project created
--Added GITIGNORE, README and CHANGELOG
--Added Raylib
--Basic project configurations
--Debug and release batchfiles
+- Project created
+- Added GITIGNORE, README and CHANGELOG
+- Added Raylib
+- Basic project configurations
+- Debug and release batchfiles
