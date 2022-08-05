@@ -6,10 +6,10 @@ Changes:
 - Replaced magic number
 - Fix names of various image files
 - Fix fish collision with borders
-- Fis shp variable names
+- Fix shop variable names
 - Fix bug where you couldn't buy upgrades if you had the exact number of points
-- Check spelling
-- Game reset properly
+- Spelling check
+- Game resets properly
 - Menu button only appears in shop stage
 - Display how many fish are left to capture
 - Added icon to the game .exe
