@@ -19,48 +19,48 @@ Changes:
 Release :    Fish_On_The_Sea 1.0 (07 March 2022)
 -------------------------------------------------------------------------
 Changes:
--Sound effect
--Music
+- Sound effect
+- Music
 
 -------------------------------------------------------------------------
 Release :    Fish_On_The_Sea 0.8 (07 March 2022)
 -------------------------------------------------------------------------
 Changes:
--Text for items
--Main cahracter
--Fish for all areas
+- Text for items
+- Main cahracter
+- Fish for all areas
 
 -------------------------------------------------------------------------
 Release Fish_On_The_Sea 0.7 (07 March 2022)
 -------------------------------------------------------------------------
 Changes:
--LFS added
--Credits added
--Controls added
--More textures
--Custom font
--Pause funtion
+- LFS added
+- Credits added
+- Controls added
+- More textures
+- Custom font
+- Pause funtion
 
 -------------------------------------------------------------------------
 Release Fish_On_The_Sea 0.6 (06 March 2022)
 -------------------------------------------------------------------------
 Changes:
--Menu textures
--Player textures
--Background
--Title texture
--First are fish texture.
+- Menu textures
+- Player textures
+- Background
+- Title texture
+- First are fish texture.
 
 -------------------------------------------------------------------------
 Release Fish_On_The_Sea 0.5 (06 March 2022)
 -------------------------------------------------------------------------
 Changes:
--Point system
--Limit to fish capture
--Texture test
--More areas
--Buy function
--Player upgrades
+- Point system
+- Limit to fish capture
+- Texture test
+- More areas
+- Buy function
+- Player upgrades
 
 -------------------------------------------------------------------------
 Release: Fish_On_The_Sea 0.4 (03 March 2022)
