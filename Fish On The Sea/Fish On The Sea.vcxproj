@@ -31,6 +31,7 @@
     <ClCompile Include="src\Shop\shop.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Fish\fish.h" />
     <ClInclude Include="src\Game Manager\manager.h" />
     <ClInclude Include="src\Player\player.h" />
@@ -40,6 +41,13 @@
     <ClInclude Include="src\Screens\Menu\menu.h" />
     <ClInclude Include="src\Screens\Victory\victory.h" />
     <ClInclude Include="src\Shop\shop.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Fish On The Sea.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Icon\Icon.ico" />
+    <Image Include="res\Player\main1.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

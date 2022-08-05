@@ -106,7 +106,6 @@ namespace fish {
 			posYSave = player.position.y;
 			posXSave = player.position.x;
 			fishCounter = 0;
-			points = 0;
 			background = LoadTexture("res/Background/Background.png");
 			playTex1 = LoadTexture("res/Gameplay_buttons/play1.png");
 			playTex2 = LoadTexture("res/Gameplay_buttons/play2.png");
@@ -117,9 +116,11 @@ namespace fish {
 			menuTex2 = LoadTexture("res/Gameplay_buttons/menu2.png");
 			menuState = true;
 
+			points = 0;
 #if _DEBUG
 			points = 100000;
 #endif
+
 			boxPosX = 0;
 			boxPosY = 0;
 			fontPosY1 = 70;
@@ -169,7 +170,6 @@ namespace fish {
 			stop3.width = static_cast<float>(GetScreenWidth());
 			stop3.x = 0;
 			stop3.y = static_cast<float>(GetScreenHeight()) * 4;
-			std::cout << stop3.y << std::endl;
 		}
 
 		void gameplayUpdate() {
