@@ -22,8 +22,8 @@ namespace fish {
 		static int textureOffset = 45;
 		static float textPosX[] = { 23 };
 		static float textPosY[] = { 70, 95, 140, 160, 232, 324, 344, 419, 440, 511, 531 };
-		static int fontSize = 26;
-		static int fontSpacing = 3;
+		static float fontSize = 26;
+		static float fontSpacing = 3;
 
 		void controlsInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");

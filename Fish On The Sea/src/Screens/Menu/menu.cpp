@@ -42,8 +42,8 @@ namespace fish {
 		static Vector2 versionPos;
 
 		static int textureOffset = 45;
-		static int fontSize = 25;
-		static int fontSpacing = 2;
+		static float fontSize = 25;
+		static float fontSpacing = 2;
 
 		void menuInit() {
 			click = LoadSound("res/Sound/mixkit-unlock-game-notification-253.wav");

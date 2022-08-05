@@ -704,7 +704,7 @@ namespace fish {
 #if _DEBUG
 
 						DrawRectangleLines(static_cast<int>(rec1M.x), static_cast<int>(rec1M.y), static_cast<int>(rec1M.width),
-							static_cast<int>(rec1M.height), RED);
+						static_cast<int>(rec1M.height), RED);
 #endif
 						if (playState) {
 							DrawTexture(playTex1, static_cast<int>(rec1M.x), static_cast<int>(rec1M.y) - textureOffset, WHITE);

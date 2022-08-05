@@ -109,7 +109,6 @@ namespace fish {
 
 			UnloadFont(font);
 			UnloadSound(click);
-			std::cout << "credits de init" << std::endl;
 		}
 	}
 }
