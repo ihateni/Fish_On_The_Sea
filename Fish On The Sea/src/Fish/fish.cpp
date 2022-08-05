@@ -252,5 +252,25 @@ namespace fish {
 			active = !active;
 		}
 
+		void fish1DeInit(Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
+			UnloadTexture(small1);
+			UnloadTexture(small2);
+			UnloadTexture(medium1);
+			UnloadTexture(medium2);
+			UnloadTexture(big1);
+			UnloadTexture(big2);
+
+		}
+
+		void fish2DeInit(Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2) {
+			UnloadTexture(small1);
+			UnloadTexture(small2);
+			UnloadTexture(medium1);
+			UnloadTexture(medium2);
+			UnloadTexture(big1);
+			UnloadTexture(big2);
+		}
 	}
 }

@@ -32,6 +32,7 @@ namespace fish {
 		static void gameplayReset();
 		static void playerDeInit();
 		static void shopDeInit();
+		static void fishDeInit();
 
 		const int fishAmount = 20;
 
@@ -51,9 +52,12 @@ namespace fish {
 		int fishCounter;
 		bool playState;
 		bool menuState;
+
 		int fishArea1 = 1;
 		int fishArea2 = 2;
 		int fishArea3 = 3;
+
+		bool deInitFish;
 
 		float boxPosX;
 		float boxPosY;
@@ -104,6 +108,7 @@ namespace fish {
 			fishCounter = 0;
 			playState = true;
 			menuState = true;
+			deInitFish = false;
 
 			points = 0;
 #if _DEBUG
@@ -183,6 +188,7 @@ namespace fish {
 			menuTex1 = LoadTexture("res/Gameplay_buttons/menu1.png");
 			menuTex2 = LoadTexture("res/Gameplay_buttons/menu2.png");
 			menuState = true;
+			deInitFish = false;
 
 			points = 0;
 #if _DEBUG
@@ -256,6 +262,10 @@ namespace fish {
 							player.position.x = posXSave;
 							fishCounter = 0;
 						}
+					}
+
+					if (deInitFish) {
+						fishDeInit();
 					}
 					break;
 				case GameplayModes::Descend:
@@ -525,7 +535,7 @@ namespace fish {
 							if (IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
 								Modes = GameplayModes::Descend;
 								PlaySound(click);
-
+								deInitFish = true; 
 								initFishGameplay();
 							}
 						}
@@ -851,13 +861,8 @@ namespace fish {
 			UnloadFont(font);
 			UnloadTexture(menuTex1);
 			UnloadTexture(menuTex2);
-			std::cout << "Player de init" << std::endl;
 			playerDeInit();
-			std::cout << "shop de init" << std::endl;
-
 			shopDeInit();
-			std::cout << "termina aca" << std::endl;
-
 		}
 
 		void playerDeInit() {
@@ -866,8 +871,33 @@ namespace fish {
 
 		void shopDeInit() {
 			shop::shopDeInit(shop.closeTex1, shop.closeTex2,
-				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.buyTex1, shop.buyTex2, shop.font);
-			
+				shop.mainTex, shop.leftTex1, shop.leftTex2, shop.rightTex1, shop.rightTex2, shop.buyTex1, shop.buyTex2, shop.font);			
+		}
+
+		void fishDeInit() {
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::fish1DeInit(fish[i].small1, fish[i].small2,
+					fish[i].medium1, fish[i].medium2, fish[i].big1, fish[i].big2);
+
+			}
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::fish1DeInit(fish2[i].small1, fish2[i].small2,
+					fish2[i].medium1, fish2[i].medium2, fish2[i].big1, fish2[i].big2);
+
+			}
+			for (int i = 0; i < fishAmount; i++) {
+				fishs::fish1DeInit(fish3[i].small1, fish3[i].small2,
+					fish3[i].medium1, fish3[i].medium2, fish3[i].big1, fish3[i].big2);
+
+			}
+			deInitFish = false;
+		}
+
+		void gameplayCheckFishDeInit() {
+			if (deInitFish)
+			{
+				fishDeInit();
+			}
 		}
 	}
 }

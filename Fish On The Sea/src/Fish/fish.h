@@ -34,7 +34,12 @@ namespace fish {
 		void deactivate(bool& active, int& points, int& type);
 		void deactivate2(bool& active, int& points, int& type);
 		void deactivate3(bool& active, int& points, int& type);
-
+		void fish1DeInit(Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);
+		void fish2DeInit(Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);
+		void fish3DeInit(Texture2D& small1, Texture2D& small2,
+			Texture2D& medium1, Texture2D& medium2, Texture2D& big1, Texture2D& big2);
 	}
 }
 #endif

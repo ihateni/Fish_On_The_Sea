@@ -7,7 +7,8 @@ namespace fish {
 
 		void gameplayInit();
 		void gameplayUpdate();
-		void  gameplayDeInit();
+		void gameplayDeInit();
+		void gameplayCheckFishDeInit();
 
 	}
 }

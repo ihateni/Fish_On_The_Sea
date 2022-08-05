@@ -78,6 +78,7 @@ namespace fish {
 		}
 
 		void deInit() {
+			gameplay::gameplayCheckFishDeInit();
 			menu::menuDeInit();
 			credits::creditsDeInit();
 			controls::controlsDeInit();
